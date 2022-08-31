@@ -5,7 +5,7 @@
 	<title></title>
 	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
 	<meta name="created" content="2017-10-20T23:40:51.940000000"/>
-	<meta name="changed" content="2022-08-30T00:49:20.956889557"/>
+	<meta name="changed" content="2022-08-31T18:18:40.603793082"/>
 	<style type="text/css">
 		@page { margin: 0.79in }
 		p { margin-bottom: 0.1in; line-height: 120% }
@@ -125,7 +125,7 @@ problem? Why or why not?</font></p>
 The assertion that Apriori is O(|I|*|D|*2<sup>I</sup>) seems
 incorrect since each transaction in D has possibly 2<sup>I </sup>subsets,
 but each will be generated and tested only once in the entire
-algorithm.  Is a complexity of O(|D|*2<sup>I</sup>) thus correct?</font></p>
+algorithm. Is a complexity of O(|D|*2<sup>I</sup>) thus correct?</font></p>
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 </p>
@@ -137,8 +137,7 @@ Algorithm</b></font></p>
 <p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
 <font size="2" style="font-size: 11pt">7. On line 7, how is sup(X<sub>ab</sub>)
 determined without reexamining all the transactions?</font></p>
-<p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
-<br/>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 </p>
 <p style="margin-bottom: 0in; line-height: 100%"><font size="2" style="font-size: 11pt"><b>dEclat
@@ -148,29 +147,35 @@ Algorithm</b></font></p>
 </p>
 <p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
 <font size="2" style="font-size: 11pt">8. On line 6, could d(X<sub>ab</sub>)
- be <i>larger</i><span style="font-style: normal"> than d(X</span><sub><span style="font-style: normal">a</span></sub><span style="font-style: normal">)?
- How about than d(X</span><sub><span style="font-style: normal">b</span></sub><span style="font-style: normal">)?
- Why?  </span></font>
+be <i>larger</i><span style="font-variant: normal"> </span><span style="font-variant: normal"><span style="font-style: normal">than
+d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">a</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)?
+How about than d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">b</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)?
+Why? </span></span></font>
 </p>
-<p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
-<br/>
-
-</p>
-<p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
-<font size="2" style="font-size: 11pt"><span style="font-style: normal">9.</span><span style="font-style: normal">
-In the discussion of the dEclat algorithm, the text suggests starting
-with tidsets a la' Eclat, and converting to diffsets partway through.
- </span><span style="font-style: normal">This would require computing
-</span><span style="font-style: normal">d(X</span><sub><span style="font-style: normal">a</span></sub><sub><span style="font-style: normal">b</span></sub><span style="font-style: normal">)</span><span style="font-style: normal">)
-instead of </span><span style="font-style: normal">d(X</span><sub><span style="font-style: normal">a</span></sub><sub><span style="font-style: normal">b</span></sub><span style="font-style: normal">)</span><span style="font-style: normal">)
-on line 6 of the dEclat algorithm.   </span><span style="font-style: normal">If
-we know</span><span style="font-style: normal"> only</span><span style="font-style: normal">
-t(X</span><sub><span style="font-style: normal">a</span></sub><span style="font-style: normal">)
-and t(X</span><sub><span style="font-style: normal">b</span></sub><span style="font-style: normal">),
-how do we compute  d(X</span><sub><span style="font-style: normal">a</span></sub><sub><span style="font-style: normal">b</span></sub><span style="font-style: normal">)</span><span style="font-style: normal">)</span><span style="font-style: normal">?</span></font></p>
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 </p>
+<p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
+<font size="2" style="font-size: 11pt"><span style="font-variant: normal"><span style="font-style: normal">9.</span></span><span style="font-variant: normal">
+</span><span style="font-variant: normal"><span style="font-style: normal">
+In the discussion of the dEclat algorithm, the text suggests starting
+with tidsets a la' Eclat, and converting to diffsets partway through.
+This would require computing d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">ab</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">))</span></span><span style="font-variant: normal"><span style="font-style: normal">
+from</span></span><span style="font-variant: normal"><span style="font-style: normal">
+</span></span><span style="font-variant: normal"><span style="font-style: normal">t</span></span><span style="font-variant: normal"><span style="font-style: normal">(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">a</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)</span></span><span style="font-variant: normal"><span style="font-style: normal">
+and t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">b</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)
+</span></span><span style="font-variant: normal"><span style="font-style: normal">
+on line 6 of the dEclat algorithm. If we know only t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">a</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)
+and t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">b</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">),
+how do we compute d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">ab</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">))?</span></span></font></p>
+<p style="margin-bottom: 0in; line-height: 100%"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
+<font size="2" style="font-size: 11pt"><span style="font-style: normal">10</span><span style="font-style: normal">.
+Does the left-to-right order of the items matter in the Eclat and
+dEclat algorithms?  Would some advantage be gained, for instance, by
+expanding the tree from most to least popular item at each level?</span></font></p>
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 </p>
@@ -180,7 +185,7 @@ Growth:</b></i></font></p>
 
 </p>
 <p style="margin-bottom: 0in; font-variant: normal; font-style: normal; line-height: 100%">
-<font size="2" style="font-size: 11pt">10. Why is ordering the items
+<font size="2" style="font-size: 11pt">11. Why is ordering the items
 correctly when building a prefix-tree such a big deal? Build a
 database with at most 5 transactions for which the original ordering
 of the items within the transactions produces a prefix tree with</font></p>
@@ -191,7 +196,7 @@ of the items within the transactions produces a prefix tree with</font></p>
 
 </p>
 <p style="margin-bottom: 0in; font-variant: normal; font-style: normal; line-height: 100%">
-<font size="2" style="font-size: 11pt">11. Does the order of the
+<font size="2" style="font-size: 11pt">12. Does the order of the
 transactions (as opposed to that of the items) affect the form of the
 final prefix tree? Why or why not?</font></p>
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
