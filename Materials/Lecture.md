@@ -104,21 +104,26 @@
 ## Maximal Itemsets
   * Intro concept
   * Different "directions" of expansion
-  * 
+  * Maximal means we can't add an element without losing a transaction and dropping below min support
+  * Could we possibly add an element and both gain/lose one transaction to "hold even"?
 
 ## Closed itemset
-  * i(t(X))
-  * Isn't this the same as maximal??
-  * What effect does closure have on support
-  * 9.3 -- "Maximal itemset with same support"
+  * Idea of closure of X: i(t(X))
+  * What effect does closure operation have on support? (None)
+  * 9.3 in English? (Can't add an item without losing a transaction.)
+  * Ask: isn't a closure the same as a maximal? (No, could be at a higher level of support than minsup.)
+  * 
   * 9.4
     * Can maximal itemset be expanded by closure? (No, so M $\subseteq$ C)
     * Is closed itemset automatically maximal? (No)
-    * Examples:  ABC ABCD BCD ACD ABD
-  * Fig 9.2
 
+## Min Generator
+  * English meaning of 9.5?  ("Can't lose an item without gaining a transaction")
+  * Unique min-generator to maximal subset pairing? (No, can lose different items without gaining transactions)
+  * Consider ABCD, ABC, ACD,
 
-    
+## Fig 9.2
+  * 
 
    
    
