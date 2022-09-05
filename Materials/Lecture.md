@@ -37,7 +37,90 @@
  * Pull down zip file
  * Do a Pandas read-in of Orders100.csv and try out a bit of Pandas
 
-## Eclat
- * Look at C version of database.  How do we compute, say, t({B}, t{BC}, t(BCD)..
- * Walk through Eclat
+## Day 3 ------------------------------------
+
+## Eclat / dEclat (assumes reading and Q/A)
+ * Quiz (use our sample database):
+     * Find a 3-itemset X for which d(X) = $\emptyset$
+     * What is the largest $|d(X)|$ possible in our sample database? Why?
+
+  * Discuss book suggestion of starting with Eclat or t(X) values and shifting to d(X)
+    * Would this be useful with our sample database?
+    * What about a typical shopping database?
+    * Why go to d(X) at 2-itemsets?  Might t(X) still be smaller than d(X) that early?
+    * Is it *even possible* for t(X) to be smaller than d(X) if $|X| \geq 2$? 
+  
+## FPGrowth
+ * FP Tree
+   * Compact version of the entire database and supports; used in place of it
+   * Build FP-tree from ACE BCE BCD CE
+   * Do the same with order ABCDE, just to show less efficient version
+   * Can support increase as we descend? (No)
+   * Can we generate all subsets as paths in tree?  (No)
+ * Generating subsets from FPTree
+   * Start with 1-itemsets, then 2-itemsets, etc.
+   * Easy degenerate FPTree case
+     * Do actual exercise on AC A ACE ACED ACE
+     * Generate 1-itemsets, 2-itemsets, etc reading right off the tree
+     * Use least-supported (lowest) node as support for each itemset
+     * Actually generate the 16 possibles from this example
+     * They come up with alternate example using 4 items and try it.
+ * General FPTree case
+  * Subsets spread across multiple paths.
+  * Try to reduce to degenerate case.
+  * Generate "projected" (filtered or collapsed) FP trees for each item.
+    * Effectively dividing the database into A,B,C,D... groups
+    * Easy to do from leaf values.  
+    * Can least-supported elements ever have children in the FP-tree?
+    * Can we do a subtree *assuming D is in the itemsets*?
+      * Count support by scanning tree
+      * Rehang the paths to create subtree for patterns 
+    * Now remove the D leaves, and we're left with the same solution for
+      C patterns minus any D patterns
+    * Do the same for C, A, etc.
+    * How do we understand B?
+      * Will it ever appear a lower than top level?
+      * Is it the *only* top level element?
+      * What does the prefix tree of "itemsets with B, and no other elements" look like?
+ * Pseudocode in Algorithm 8.5
+   * Will line 1 remove internal nodes?  What happens if so? **No.  Any infrequent item has only other infrequents as descendants**
+   * What about line 13 -- just from root to node? What if interior? **Effective removal of less-supported leaves is OK since they're already covered under other trees.
+   * Finish up recursive call for D, then generate sets.
+ * Another example 
+
+## Generating Association Rules
+ * Independent of algorithm.
+ * If we know ABCD is a frequent itemset, what rules can we deduce?
+    * AB -> CD for instance?  What confidence that this is so?
+    * What might it take for AB -> CD to be very lightly supported?  Very heavily?
+ * Equation 8.7
+ * What might it take for all inferences to be low confidence?
+ * Algorithm 8.6
+    * What type of thing is X?  (itemset)
+    * Why choose maximal on line 4?
+
+# Chapter 9 Representing Itemsets
+
+## Maximal Itemsets
+  * Intro concept
+  * Different "directions" of expansion
+  * 
+
+## Closed itemset
+  * i(t(X))
+  * Isn't this the same as maximal??
+  * What effect does closure have on support
+  * 9.3 -- "Maximal itemset with same support"
+  * 9.4
+    * Can maximal itemset be expanded by closure? (No, so M $\subseteq$ C)
+    * Is closed itemset automatically maximal? (No)
+    * Examples:  ABC ABCD BCD ACD ABD
+  * Fig 9.2
+
+
+    
+
+   
+   
+
  
