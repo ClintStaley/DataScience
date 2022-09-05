@@ -5,7 +5,7 @@
 	<title></title>
 	<meta name="generator" content="LibreOffice 6.0.7.3 (Linux)"/>
 	<meta name="created" content="2017-10-20T23:40:51.940000000"/>
-	<meta name="changed" content="2022-08-31T18:18:40.603793082"/>
+	<meta name="changed" content="2022-09-05T01:17:09.234857259"/>
 	<style type="text/css">
 		@page { margin: 0.79in }
 		p { margin-bottom: 0.1in; line-height: 120% }
@@ -157,14 +157,14 @@ Why? </span></span></font>
 </p>
 <p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
 <font size="2" style="font-size: 11pt"><span style="font-variant: normal"><span style="font-style: normal">9.</span></span><span style="font-variant: normal">
-</span><span style="font-variant: normal"><span style="font-style: normal">
-In the discussion of the dEclat algorithm, the text suggests starting
+</span><span style="font-variant: normal"><span style="font-style: normal">In
+the discussion of the dEclat algorithm, the text suggests starting
 with tidsets a la' Eclat, and converting to diffsets partway through.
-This would require computing d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">ab</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">))</span></span><span style="font-variant: normal"><span style="font-style: normal">
-from</span></span><span style="font-variant: normal"><span style="font-style: normal">
-</span></span><span style="font-variant: normal"><span style="font-style: normal">t</span></span><span style="font-variant: normal"><span style="font-style: normal">(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">a</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)</span></span><span style="font-variant: normal"><span style="font-style: normal">
-and t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">b</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)
-</span></span><span style="font-variant: normal"><span style="font-style: normal">
+This would require computing d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">ab</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">))</span></span><span style="font-variant: normal">
+</span><span style="font-variant: normal"><span style="font-style: normal">from</span></span><span style="font-variant: normal">
+</span><span style="font-variant: normal"><span style="font-style: normal">t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">a</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)</span></span><span style="font-variant: normal">
+</span><span style="font-variant: normal"><span style="font-style: normal">and
+t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">b</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)
 on line 6 of the dEclat algorithm. If we know only t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">a</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">)
 and t(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">b</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">),
 how do we compute d(X</span></span><span style="font-variant: normal"><sub><span style="font-style: normal">ab</span></sub></span><span style="font-variant: normal"><span style="font-style: normal">))?</span></span></font></p>
@@ -172,10 +172,10 @@ how do we compute d(X</span></span><span style="font-variant: normal"><sub><span
 
 </p>
 <p style="margin-bottom: 0in; font-weight: normal; line-height: 100%">
-<font size="2" style="font-size: 11pt"><span style="font-style: normal">10</span><span style="font-style: normal">.
+<font size="2" style="font-size: 11pt"><span style="font-variant: normal"><span style="font-style: normal">10.
 Does the left-to-right order of the items matter in the Eclat and
-dEclat algorithms?  Would some advantage be gained, for instance, by
-expanding the tree from most to least popular item at each level?</span></font></p>
+dEclat algorithms? Would some advantage be gained, for instance, by
+expanding the tree from most to least popular item at each level?</span></span></font></p>
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 </p>
@@ -188,7 +188,9 @@ Growth:</b></i></font></p>
 <font size="2" style="font-size: 11pt">11. Why is ordering the items
 correctly when building a prefix-tree such a big deal? Build a
 database with at most 5 transactions for which the original ordering
-of the items within the transactions produces a prefix tree with</font></p>
+of the items within the transactions produces a prefix tree with 3
+times as many nodes than does the prefix tree derived from an optimal
+item ordering.</font></p>
 <p style="margin-bottom: 0in; line-height: 100%"><br/>
 
 </p>

@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+<link rel="stylesheet" href="file:////home/clint/.vscode/extensions/goessner.mdmath-2.7.4/themes/default/style.css">
 
 </head>
 <body class="markdown-body">
@@ -161,6 +161,37 @@ C patterns minus any D patterns</li>
 <li dir="auto">Why choose maximal on line 4?</li>
 </ul>
 </li>
+</ul>
+<h1 dir="auto" id="chapter-9-representing-itemsets-1">Chapter 9 Representing Itemsets</h1>
+<h2 dir="auto" id="maximal-itemsets-1">Maximal Itemsets</h2>
+<ul dir="auto">
+<li dir="auto">Intro concept</li>
+<li dir="auto">Different &quot;directions&quot; of expansion</li>
+<li dir="auto">Maximal means we can't add an element without losing a transaction and dropping below min support</li>
+<li dir="auto">Could we possibly add an element and both gain/lose one transaction to &quot;hold even&quot;?</li>
+</ul>
+<h2 dir="auto" id="closed-itemset-1">Closed itemset</h2>
+<ul dir="auto">
+<li dir="auto">Idea of closure of X: i(t(X))</li>
+<li dir="auto">What effect does closure operation have on support? (None)</li>
+<li dir="auto">9.3 in English? (Can't add an item without losing a transaction.)</li>
+<li dir="auto">Ask: isn't a closure the same as a maximal? (No, could be at a higher level of support than minsup.)</li>
+<li dir="auto">9.4
+<ul dir="auto">
+<li dir="auto">Can maximal itemset be expanded by closure? (No, so M <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊆</mo></mrow><annotation encoding="application/x-tex">\subseteq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">⊆</span></span></span></span></eq> C)</li>
+<li dir="auto">Is closed itemset automatically maximal? (No)</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="min-generator-1">Min Generator</h2>
+<ul dir="auto">
+<li dir="auto">English meaning of 9.5?  (&quot;Can't lose an item without gaining a transaction&quot;)</li>
+<li dir="auto">Unique min-generator to maximal subset pairing? (No, can lose different items without gaining transactions)</li>
+<li dir="auto">Consider ABCD, ABC, ACD,</li>
+</ul>
+<h2 dir="auto" id="fig-92-1">Fig 9.2</h2>
+<ul dir="auto">
+<li dir="auto"></li>
 </ul>
 
 </body>

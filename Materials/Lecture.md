@@ -112,7 +112,6 @@
   * What effect does closure operation have on support? (None)
   * 9.3 in English? (Can't add an item without losing a transaction.)
   * Ask: isn't a closure the same as a maximal? (No, could be at a higher level of support than minsup.)
-  * 
   * 9.4
     * Can maximal itemset be expanded by closure? (No, so M $\subseteq$ C)
     * Is closed itemset automatically maximal? (No)
