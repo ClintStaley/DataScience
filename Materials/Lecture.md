@@ -122,7 +122,14 @@
   * Consider ABCD, ABC, ACD,
 
 ## Fig 9.2
-  * 
+
+# Sequence Mining
+
+## Basics
+
+## GSP Algorithm
+ * What the heck does this, in 10.2.1, mean: "It uses the antimonotonic property of support toprune c andidate patterns, that is, no supersequence of an infrequent sequence can be frequent, and all subsequences of a frequent sequence must be frequent."
+ * 
 
    
    
