@@ -2,7 +2,6 @@ import sys
 import pandas as pd
 
 def main():
-   print(f"Reading {sys.argv[1]}");
    frame = pd.read_csv(sys.argv[1], usecols=["product_id", "order_id", "user_id"])
 
    print(f"Number of products: {len(frame['product_id'].unique())}")
@@ -18,12 +17,13 @@ def main():
    byUsers = frame.groupby('user_id').filter(lambda x: x['product_id'].size > 1)
    # print("Without users with just one product", byUsers)
 
-   # Assemble DF of user-lists, indexed by product
-   byUsers = byUsers.groupby('product_id')['user_id'].apply(lambda x: list(x))
-   # print("Product -> user list", byUsers)
+   # Assemble Series of user-lists, indexed by product
+   byUsers = pd.DataFrame({
+      "prdIds": byUsers.groupby('product_id')['user_id'].apply(lambda x: list(x))
+   });
+   # print("Product -> user list", type(byUsers), byUsers)
 
    byUsers.to_pickle(sys.argv[2])
-   # print("Done Writing")
    checkRead = pd.read_pickle(sys.argv[2])
    print("Read/write check", checkRead)
 

@@ -1,4 +1,16 @@
-# Day 2
+
+# Chapter 1 Fundamentals (in stages)
+## 1.3.3 Projection
+ * Equation 1.11, with diagram,
+ * Why divide by |a| twice?
+ * Compute for a = (1, 1, 1) b = (1, 2, 3).  **Should get 6/3 = 2. **
+    * Significance...  What point does project hit on (1, 1, 1) direction
+    * What if reversed a <-> b?  **6/14**
+    * Closest point along a of (1,2,3)?  **(2,2,2)**
+    * Closest along b of (1,1,1)? **(6/14, 12/14, 18/14)**
+
+## Day 2 --------------------------------
+
 ## Prelim test
 
  * t({C, D}) =?
