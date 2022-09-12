@@ -3,7 +3,7 @@
 ## Readings
 Zaki
   * Chapter 9.1-9.2 by classtime Wedn
-  * Chapter 9.3 by classtime Friday
+  * Chapter 9.3, and 1.3.2-1.3.4 by classtime Friday
 EMC 
   *Chapter 2 by classtime Monday
 
