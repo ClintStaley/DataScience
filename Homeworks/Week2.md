@@ -11,9 +11,9 @@ EMC
 All due Monday 2:20p 9/12
 
 ### Zaki
-Ch 8 Q2, Q4
+Ch 8 Q2, Q4 (include confidence)
 
-Ch 9 Q1, Q2, Q3, Q4
+Ch 9 Q1 (give reasons), Q2, Q3
 
 ### EMC
 Ch 2 Ex 1-3
