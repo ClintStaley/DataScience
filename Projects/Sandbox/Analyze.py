@@ -13,7 +13,7 @@ def main():
    # print("Original", frame)
    # Remove repeated purchases of same product by same user
    frame = frame.drop_duplicates(['user_id', 'product_id'])
-   print("Without duplicate user/product", frame)
+   # print("Without duplicate user/product", frame)
 
    # Remove users who purchased at most one product
    byUsers = frame.groupby('user_id').filter(lambda x: x['product_id'].size > 1)
