@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-<link rel="stylesheet" href="file:////home/clint/.vscode/extensions/goessner.mdmath-2.7.4/themes/default/style.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
 
 </head>
 <body class="markdown-body">
 <h1 dir="auto" id="chapter-1-fundamentals-in-stages">Chapter 1 Fundamentals (in stages)</h1>
 <h2 dir="auto" id="133-projection">1.3.3 Projection</h2>
 <ul dir="auto">
-<li dir="auto">Equation 1.11, with diagram,</li>
+<li dir="auto">Equation 1.11, with diagram</li>
 <li dir="auto">Why divide by |a| twice?</li>
 <li dir="auto">Compute for a = (1, 1, 1) b = (1, 2, 3).  **Should get 6/3 = 2. **
 <ul dir="auto">
@@ -24,7 +24,7 @@
 </ul>
 </li>
 </ul>
-<h1 dir="auto" id="day-2">Day 2</h1>
+<h2 dir="auto" id="day-2">Day 2 --------------------------------</h2>
 <h2 dir="auto" id="prelim-test">Prelim test</h2>
 <ul dir="auto">
 <li dir="auto">t({C, D}) =?</li>
@@ -204,7 +204,46 @@ C patterns minus any D patterns</li>
 <li dir="auto">Consider ABCD, ABC, ACD,</li>
 </ul>
 <h2 dir="auto" id="fig-92">Fig 9.2</h2>
+<h1 dir="auto" id="sequence-mining">Sequence Mining</h1>
+<h2 dir="auto" id="basics">Basics</h2>
 <ul dir="auto">
+<li dir="auto">Sequence, subsequence, and substring</li>
+<li dir="auto">Fig 10.0
+<ul dir="auto">
+<li dir="auto">What is different about this tree vs the itemsets lattice?</li>
+</ul>
+</li>
+<li dir="auto">Support concepts
+<ul dir="auto">
+<li dir="auto">Definition of support</li>
+<li dir="auto">Explain a few of the nodes in the tree</li>
+<li dir="auto">SAuper/sub <em>sequences</em> not subsets</li>
+<li dir="auto">Still monotonic?  Why/why not?  <strong>subseq has to also be supported same.  superseq can't be more.</strong></li>
+</ul>
+</li>
+<li dir="auto">Trace standard apriori style algorithm, DFS on the tree
+<ul dir="auto">
+<li dir="auto">Note similarities to Apriori</li>
+<li dir="auto">Why children(parent) on 17, and no a&lt;b?  <strong>symbols, including self, are repeatable.</strong></li>
+<li dir="auto">Trace tree development briefly</li>
+</ul>
+</li>
+<li dir="auto">Spade algorithm
+<ul dir="auto">
+<li dir="auto">Concept of final-symbol potential locations</li>
+<li dir="auto">Trace logic of 10.4 tree, for a few.  Then have them trace the rest.</li>
+<li dir="auto">Algorithm 10.2:
+<ul dir="auto">
+<li dir="auto">What is definition of intersection on line 6?</li>
+<li dir="auto">What is the algorithm analagous to?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="gsp-algorithm">GSP Algorithm</h2>
+<ul dir="auto">
+<li dir="auto">What the heck does this, in 10.2.1, mean: &quot;It uses the antimonotonic property of support toprune c andidate patterns, that is, no supersequence of an infrequent sequence can be frequent, and all subsequences of a frequent sequence must be frequent.&quot;</li>
 <li dir="auto"></li>
 </ul>
 

@@ -1,7 +1,72 @@
+# First Day
+ * Syllabus review
+   * Challenging course
+   * Importance of topic
+   * Individual work on coding/assignments
+
+ * Self-study methods
+   * multiple sources
+   * Try CONCRETE EXAMPLES
+
+## Theory Areas (interwoven through course) 
+
+###  Data, patterns, and high-dimensional space
+ * Examples of continuous data
+   * Numberline-based, int or float
+   * income, debt, income growth rate
+   * purchase volumes for each month of year
+   * square footage, age, neighborhood ranking
+   * grayscale image
+ * Example of discrete ordinal data
+   * education level
+   * age group (sometimes there's an underlying continuous variable)
+ * Example of discrete nominal data
+   * Zip code
+   * gender
+ ◦ Bernoulli (or simply binary) variable has 0/1 value.  Can be nominal or ordinal.  
+   * Did/did not purchase an item
+   * adult/minor
+ * Translation of continuous data to points in space
+ * Translation of discrete, ordinal data similarly
+ * Nominal ("just a name") categorical data results in collection of spaces
+ * Vector spaces
+        ◦ Hypercube sequence exercise
+        ◦ Reasoning about patterns in hyperdimensional space
+            ▪ What do "nearby" patterns look like?  
+            ▪ What does a midpoint pattern look like?
+            ▪ What does a pattern of only binary variables look like?
+        ◦ Pattern space reasoning
+            ▪ Typical pattern space is BIG
+            ▪ Is a midpoint pattern an "interpolation" of the endpoints?
+            ▪ Convex vs nonconvex
+        ◦ Dot product computation and geometry
+        ◦ Defining a hyperplane with perpendicular and distance
+
+Practice
+    • Data matrix concept
+        ◦ "select" statement
+        ◦ Pandas dataframe
+        ◦ Spreadsheet
+        ◦ ID-ed list of vectors with typed and named dimensions.
+    • Itemsets as initial study
+        ◦ shopping carts, web pages visited, etc.
+        ◦ Items and transactions; Itemsets and Tidsets
+        ◦ i(T) and t(X) functions
+            ▪ Use text
+            ▪ Subsetting relationships: 
+                • Itemset A is subset/superset of Itemset B.  Effect on t(A) vs t(B)?
+                • Tidset A is subset/superset of Tidset B.  Effect on i(A) vs i(B)?
+        ◦ Bruteforce algorithm
+        ◦ Itemset lattice
+            ▪ Note support will monotonically decrease down the lattice
+        ◦ aPriori algorithm
+            ▪ By hand for example set
+
+
 
 # Chapter 1 Fundamentals (in stages)
 ## 1.3.3 Projection
- * Equation 1.11, with diagram,
+ * Equation 1.11, with diagram
  * Why divide by |a| twice?
  * Compute for a = (1, 1, 1) b = (1, 2, 3).  **Should get 6/3 = 2. **
     * Significance...  What point does project hit on (1, 1, 1) direction
@@ -138,10 +203,52 @@
 # Sequence Mining
 
 ## Basics
+ * Sequence, subsequence, and substring
+ * Fig 10.0
+    * What is different about this tree vs the itemsets lattice?
+ * Support concepts
+    * Definition of support
+    * Explain a few of the nodes in the tree
+    * SAuper/sub *sequences* not subsets
+    * Still monotonic?  Why/why not?  **subseq has to also be supported same.  superseq can't be more.** 
+ * Trace standard apriori style algorithm, DFS on the tree
+    * Note similarities to Apriori
+    * Why children(parent) on 17, and no a<b?  **symbols, including self, are repeatable.**
+    * Trace tree development briefly
+ * Spade algorithm
+    * Concept of final-symbol potential locations
+    * Trace logic of 10.4 tree, for a few.  Then have them trace the rest.
+    * Algorithm 10.2: 
+       * What is definition of intersection on line 6?
+       * What is the algorithm analagous to?
+
 
 ## GSP Algorithm
  * What the heck does this, in 10.2.1, mean: "It uses the antimonotonic property of support toprune c andidate patterns, that is, no supersequence of an infrequent sequence can be frequent, and all subsequences of a frequent sequence must be frequent."
  * 
+
+## Suffix trees
+ * Review basic suffix tree idea.  
+   * Do exercises, adding new strings
+   * Efficiencies
+      * Substring ranges on branches
+      * Track support
+   * Use for finding substrings
+   * Trie, Patricia tree or radix tree
+   * Why suffix and not prefix?  **forward seeking requires suffix mode**
+   * Order of complexity for string hunt -- clear choice at each node
+ * Building one fast.  Ukkonen's.  
+   * (Sample patterns  CAGAAGT TGACAG, abcabxabcd, abracadabra)
+   * Build by extension
+   * Try simple case like abcd -- all explicit suffixes
+   * ABCABCD implicit suffixes
+     * How do we find the "fallback location"? **Simple search if off of root**
+   * Try ABCABXABCD
+     * Need skip into fallback prefix
+   * Run example
+     * How to get second level of suffix links to be used? ABCABXABCDABCX
+
+
 
    
    
