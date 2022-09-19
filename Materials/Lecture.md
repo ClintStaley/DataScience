@@ -249,8 +249,73 @@ Practice
      * How to get second level of suffix links to be used? ABCABXABCDABCX
 
 
+## Evaluating Itemsets
+ * Well-supported itemsets aren't the final result
+   * Lots of them.  Still a "data science" job to cull them
+   * Some are less meaningful, e.g. {milk, eggs, bread}
+   * Rich set of quantitative measures for evaluating itemsets and association rules, clearly from many research papers
+     * Understand all in order to reason well about this, and to deepen probability thinking
+     * Confidence and lift are most common in my limited experience, especially lift
 
+ * First look at Association Rules more closely
+   * Is confidence a sufficient indicator?
+      * Example of Lox -> Bagel 40% confidence vs Lox -> Milk 40%
+      * Even highly confident rule can indicate *reverse* causation.
+   * Lift concept
+      * EQ 12.4
+      * Advantages
+      * Takes background likelihood into account.  
+      * If Bagel is .05 likely, lox .03 and milk .5, what are the lifts of our bagel/lox/milk example?
+         * Lox -> Bagel **.4 / .05 = 8
+         * Lox -> Milk **.4 / .5 = .08
+      * Can be high or low (above or less than 1.0)
+         * Arrive at a lift of 10?  **probs of .1 can arrive at lift of 10**
+         * How about low lift?  How low can it go? **0 for any completely disjoint X and Y**
+      * Disadvantages
+      * Show how a rare pair of events can result in lift of 1000?  **Both .001 likely, but 100% correlated**
+      * Symmetrical.  Why is this bad?  **No causality info**
+
+   * Leverage concept
+      * Looks to me like this is just lift - 1.0, or "differential lift".  Is this so? **No, because it's lift-1.0 times rsup(X)*rsup(Y)**
+      * So, like lift, but differential, and magnified by joint support (support of itemset XY).
+      * What is max leverage possible?  How obtained?  **Can't exceed 1.0 due to probs, but worse than that.  X and Y = 1/2 and fully correlated gets leverage of .25**
+      * How about min leverage?  **Fully uncorrelated with .5 prob for X and Y gets -.25**
+      * What is leverage like with light data (low probs), such as high-lift rare case earlier?  ** Tends to near zero.  Fully correlated with .001 -> .00999.  Uncorrelated -.000001 **
+
+   * Jaccard
+      * What share of the Venn diagram is the rule?
+      * Symmetric
+      * Sensitive to low prob values.
+
+   * Conviction 
+      * Conviction takes into account how likely rule is to *fail*, in particular X -> !Y$
+      * Lift of this measure is bad if larger, so invert to 1 / lift(x -> !y)
+      * Assymetrical
+      * How to make high?  How high can it go?
+
+   * Odds ratio
+      * "Odds" concept.  Alternate way to state relative probability, intuitively considering the "not" case also.
+        * Mathematically p/(1-p) ratio, e.g. .75 probability is 3:1 odds.  (Usually state with 1 in "denominator")
+        * They do 5:1 odds is what probability **.8333**.  .9 probabililty is what odds? **9:1**
+        * Vs probability, has what range?  **0 to infinity**
+      * Ratio of chance of Y with and without X.
+        * Significance of 1?
+        * How to get 0 even if X -> Y is supported? **If Y is always there anyway**
+        * Example 12.8
    
    
+ * Evaluating entire pattern or itemset
+   * Total lift eq 12.9
+      * (Product notation)
+      * Make lift of an itemset be 1 even if its support is 100% **All items are 100%**
 
- 
+   * Need to consider lift or other measures for *all rules derived*
+     * Q-partition and 12.10
+     * Revise the min notation
+     * How many q-partitions of a k-set are there?
+   * Max, min, or average may be used.
+     * Table 12.14
+     * Discuss which is more important (min, max, ave) and why
+       * Min susses out "duh" cases if these are fully explanatory
+       * Max finds significance
+   
