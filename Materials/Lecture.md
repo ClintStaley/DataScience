@@ -318,4 +318,20 @@ Practice
      * Discuss which is more important (min, max, ave) and why
        * Min susses out "duh" cases if these are fully explanatory
        * Max finds significance
-   
+   * "Productive" itemsets
+     * Productive itemset if *all* A->B rules have lift > 1, or $lift_2(X) > 1.0$
+   * Productive association rules
+     * Idea of "more general" -- reduce antcedent by at least one member
+     * Productive association cannot be made more general without loss of confidence
+       * Why confidence instead of support? **More general cannot reduce support, only increase it**
+       * Example of more general rule with less confidence?  **buns and dogs -> mustard vs dogs -> mustard if dogs are very common**
+       * Concept of "improvement": 12.12.
+   * Fisher Exact Test
+     * Powerful way to evaluate an association rule, assuming existing database is itself just a sample space
+     * Use Fisher test to determine whether the effect of a generalization is "surprising".
+     * Generalize by removing an antecedent subset Z, so X = W|Z
+     * Table 2.17
+       * If Z doesn't affect Y then columns should be proportionally the same
+       * Odds calculation eq 12.13
+       * 
+
