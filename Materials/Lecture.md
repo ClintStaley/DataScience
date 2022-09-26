@@ -332,6 +332,8 @@ Practice
      * Generalize by removing an antecedent subset Z, so X = W|Z
      * Table 2.17
        * If Z doesn't affect Y then columns should be proportionally the same
-       * Odds calculation eq 12.13
-       * 
-
+       * Explore odds calculation eq 12.13
+         * What does it say about proportionality of rows?  Of cols?  **Both are proportional, not just rows**
+         * Explore counterexamples to convince all that this is so.   
+         * Follow through with Fisher test 12.14
+         * Summation in 12.15
