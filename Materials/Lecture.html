@@ -10,6 +10,86 @@
 
 </head>
 <body class="markdown-body">
+<h1 dir="auto" id="first-day">First Day</h1>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Syllabus review</p>
+<ul dir="auto">
+<li dir="auto">Challenging course</li>
+<li dir="auto">Importance of topic</li>
+<li dir="auto">Individual work on coding/assignments</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Self-study methods</p>
+<ul dir="auto">
+<li dir="auto">multiple sources</li>
+<li dir="auto">Try CONCRETE EXAMPLES</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="theory-areas-interwoven-through-course">Theory Areas (interwoven through course)</h2>
+<h3 dir="auto" id="data-patterns-and-high-dimensional-space">Data, patterns, and high-dimensional space</h3>
+<ul dir="auto">
+<li dir="auto">Examples of continuous data
+<ul dir="auto">
+<li dir="auto">Numberline-based, int or float</li>
+<li dir="auto">income, debt, income growth rate</li>
+<li dir="auto">purchase volumes for each month of year</li>
+<li dir="auto">square footage, age, neighborhood ranking</li>
+<li dir="auto">grayscale image</li>
+</ul>
+</li>
+<li dir="auto">Example of discrete ordinal data
+<ul dir="auto">
+<li dir="auto">education level</li>
+<li dir="auto">age group (sometimes there's an underlying continuous variable)</li>
+</ul>
+</li>
+<li dir="auto">Example of discrete nominal data
+<ul dir="auto">
+<li dir="auto">Zip code</li>
+<li dir="auto">gender
+◦ Bernoulli (or simply binary) variable has 0/1 value.  Can be nominal or ordinal.</li>
+<li dir="auto">Did/did not purchase an item</li>
+<li dir="auto">adult/minor</li>
+</ul>
+</li>
+<li dir="auto">Translation of continuous data to points in space</li>
+<li dir="auto">Translation of discrete, ordinal data similarly</li>
+<li dir="auto">Nominal (&quot;just a name&quot;) categorical data results in collection of spaces</li>
+<li dir="auto">Vector spaces
+◦ Hypercube sequence exercise
+◦ Reasoning about patterns in hyperdimensional space
+▪ What do &quot;nearby&quot; patterns look like?<br>
+▪ What does a midpoint pattern look like?
+▪ What does a pattern of only binary variables look like?
+◦ Pattern space reasoning
+▪ Typical pattern space is BIG
+▪ Is a midpoint pattern an &quot;interpolation&quot; of the endpoints?
+▪ Convex vs nonconvex
+◦ Dot product computation and geometry
+◦ Defining a hyperplane with perpendicular and distance</li>
+</ul>
+<p dir="auto">Practice
+• Data matrix concept
+◦ &quot;select&quot; statement
+◦ Pandas dataframe
+◦ Spreadsheet
+◦ ID-ed list of vectors with typed and named dimensions.
+• Itemsets as initial study
+◦ shopping carts, web pages visited, etc.
+◦ Items and transactions; Itemsets and Tidsets
+◦ i(T) and t(X) functions
+▪ Use text
+▪ Subsetting relationships:
+• Itemset A is subset/superset of Itemset B.  Effect on t(A) vs t(B)?
+• Tidset A is subset/superset of Tidset B.  Effect on i(A) vs i(B)?
+◦ Bruteforce algorithm
+◦ Itemset lattice
+▪ Note support will monotonically decrease down the lattice
+◦ aPriori algorithm
+▪ By hand for example set</p>
 <h1 dir="auto" id="chapter-1-fundamentals-in-stages">Chapter 1 Fundamentals (in stages)</h1>
 <h2 dir="auto" id="133-projection">1.3.3 Projection</h2>
 <ul dir="auto">
@@ -245,6 +325,209 @@ C patterns minus any D patterns</li>
 <ul dir="auto">
 <li dir="auto">What the heck does this, in 10.2.1, mean: &quot;It uses the antimonotonic property of support toprune c andidate patterns, that is, no supersequence of an infrequent sequence can be frequent, and all subsequences of a frequent sequence must be frequent.&quot;</li>
 <li dir="auto"></li>
+</ul>
+<h2 dir="auto" id="suffix-trees">Suffix trees</h2>
+<ul dir="auto">
+<li dir="auto">Review basic suffix tree idea.
+<ul dir="auto">
+<li dir="auto">Do exercises, adding new strings</li>
+<li dir="auto">Efficiencies
+<ul dir="auto">
+<li dir="auto">Substring ranges on branches</li>
+<li dir="auto">Track support</li>
+</ul>
+</li>
+<li dir="auto">Use for finding substrings</li>
+<li dir="auto">Trie, Patricia tree or radix tree</li>
+<li dir="auto">Why suffix and not prefix?  <strong>forward seeking requires suffix mode</strong></li>
+<li dir="auto">Order of complexity for string hunt -- clear choice at each node</li>
+</ul>
+</li>
+<li dir="auto">Building one fast.  Ukkonen's.
+<ul dir="auto">
+<li dir="auto">(Sample patterns  CAGAAGT TGACAG, abcabxabcd, abracadabra)</li>
+<li dir="auto">Build by extension</li>
+<li dir="auto">Try simple case like abcd -- all explicit suffixes</li>
+<li dir="auto">ABCABCD implicit suffixes
+<ul dir="auto">
+<li dir="auto">How do we find the &quot;fallback location&quot;? <strong>Simple search if off of root</strong></li>
+</ul>
+</li>
+<li dir="auto">Try ABCABXABCD
+<ul dir="auto">
+<li dir="auto">Need skip into fallback prefix</li>
+</ul>
+</li>
+<li dir="auto">Run example
+<ul dir="auto">
+<li dir="auto">How to get second level of suffix links to be used? ABCABXABCDABCX</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="evaluating-itemsets">Evaluating Itemsets</h2>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Well-supported itemsets aren't the final result</p>
+<ul dir="auto">
+<li dir="auto">Lots of them.  Still a &quot;data science&quot; job to cull them</li>
+<li dir="auto">Some are less meaningful, e.g. {milk, eggs, bread}</li>
+<li dir="auto">Rich set of quantitative measures for evaluating itemsets and association rules, clearly from many research papers
+<ul dir="auto">
+<li dir="auto">Understand all in order to reason well about this, and to deepen probability thinking</li>
+<li dir="auto">Confidence and lift are most common in my limited experience, especially lift</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">First look at Association Rules more closely</p>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Is confidence a sufficient indicator?</p>
+<ul dir="auto">
+<li dir="auto">Example of Lox -&gt; Bagel 40% confidence vs Lox -&gt; Milk 40%</li>
+<li dir="auto">Even highly confident rule can indicate <em>reverse</em> causation.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Lift concept</p>
+<ul dir="auto">
+<li dir="auto">EQ 12.4</li>
+<li dir="auto">Advantages</li>
+<li dir="auto">Takes background likelihood into account.</li>
+<li dir="auto">If Bagel is .05 likely, lox .03 and milk .5, what are the lifts of our bagel/lox/milk example?
+<ul dir="auto">
+<li dir="auto">Lox -&gt; Bagel **.4 / .05 = 8</li>
+<li dir="auto">Lox -&gt; Milk **.4 / .5 = .08</li>
+</ul>
+</li>
+<li dir="auto">Can be high or low (above or less than 1.0)
+<ul dir="auto">
+<li dir="auto">Arrive at a lift of 10?  <strong>probs of .1 can arrive at lift of 10</strong></li>
+<li dir="auto">How about low lift?  How low can it go? <strong>0 for any completely disjoint X and Y</strong></li>
+</ul>
+</li>
+<li dir="auto">Disadvantages</li>
+<li dir="auto">Show how a rare pair of events can result in lift of 1000?  <strong>Both .001 likely, but 100% correlated</strong></li>
+<li dir="auto">Symmetrical.  Why is this bad?  <strong>No causality info</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Leverage concept</p>
+<ul dir="auto">
+<li dir="auto">Looks to me like this is just lift - 1.0, or &quot;differential lift&quot;.  Is this so? *<em>No, because it's lift-1.0 times rsup(X)<em>rsup(Y)</em></em></li>
+<li dir="auto">So, like lift, but differential, and magnified by joint support (support of itemset XY).</li>
+<li dir="auto">What is max leverage possible?  How obtained?  <strong>Can't exceed 1.0 due to probs, but worse than that.  X and Y = 1/2 and fully correlated gets leverage of .25</strong></li>
+<li dir="auto">How about min leverage?  <strong>Fully uncorrelated with .5 prob for X and Y gets -.25</strong></li>
+<li dir="auto">What is leverage like with light data (low probs), such as high-lift rare case earlier?  ** Tends to near zero.  Fully correlated with .001 -&gt; .00999.  Uncorrelated -.000001 **</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Jaccard</p>
+<ul dir="auto">
+<li dir="auto">What share of the Venn diagram is the rule?</li>
+<li dir="auto">Symmetric</li>
+<li dir="auto">Sensitive to low prob values.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Conviction</p>
+<ul dir="auto">
+<li dir="auto">Conviction takes into account how likely rule is to <em>fail</em>, in particular X -&gt; !Y$</li>
+<li dir="auto">Lift of this measure is bad if larger, so invert to 1 / lift(x -&gt; !y)</li>
+<li dir="auto">Assymetrical</li>
+<li dir="auto">How to make high?  How high can it go?</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Odds ratio</p>
+<ul dir="auto">
+<li dir="auto">&quot;Odds&quot; concept.  Alternate way to state relative probability, intuitively considering the &quot;not&quot; case also.
+<ul dir="auto">
+<li dir="auto">Mathematically p/(1-p) ratio, e.g. .75 probability is 3:1 odds.  (Usually state with 1 in &quot;denominator&quot;)</li>
+<li dir="auto">They do 5:1 odds is what probability <strong>.8333</strong>.  .9 probabililty is what odds? <strong>9:1</strong></li>
+<li dir="auto">Vs probability, has what range?  <strong>0 to infinity</strong></li>
+</ul>
+</li>
+<li dir="auto">Ratio of chance of Y with and without X.
+<ul dir="auto">
+<li dir="auto">Significance of 1?</li>
+<li dir="auto">How to get 0 even if X -&gt; Y is supported? <strong>If Y is always there anyway</strong></li>
+<li dir="auto">Example 12.8</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Evaluating entire pattern or itemset</p>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Total lift eq 12.9</p>
+<ul dir="auto">
+<li dir="auto">(Product notation)</li>
+<li dir="auto">Make lift of an itemset be 1 even if its support is 100% <strong>All items are 100%</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Need to consider lift or other measures for <em>all rules derived</em></p>
+<ul dir="auto">
+<li dir="auto">Q-partition and 12.10</li>
+<li dir="auto">Revise the min notation</li>
+<li dir="auto">How many q-partitions of a k-set are there?</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Max, min, or average may be used.</p>
+<ul dir="auto">
+<li dir="auto">Table 12.14</li>
+<li dir="auto">Discuss which is more important (min, max, ave) and why
+<ul dir="auto">
+<li dir="auto">Min susses out &quot;duh&quot; cases if these are fully explanatory</li>
+<li dir="auto">Max finds significance</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">&quot;Productive&quot; itemsets</p>
+<ul dir="auto">
+<li dir="auto">Productive itemset if <em>all</em> A-&gt;B rules have lift &gt; 1, or <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>i</mi><mi>f</mi><msub><mi>t</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">lift_2(X) &gt; 1.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1.0</span></span></span></span></eq></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Productive association rules</p>
+<ul dir="auto">
+<li dir="auto">Idea of &quot;more general&quot; -- reduce antcedent by at least one member</li>
+<li dir="auto">Productive association cannot be made more general without loss of confidence
+<ul dir="auto">
+<li dir="auto">Why confidence instead of support? <strong>More general cannot reduce support, only increase it</strong></li>
+<li dir="auto">Example of more general rule with less confidence?  <strong>buns and dogs -&gt; mustard vs dogs -&gt; mustard if dogs are very common</strong></li>
+<li dir="auto">Concept of &quot;improvement&quot;: 12.12.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Fisher Exact Test</p>
+<ul dir="auto">
+<li dir="auto">Powerful way to evaluate an association rule, assuming existing database is itself just a sample space</li>
+<li dir="auto">Use Fisher test to determine whether the effect of a generalization is &quot;surprising&quot;.</li>
+<li dir="auto">Generalize by removing an antecedent subset Z, so X = W|Z</li>
+<li dir="auto">Table 2.17
+<ul dir="auto">
+<li dir="auto">If Z doesn't affect Y then columns should be proportionally the same</li>
+<li dir="auto">Odds calculation eq 12.13</li>
+<li dir="auto"></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 
 </body>
