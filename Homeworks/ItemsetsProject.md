@@ -75,6 +75,6 @@ Output, a list of namedtuples, each having a set of items and a support for that
 ## Phase 2 Step 2
 Improve the namedtuple output by:
 
-  * filtering out all unproductive itemsets, using a Fisher test.  Note that this will require modification of phase 1 to include cases where a user has only one purchase, since such cases contribute to the support of Fisher table entries even if they don't actually result in productive rules.  Maintain the existing commandline parameter for minimum support, to cull likely nonproductive itemsets from the get-go, and add a parameter for Fisher test threshold.
+  * filtering out all unproductive itemsets, using a Fisher test.  To be productive, all rules derived from the itemset must pass a Fisher test.  Note that this will require modification of phase 1 to include cases where a user has only one purchase, since such cases contribute to the support of Fisher table entries even if they don't actually result in productive rules.  Maintain the existing commandline parameter for minimum support, to cull likely nonproductive itemsets from the get-go, and add a parameter for Fisher test threshold.
 
   * For each productive itemset, build and save a list of its rules, in descending order of lift, using an appropriate namedtuple type.  Output this information under each itemset in the confirmatory print.
