@@ -10,8 +10,8 @@
 
 </head>
 <body class="markdown-body">
-<h1 dir="auto" id="week-2-itemsets-cont">Week 2 Itemsets Cont</h1>
-<h2 dir="auto" id="readings">Readings</h2>
+<h1 dir="auto" id="week-2-itemsets-cont-1">Week 2 Itemsets Cont</h1>
+<h2 dir="auto" id="readings-1">Readings</h2>
 <p dir="auto">Zaki</p>
 <ul dir="auto">
 <li dir="auto">Chapter 9.1-9.2 by classtime Wedn</li>
@@ -19,10 +19,10 @@
 EMC
 *Chapter 2 by classtime Monday</li>
 </ul>
-<h2 dir="auto" id="exercises">Exercises</h2>
+<h2 dir="auto" id="exercises-1">Exercises</h2>
 <p dir="auto">All due Monday 2:20p 9/12</p>
-<h3 dir="auto" id="zaki">Zaki</h3>
-<p dir="auto">Ch 8 Q2, Q4</p>
+<h3 dir="auto" id="zaki-1">Zaki</h3>
+<p dir="auto"><strong>Ch 8 Q2, Q4</strong></p>
 <p dir="auto">Q2</p>
 <p dir="auto">Level 1 A|1356, B|23456, C|12356, E|2345</p>
 <p dir="auto">Level 2 (AB|356, AC|1356) (BC|2356, BE|2345), (CE|235)</p>
@@ -33,7 +33,7 @@ EMC
 <p dir="auto">AB-&gt;E has confidence 2/3</p>
 <p dir="auto">AE-&gt;B has confidence 2/2</p>
 <p dir="auto">BE-&gt;A has confidence 2/4</p>
-<p dir="auto">Ch 9 Q1, Q2, Q3, Q4</p>
+<p dir="auto"><strong>Ch 9 Q1, Q2, Q3</strong></p>
 <p dir="auto">Q1</p>
 <p dir="auto">a. False. Can't provide exact support</p>
 <p dir="auto">b. True</p>
@@ -41,13 +41,24 @@ EMC
 <p dir="auto">d. False.  Could e.g. have A as maximal and BCD maximal, but BC nonmaximal</p>
 <p dir="auto">Q2</p>
 <p dir="auto">a. C(AE) = ABCE, so AE is not closed</p>
-<p dir="auto">b.</p>
-<p dir="auto">Frequent: A, B, C, D, E, AB, AC, AE, BC, BD, BE, CD, CE, ABD, ABE, ACE, BCE, ABCE</p>
-<p dir="auto">Closed: AC, ABC, ABCE, B, C, BC, D, BC, AC, AD, BD, E BE, CD, BCE,</p>
-<p dir="auto">Maximal: ABCE, BD, CD</p>
-<p dir="auto">Q3</p>
+<p dir="auto">b. See diagram on paper.  Note support groups are:</p>
+<p dir="auto">356 AB ABC
+1356 A AC
+23456 B
+35 AE ABE ACE ABCE
+123456 C
+2356 AC
+146 D
+46 BD
+2345 E BE
+16 AD CD
+235 CE BCE</p>
+<p dir="auto">Frequent: A, B, C, D, E, AB, AC, AD AE, BC, BD, BE, CD, CE, ABC, ABE, ACE, BCE, ABCE</p>
+<p dir="auto">Closed (by root level): AC, B, C, D, BE | ABC, AD, ABCE, BC, BD, CD, BCE</p>
+<p dir="auto">Maximal: BD, AD, CD, ABCE</p>
+<p dir="auto">Q3 (see attached photo)</p>
 <p dir="auto">A, B, C, D, AB, AC, AD, BC, CD, ABC, ACD</p>
-<h3 dir="auto" id="emc">EMC</h3>
+<h3 dir="auto" id="emc-1">EMC</h3>
 <p dir="auto">Ch 2 Ex 1-3</p>
 <ol dir="auto">
 <li dir="auto">

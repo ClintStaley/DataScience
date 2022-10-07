@@ -5,7 +5,7 @@ Zaki
   * Chapter 12 through page 322
 
 ## Exercises
- (Can an X -> Y rule with support of 1 be productive per Fisher)
+
 ### Zaki
  
 1. The Fisher test is usually described as a computation of the likelihood of 

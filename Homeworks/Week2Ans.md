@@ -11,7 +11,7 @@ EMC
 All due Monday 2:20p 9/12
 
 ### Zaki
-Ch 8 Q2, Q4
+**Ch 8 Q2, Q4**
 
 Q2 
 
@@ -33,7 +33,7 @@ AE->B has confidence 2/2
 
 BE->A has confidence 2/4
 
-Ch 9 Q1, Q2, Q3, Q4
+**Ch 9 Q1, Q2, Q3**
 
 Q1
 
@@ -49,15 +49,28 @@ Q2
 
 a. C(AE) = ABCE, so AE is not closed
 
-b. 
+b. See diagram on paper.  Note support groups are:
 
-Frequent: A, B, C, D, E, AB, AC, AE, BC, BD, BE, CD, CE, ABD, ABE, ACE, BCE, ABCE
+356 AB ABC
+1356 A AC
+23456 B
+35 AE ABE ACE ABCE
+123456 C
+2356 AC
+146 D
+46 BD
+2345 E BE
+16 AD CD 
+235 CE BCE
 
-Closed: AC, ABC, ABCE, B, C, BC, D, BC, AC, AD, BD, E BE, CD, BCE,
 
-Maximal: ABCE, BD, CD
+Frequent: A, B, C, D, E, AB, AC, AD AE, BC, BD, BE, CD, CE, ABC, ABE, ACE, BCE, ABCE
 
-Q3
+Closed (by root level): AC, B, C, D, BE | ABC, AD, ABCE, BC, BD, CD, BCE
+
+Maximal: BD, AD, CD, ABCE
+
+Q3 (see attached photo)
 
 A, B, C, D, AB, AC, AD, BC, CD, ABC, ACD
 

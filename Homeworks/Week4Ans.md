@@ -5,7 +5,7 @@ Zaki
   * Chapter 12 through page 322
 
 ## Exercises
- (Can an X -> Y rule with support of 1 be productive per Fisher)
+
 ### Zaki
  
 1. The Fisher test is usually described as a computation of the likelihood of the value in upperleft cell "a" on the assumption that the two columns 
@@ -28,10 +28,10 @@ distribution.  Prove this by the following steps:
 
 **1 transaction with XY and 99 with neither X or Y.  Arbitrary other properties.**  
  * **Confidence is 1.0.  X only appears once**
- * **Lift = .01 / .01 * .01 = 10**
+ * **Lift = .01 / .01 * .01 = 100**
  * **Leverage = .0099**
  * **Conviction = infinite**
- * **Jaccard = .501**
+ * **Jaccard = 1**
  * **odds-ratio = infinite**
 
 4. Redo exercise 2 assuming a support of 2 for the X->Y rule.
@@ -47,5 +47,5 @@ distribution.  Prove this by the following steps:
  * **Lift = 15/2 = 7.5**
  * **Leverage = 2/15 - 4/225 = 26/225 = .116**
  * **Conviction = still infinite**
- * **Jaccard = 2/15 / (4/15 - 4/225) = 1.15**
+ * **Jaccard = 1**
  * **odds-ratio = infinite**
