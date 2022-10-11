@@ -36,7 +36,7 @@ there are $4^k$ possible sequences.
    * For PrefixSpan use minsup = 4, but develop only sequences starting with A or C. [Prfix minsup 4](Ch10Q2Prefix.jpg)
 
  * Q6
-   * Number the existing nodes 0 - 6, from top to bottom, left to right, for reference sake.  Number added nodes 7->
+   * Number the existing nodes 0 - 6, from top to bottom, left to right, for reference sake.  Number added nodes 7->, **in the order you add them, not necessarily level-order**
    * Name any existing suffix links that would have to exist assuming    Ukkonen's had been used to build the current suffix tree.
    ```
    N5 -> N3
