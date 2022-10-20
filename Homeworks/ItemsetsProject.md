@@ -37,6 +37,7 @@ A few important points:
  groupBy, etc to do the work.  My implementation is **10 lines long**.  Yours
  should be comparably brief.
  * You may choose any file format you like, but be sure it loads and saves quickly with the full dataset.
+ * Your cleaning may include dropping some users as irrelevant to the creation of association rules.  Make such dropping optional, by allowing a final "all" flag that generates all transactions, even those with just one item.
 
 ```
 clint@rifle:~/DataScience/Projects/Sandbox$python3 Analyze.py Orders10000.csv Orders10000.zip
@@ -73,8 +74,16 @@ I found it easiest to implement this a step at a time, first setting up the para
 Output, a list of namedtuples, each having a set of items and a support for that set.  Do this in Pickle format, and as before reread the Pickle file and print the result for verification.
 
 ## Phase 2 Step 2
-Improve the namedtuple output by:
+Revise your dEclat implementation to use Charm instead, and to output only namedtuples representing closed itemsets. 
+  * Return to an Eclat implementation (dEclat is hard to do with Charm)
+  * Maintain itemsets as hierarchical lists, as discussed in class.  Any itemset remains its own list, even if added to other itemsets as a sublist of theirs.  This lets you augment an itemset by merging other items, per Charm, and automatically update that itemset within any other itemset to which it belongs.
+  * You should need at most a handful of new lines of code.
 
-  * filtering out all unproductive itemsets, using a Fisher test.  To be productive, all rules derived from the itemset must pass a Fisher test.  Note that this will require modification of phase 1 to include cases where a user has only one purchase, since such cases contribute to the support of Fisher table entries even if they don't actually result in productive rules.  Maintain the existing commandline parameter for minimum support, to cull likely nonproductive itemsets from the get-go, and add a parameter for Fisher test threshold.
+## Phase 2 Step 3
+Use the closure sets generated in the prior step to generate meaningful association rules, with productivity defined either by a lift threshold, or by Fisher test per the text.  Commandline arguments will be either `lift <minLift>` or `fisher <minSig>`  In particular:
 
-  * For each productive itemset, build and save a list of its rules, in descending order of lift, using an appropriate namedtuple type.  Output this information under each itemset in the confirmatory print.
+  * Generate all itemsets with support sufficient to possibly provide the indicated minLift or minSig
+
+  * For each itemset, generate all possible association rules, keeping only those with minLift lift or that pass the Fisher test for productive rules, dropping only one item from the antecedent, e.g for antecedent ABC, testing AB, AC, and BC only.
+
+   * For each productive itemset, build and save a list of its rules, using an appropriate namedtuple type.  Output this information under each itemset in the confirmatory print.

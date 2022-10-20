@@ -10,14 +10,14 @@ def main():
    print(f"Number of orders: {len(frame['order_id'].unique())}")
    print(f"Number of customers: {len(frame['user_id'].unique())}")
 
-   # print("Original", frame)
    # Remove repeated purchases of same product by same user
-   frame = frame.drop_duplicates(['user_id', 'product_id'])
-   # print("Without duplicate user/product", frame)
+   byUsers = frame.drop_duplicates(['user_id', 'product_id'])
 
    # Remove users who purchased at most one product
-   byUsers = frame.groupby('user_id').filter(lambda x: x['product_id'].size > 1)
-   # print("Without users with just one product", byUsers)
+   if (len(sys.argv) > 3 and sys.argv[3] == "noSingles"):
+       byUsers = byUsers.groupby('user_id').filter(
+        lambda x: x['product_id'].size > 1)
+       # print("Without users with just one product", byUsers)
 
    # Assemble Series of user-lists, indexed by product
    byUsers = pd.DataFrame({
