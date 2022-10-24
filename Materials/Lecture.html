@@ -578,7 +578,8 @@ many ways to choose the X-Y C2s, so also <eq><span class="katex"><span class="ka
 </ul>
 <h2 dir="auto" id="clustering">Clustering</h2>
 <ul dir="auto">
-<li dir="auto">Section 13.1 KMeans
+<li dir="auto">
+<p dir="auto">Section 13.1 KMeans</p>
 <ul dir="auto">
 <li dir="auto">Review basic idea</li>
 <li dir="auto">13.1 algorithm.
@@ -594,7 +595,8 @@ many ways to choose the X-Y C2s, so also <eq><span class="katex"><span class="ka
 </li>
 </ul>
 </li>
-<li dir="auto">Section 13.3
+<li dir="auto">
+<p dir="auto">Section 13.3</p>
 <ul dir="auto">
 <li dir="auto">
 <p dir="auto">Positive definite matrix review</p>
@@ -740,6 +742,8 @@ form of the <eq><span class="katex"><span class="katex-mathml"><math xmlns="http
 </li>
 </ul>
 </li>
+</ul>
+</li>
 <li dir="auto">
 <p dir="auto">Density clustering</p>
 <ul dir="auto">
@@ -759,11 +763,73 @@ form of the <eq><span class="katex"><span class="katex-mathml"><math xmlns="http
 <ul dir="auto">
 <li dir="auto">Read and explain</li>
 <li dir="auto">Concept of flood fill</li>
-<li dir="auto">Order of graph search DFS or BFS? <strong>DFS</strong></li>
-<li dir="auto">Error in loop 12-17? <strong>Yes, doesn't flag already visited</strong></li>
+<li dir="auto">Is order of graph search DFS or BFS? <strong>DFS</strong></li>
+<li dir="auto">Error in loop 12-17? <strong>Yes, it doesn't flag already visited</strong></li>
 <li dir="auto">Can cores compete for a border?  If so, who wins? <strong>Yes, highest k</strong></li>
 </ul>
 </li>
+<li dir="auto">DENCLUE algorithm (15.2.2)
+<ul dir="auto">
+<li dir="auto">Concept of hypercube</li>
+<li dir="auto">Eq 15.6/.7
+<ul dir="auto">
+<li dir="auto">Why <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>h</mi><mi>d</mi></msup></mrow><annotation encoding="application/x-tex">h^d</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">d</span></span></span></span></span></span></span></span></span></span></span></eq>? (hypervolume of hypercube)</li>
+<li dir="auto">In 15.7, what if we use <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><mi mathvariant="bold">z</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|\bold{z}|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathbf">z</span><span class="mord">∣</span></span></span></span></eq> rather than <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>z</mi><mi>j</mi></msub><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">|z_j|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord">∣</span></span></span></span></eq>? <strong>We get hypersphere not hypercube.</strong></li>
+</ul>
+</li>
+<li dir="auto">NN density -- brief review</li>
+<li dir="auto">eq 15.10
+<ul dir="auto">
+<li dir="auto">What is shape of <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mover accent="true"><mi>f</mi><mo>^</mo></mover></mrow><mrow><mi mathvariant="normal">∂</mi><mtext mathvariant="bold">x</mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial\hat{f}}{\partial\textbf{x}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.4616239999999998em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.1166239999999998em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord text mtight"><span class="mord textbf mtight">x</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.446108em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord accent mtight"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578799999999998em;"><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord mathnormal mtight" style="margin-right:0.10764em;">f</span></span><span style="top:-2.9634400000000003em;"><span class="pstrut" style="height:2.7em;"></span><span class="accent-body" style="left:-0.08332999999999999em;"><span class="mord mtight">^</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></eq>?  <strong>Vertical vector of dimension d</strong></li>
+<li dir="auto">How about <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><msup><mtext mathvariant="bold">z</mtext><mi>T</mi></msup><mtext mathvariant="bold">z</mtext></mrow><mrow><mi mathvariant="normal">∂</mi><mtext mathvariant="bold">x</mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">\frac{\partial\textbf{z}^T\textbf{z}}{\partial\textbf{x}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3823649999999998em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0373649999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord text mtight"><span class="mord textbf mtight">x</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord mtight"><span class="mord text mtight"><span class="mord textbf mtight">z</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.9190928571428572em;"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">T</span></span></span></span></span></span></span></span><span class="mord text mtight"><span class="mord textbf mtight">z</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></eq> with x and z vectors?
+<ul dir="auto">
+<li dir="auto">Write the dot product</li>
+<li dir="auto">Consider partial wrt <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">x_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> as example</li>
+<li dir="auto">Remaining terms drop out</li>
+<li dir="auto">Summarizing form as <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mtext mathvariant="bold">z</mtext><mfrac><mrow><mi mathvariant="normal">∂</mi><mtext mathvariant="bold">z</mtext></mrow><mrow><mi mathvariant="normal">∂</mi><mtext mathvariant="bold">x</mtext></mrow></mfrac></mrow><annotation encoding="application/x-tex">-\textbf{z}\frac{\partial\textbf{z}}{\partial\textbf{x}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.2251079999999999em;vertical-align:-0.345em;"></span><span class="mord">−</span><span class="mord text"><span class="mord textbf">z</span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8801079999999999em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord text mtight"><span class="mord textbf mtight">x</span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.394em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight" style="margin-right:0.05556em;">∂</span><span class="mord text mtight"><span class="mord textbf mtight">z</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></eq></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">eq 15.11</li>
+<li dir="auto">eq 15.12  weighted average of each other point pulling on x</li>
+<li dir="auto">Gradient descent/ascent concept
+<ul dir="auto">
+<li dir="auto">2-D example of gradient descent</li>
+<li dir="auto">Refinements (simulated annealing,S momentum for saddles, possible irrelevance of local optima)</li>
+</ul>
+</li>
+<li dir="auto">Alg 15.2
+<ul dir="auto">
+<li dir="auto">A is set of maxima, <em>not</em> in the actual dataset</li>
+<li dir="auto">R are points attracted to As</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Cluster Validation</p>
+<ul dir="auto">
+<li dir="auto">Like itemset validation in that it's a research lit review.  We'll do only part</li>
+<li dir="auto">External
+<ul dir="auto">
+<li dir="auto">We know the right clustering; this is about checking algorithms.</li>
+<li dir="auto">cluster vs partition.  Partition is &quot;ground truth&quot;.
+<ul dir="auto">
+<li dir="auto">|C| = r; |T| = k</li>
+</ul>
+</li>
+<li dir="auto">17.1  Read and give intuititive definition.  <strong>Assume highest partition is ground truth cluster attempts to match.  How high a percent is that</strong></li>
+<li dir="auto">Matching.  What assumption of r and k is sorta implied? <strong>Equality</strong></li>
+<li dir="auto">17.3. What meaning? <strong>How much of a partition does a cluster capture?</strong></li>
+<li dir="auto">Entropy and 17.1.2
+<ul dir="auto">
+<li dir="auto">bit count example</li>
+</ul>
+</li>
+<li dir="auto">Cluster-specific -- explain meaning <strong>&quot;surprise&quot; or information content of T samples limited to C</strong></li>
 </ul>
 </li>
 </ul>

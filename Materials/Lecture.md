@@ -449,18 +449,53 @@ Practice
         * Going with pure diagonal drops $d^2$ not just d.  Why? **Determinant is now just O(d)**
         * What type of situation would make you want to go with just the diagonals? **Large d, so points with many attributes**
 
-  * Density clustering
-    * Fig 15.1 and 15.2.  Concept of core, border, and noise
-      * Can all points in a core neighborhood be border? ** Sure if all are on edge**
-      * Can none be order? **Yes if in the middle of core density area**
-    * Density-reachability.  
-      * Why nonsymmetric?  **x need not be core point**
-      * Symmetric if all points are core? **Yes**
-    * Alg 15.1
-      * Read and explain
-      * Concept of flood fill
-      * Order of graph search DFS or BFS? **DFS**
-      * Error in loop 12-17? **Yes, doesn't flag already visited**
-      * Can cores compete for a border?  If so, who wins? **Yes, highest k**
+* Density clustering
+  * Fig 15.1 and 15.2.  Concept of core, border, and noise
+    * Can all points in a core neighborhood be border? ** Sure if all are on edge**
+    * Can none be order? **Yes if in the middle of core density area**
+  * Density-reachability.  
+    * Why nonsymmetric?  **x need not be core point**
+    * Symmetric if all points are core? **Yes**
+  * Alg 15.1
+     * Read and explain
+     * Concept of flood fill
+     * Is order of graph search DFS or BFS? **DFS**
+     * Error in loop 12-17? **Yes, it doesn't flag already visited**
+     * Can cores compete for a border?  If so, who wins? **Yes, highest k**
+  * DENCLUE algorithm (15.2.2)
+      * Concept of hypercube
+      * Eq 15.6/.7 
+         * Why $h^d$? (hypervolume of hypercube)
+         * In 15.7, what if we use $|\bold{z}|$ rather than $|z_j|$? **We get hypersphere not hypercube.**
+      * NN density -- brief review
+      * eq 15.10
+        * What is shape of $\frac{\partial\hat{f}}{\partial\textbf{x}}$?  **Vertical vector of dimension d**
+        * How about $\frac{\partial\textbf{z}^T\textbf{z}}{\partial\textbf{x}}$ with x and z vectors?
+           * Write the dot product
+           * Consider partial wrt $x_1$ as example
+           * Remaining terms drop out
+           * Summarizing form as $-\textbf{z}\frac{\partial\textbf{z}}{\partial\textbf{x}}$
+      * eq 15.11
+      * eq 15.12  weighted average of each other point pulling on x
+      * Gradient descent/ascent concept
+        * 2-D example of gradient descent
+        * Refinements (simulated annealing,S momentum for saddles, possible irrelevance of local optima)
+      * Alg 15.2
+        * A is set of maxima, *not* in the actual dataset
+        * R are points attracted to As
+      
+* Cluster Validation
+  * Like itemset validation in that it's a research lit review.  We'll do only part
+  * External
+    * We know the right clustering; this is about checking algorithms.
+    * cluster vs partition.  Partition is "ground truth".
+      * |C| = r; |T| = k
+    * 17.1  Read and give intuititive definition.  **Assume highest partition is ground truth cluster attempts to match.  How high a percent is that**
+    * Matching.  What assumption of r and k is sorta implied? **Equality**
+    * 17.3. What meaning? **How much of a partition does a cluster capture?**
+    * Entropy and 17.1.2
+       * bit count example
+    * Cluster-specific -- explain meaning **"surprise" or information content of T samples limited to C**
 
-    
+* Fun with numpy
+  * ??
