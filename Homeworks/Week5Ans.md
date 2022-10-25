@@ -58,15 +58,17 @@ Q3b (Not a!)
 
  So, we have $\mu_1 = \mu_2 = \frac{\begin{bmatrix}5.75 && 2 \end{bmatrix}}{2.5} = \begin{bmatrix}2.3 && .8 \end{bmatrix}$
 
- And, $\Sigma_1 = \Sigma_2 = \ \frac{\begin{bmatrix}25.8 && -5.68 \\ -5.68 && 4.8\end{bmatrix}}{2.5} = \begin{bmatrix}10.32 && -2.27 \\ -2.27 && 1.92\end{bmatrix}$
+ And, $\Sigma_1 = \Sigma_2 = \ \frac{\begin{bmatrix}12.9 && .4 \\ .4 && 2.4\end{bmatrix}}{2.5} = \begin{bmatrix}5.16 && .16 \\ .16 && .96\end{bmatrix}$
 
-And, $\Sigma^{-1} = \begin{bmatrix}.131 && .155 \\ .155 && .704\end{bmatrix}$
+And, $\Sigma^{-1} = \begin{bmatrix}.195 && -.032 \\ -.032 && 1.047\end{bmatrix}$
 
 And $P(C_1) = P(C_2) = .5$
 
 Computing the w values is actually trivial, since the two clusters have identical $\mu$ and $\Sigma$.  Each w value must be .5 as a result.
 
 And this means the algorithm will never make any progress.  Lesson learned is to start with asymmetrical values, or with actual random cluster stats.
+
+The factoring results in $\Lambda = \begin{bmatrix}5.16 && 0\\ 0 && .95 \end{bmatrix}$ and $Q = \begin{bmatrix}.999 && -.038 \\ .038 && .999 \end{bmatrix}$ which is nearly I, with a slight ccw twist.  The nearly symmetrical, long-rectangle layout of the points about their (2.3, .8) mean is consistent with a major scaling in X, and a slight ccw skew from point (1.5, 0)
 
 ### Bayes' Theorem
 
