@@ -19,7 +19,7 @@ Ch 10
    * For Spade use minsup = 5, and develop only sequences starting with A
    * For PrefixSpan use minsup = 4, but develop only sequences starting with A or C.
   * Q6
-    * Number the existing nodes 0 - 6, from top to bottom, left to right, for reference sake.  Number added nodes 7->
+    * Number the existing nodes 0 - 6, from top to bottom, left to right, for reference sake.  Number added nodes 7->, in the order of addition, not in level-order.
     * Add any suffix links that would have to exist assuming Ukkonen's had been used to build the current suffix tree.
     * Hand run the algorithm on the specified string (10 symbols in all), carefully tracking the following for your own reference.  You don't need to hand in all this detail (see below) but you should retain it for reference if you need help getting the right answer.
       * the changes to active_node, active_edge/active_length (or none), and remainder

@@ -37,7 +37,7 @@ distribution.  Prove this by the following steps:
 4. Redo exercise 2 assuming a support of 2 for the X->Y rule.
 
 **A = 2, B = 0, C = 0, D = 13 will do it.  This gives $\frac{2! 13! 2! 13!}
-{2! 0! 0! 13! 15!} = .0095$  Even though the positive form of the rule appears only twice, Y appears only with X, and appears not at all in 13 other cases, though interestingly it takes a lot fewer negative cases to make the X productive**
+{2! 0! 0! 13! 15!} = .0095$ (Note that evaluation of lesser values of a is not needed since b and c are zero) Even though the positive form of the rule appears only twice, Y appears only with X, and appears not at all in 13 other cases, though interestingly it takes a lot fewer negative cases to make the X productive**
 
 
 5. (You may want to confirm your #4 answer with me here.)  Redo exercise 3, for the rule and transactions from exercise 4.

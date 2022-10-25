@@ -397,6 +397,7 @@ Practice
     * Compare to univariate normal.  (section 13.3.1 p345 has one)
        * Where is $\sigma$?
        * Try 1x1 $\Sigma$
+       * What 1x1 matrix for $\Sigma$? **$[\sigma^2], so \Sigma^{-1} = \frac{1}{\sigma^2} and |\Sigma|^{1/2} = \sigma$**
        * Note squared is needed
        * Tie back to full $\Sigma$ being a squared $QDDQ^T$, since of course it's squared sums.
        * Why $\sqrt{|\Sigma|}$ in denominator?
@@ -411,8 +412,8 @@ Practice
     * 1-D example (simpler since $\Sigma$ is scalar $\sigma$)  
       * w vector (horizontal!)
       * What would equivalent be in K-means? **0/1 vector**
-      * Is it a probability vector? **No, not across j**
       * Description intuitively? **How do all the data points "like" $C_i$? or How close is each to $C_i$?**
+      * Is it a probability vector? **No, not across j**
       * Equations leading up to 13.10
       * Eq 13.10.  Discuss.  
         * Ask intuitive meaning.  **How popular is $C_i$?**
@@ -422,30 +423,79 @@ Practice
          point categorization can be "gray".  Also size of clusters, in the
          form of the $\Sigma$ value
     * Full example with multivariate normals
-      * Translate univariate to multivariate.  What 1x1 matrix for $\Sigma$? **$[\sigma^2], so \Sigma^{-1} = \frac{1}{\sigma^2} and |\Sigma|^{1/2} = \sigma$**
+      
       * EQ 13.11 
          * Assume 100 3-D points.  Dimensions of the matrices are?? **$D^T is 3x100. w_i is 100x1, w_i^T is 1x100, \bm{1} is 100x1$
          * Intuitive interpretation?  **Weighted average of all points by "closeness" to $C_i$**
          * Is this a weighted average with total weight of 1? **Yes, due to denominator**
       * EQ 13.12
-         * Dimensions of matrices $\bar{D}_i, \bm{1}, \mu_i^T? **$\bar{D}_i is 100x3, \mu_i^T is 1x3, \bm{1} is 100x1 and \bm{1}\dot\mu_i^T is 100x3$ which is perhaps surprising$ **
+         * Dimensions of matrices $\bar{D}_i, \bm{1}, \mu_i^T$? **$\bar{D}_i is 100x3, \mu_i^T is 1x3, \bm{1} is 100x1 and \bm{1}\dot\mu_i^T is 100x3$ which is perhaps surprising$**
          * Outer product concept
             * vertical dot horizontal (transpose)
             * or can be written $u \otimes v$
          * What is center point of $\bar{D}_i$? ** origin **
-         * Dimensions of matrices in 13.12 itself and of the product in the numerator? **$\bar{x}_ji is 3x1 so \bar{x}_ji^T is 1 x 3, product is 3x3, w_i^T is 1x100 and \bm{1} is 100x1**
+         * Dimensions of matrices in 13.12 itself and of the product in the numerator? **$\bar{X}_ji is 3x1 so \bar{x}_ji^T is 1 x 3, product is 3x3, w_i^T is 1x100 and \bm{1} is 100x1$**
          * So, weighted sum of correlation matrices
          * Analagous to what 1-D equation? **Computation of $\sigma^2$ earlier**
       * EQ 13.13
-        * Can $P(C_i) = 0$? **No, always some probability
+        * Can $P(C_i) = 0$? **No, always some probability**
       * Note that this all is intuitively reasonable, but not *proven* to provide optimal results.  Don't bother with 13.3.3, though it's very interesting math.
       * Algorithm 13.3
         * Line 8 equates to what in the KMeans algorithm?  
-        * How does this change if we use a diagonal covariance matrix per the suggested optimization? **Line 11, create diagonal by single loop iteration through $x_j - \mu_i$
+        * How does this change if we use a diagonal covariance matrix per the suggested optimization? **Line 11, create diagonal by single loop iteration through $x_j - \mu_i$**
       * Complexity
         * Take determinant at face value -- done by GJ elimination for which each of d steps is $O(d^2)$
         * Why is f computation $O(d^2)$? ** multiplication through $\Sigma$ takes $d^2$ steps.**
         * Going with pure diagonal drops $d^2$ not just d.  Why? **Determinant is now just O(d)**
         * What type of situation would make you want to go with just the diagonals? **Large d, so points with many attributes**
 
+* Density clustering
+  * Fig 15.1 and 15.2.  Concept of core, border, and noise
+    * Can all points in a core neighborhood be border? ** Sure if all are on edge**
+    * Can none be order? **Yes if in the middle of core density area**
+  * Density-reachability.  
+    * Why nonsymmetric?  **x need not be core point**
+    * Symmetric if all points are core? **Yes**
+  * Alg 15.1
+     * Read and explain
+     * Concept of flood fill
+     * Is order of graph search DFS or BFS? **DFS**
+     * Error in loop 12-17? **Yes, it doesn't flag already visited**
+     * Can cores compete for a border?  If so, who wins? **Yes, highest k**
+  * DENCLUE algorithm (15.2.2)
+      * Concept of hypercube
+      * Eq 15.6/.7 
+         * Why $h^d$? (hypervolume of hypercube)
+         * In 15.7, what if we use $|\bold{z}|$ rather than $|z_j|$? **We get hypersphere not hypercube.**
+      * NN density -- brief review
+      * eq 15.10
+        * What is shape of $\frac{\partial\hat{f}}{\partial\textbf{x}}$?  **Vertical vector of dimension d**
+        * How about $\frac{\partial\textbf{z}^T\textbf{z}}{\partial\textbf{x}}$ with x and z vectors?
+           * Write the dot product
+           * Consider partial wrt $x_1$ as example
+           * Remaining terms drop out
+           * Summarizing form as $-\textbf{z}\frac{\partial\textbf{z}}{\partial\textbf{x}}$
+      * eq 15.11
+      * eq 15.12  weighted average of each other point pulling on x
+      * Gradient descent/ascent concept
+        * 2-D example of gradient descent
+        * Refinements (simulated annealing,S momentum for saddles, possible irrelevance of local optima)
+      * Alg 15.2
+        * A is set of maxima, *not* in the actual dataset
+        * R are points attracted to As
+      
+* Cluster Validation
+  * Like itemset validation in that it's a research lit review.  We'll do only part
+  * External
+    * We know the right clustering; this is about checking algorithms.
+    * cluster vs partition.  Partition is "ground truth".
+      * |C| = r; |T| = k
+    * 17.1  Read and give intuititive definition.  **Assume highest partition is ground truth cluster attempts to match.  How high a percent is that**
+    * Matching.  What assumption of r and k is sorta implied? **Equality**
+    * 17.3. What meaning? **How much of a partition does a cluster capture?**
+    * Entropy and 17.1.2
+       * bit count example
+    * Cluster-specific -- explain meaning **"surprise" or information content of T samples limited to C**
 
+* Fun with numpy
+  * ??
