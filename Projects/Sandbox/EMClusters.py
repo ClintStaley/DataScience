@@ -22,10 +22,6 @@ means = rnd.uniform(minVals, maxVals, (numCls, dim))
 print(means)
 sigmas = np.full((numCls, dim, dim), np.identity(dim))
 prbs = np.full((numCls), 1.0/numCls)
-# while diff > eps
-# compute wijs.  
-#  compute fij values
-#  compute sum fijP(ca) across all k
 
 adjust = math.inf
 
@@ -34,9 +30,12 @@ if (adjust > eps):
     weights = np.repeat(np.reshape(pts, (numPts, 1, dim)), numCls, axis=1)
     print(weights.shape, weights[:2])
     weights = weights - means  # subtract mean values from each cluster column
-    print(weights.shape, weights[:2])
-    # weights = weights.dot(sigmas)
-    # print(weights.shape, weights[:2])
+    dupPts = weights.copy()
+    print(weights[:2])
+    for clsIdx in range (0..numCls):
+        col = vecs[:,clsIdx,:]
+        col = col * (sigmas[clsIdx].dot(col.T)).T).sum(axis=1) #Add more ops?
+
     # Multiply through by sigmas, then remultiply by weights...
     #  compute fij values
     #  compute sum fijP(ca) across all k
