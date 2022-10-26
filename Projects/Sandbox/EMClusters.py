@@ -8,39 +8,44 @@ inFile, outFile, numCls = sys.argv[1:4]
 numCls = int(numCls)
 options = sys.argv[4].split(',') if len(sys.argv) > 4 else []
 verbose = "verbose" in options
+
 eps = 1e-6
+adjust = math.inf
 
 # Get points, numPts, and their dimension and value range
 pts = np.load(inFile, allow_pickle=True)
 numPts = len(pts)
 dim = pts.shape[1]
+tau2halfDim = math.pow(math.tau, dim / 2)
+
 maxVals = pts.max(axis=0) # 1-D array of max vals per dimension
 minVals = pts.min(axis=0) # 1-D array of min vals per dimension
 
 # Set initial values for cluster configuration
 means = rnd.uniform(minVals, maxVals, (numCls, dim))
-print(means)
 sigmas = np.full((numCls, dim, dim), np.identity(dim))
 prbs = np.full((numCls), 1.0/numCls)
 
-adjust = math.inf
-
 if (adjust > eps):
+    print(f"Means:\n{means[:2]}\nSigmas: {sigmas[:2]}\nPrbs: {prbs[:2]}\n")
+
     # Repeat points in numCls columns, arriving at (numPts, numCls, dim) array
-    weights = np.repeat(np.reshape(pts, (numPts, 1, dim)), numCls, axis=1)
-    print(weights.shape, weights[:2])
-    weights = weights - means  # subtract mean values from each cluster column
-    dupPts = weights.copy()
-    print(weights[:2])
+    ptDiffs = np.repeat(np.reshape(pts, (numPts, 1, dim)), numCls, axis=1) -
+     means  # subtract mean values from each cluster column
+    
+    expScales = np.reciprocal(np.sqrt(np.linalg.det(sigmas)) * tau2halfDim)
+    print(f"Diffs: {ptDiffs[:2]}\nExpScales: {expScales[:2]}\n")
+   
+    weights = np.ndarray((numPts, numCls))
     for clsIdx in range (0..numCls):
-        col = vecs[:,clsIdx,:]
-        col = col * (sigmas[clsIdx].dot(col.T)).T).sum(axis=1) #Add more ops?
+        col = initWeights[:,clsIdx,:]
+        col = (col * (sigmas[clsIdx].dot(col.T)).T).sum(axis=1)
+         * expScales[clsIdx]
+        weights = np.concatenate((weights, col), axis = 1);
 
-    # Multiply through by sigmas, then remultiply by weights...
-    #  compute fij values
+    print(f"Final weights: {weights[:2][:2]}")
+
     #  compute sum fijP(ca) across all k
-    # 
-
 
 
 if verbose:
