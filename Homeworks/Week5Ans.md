@@ -27,7 +27,7 @@ Zaki
 **By the reasoning above, we'd get 1, 2, and 1, respectively.**
 * Compute the orthonormal matrix Q representing a $30^o$ counterclockwise rotation.
 $\begin{bmatrix}.866 && -.5\\.5 && .866\\ \end{bmatrix}$
-* Apply Q to the four points to rotate the entire distribution counterclockwise $30^o$ **$(\pm 1.7321, pm1), (\pm.5, \mp.866)$**
+* Apply Q to the four points to rotate the entire distribution counterclockwise $30^o$ **$(\pm 1.7321, \pm1), (\pm.5, \mp.866)$**
 * Compute the new covariance matrix $\Sigma'$, per eq 13.12, with n = 4 for the four rotated points $\begin{bmatrix}1.625 && .65\\.65 && .875\\ \end{bmatrix}$
 * Compute also the positive definite matrix $\Sigma''=Q \Sigma Q^{-1}$, which is the same transform as $\Sigma$ but rotated $30^o$ 
 $\begin{bmatrix}.866 && .5\\-.5 && .866\\ \end{bmatrix}
@@ -49,6 +49,7 @@ $P(5|C_2) = \frac{e^{-\frac{(x-7)^2}{2}}}{\sqrt{2\pi}} = .054$, so since all P(C
 
 Q3b (Not a!)
  * Note this refers to the table *above* not below
+ * The statement regarding $P(C_i|x_{aj}) = .5$ is somewhat awkward in that i and a should be the same variable.  Simply take it to mean that all such partial probabilities are .5 regardless of point or cluster.
  * You should find you need to compute new values only for one cluster.  Why is this?
  * Factor $\Sigma_1$ into $Q \Lambda Q^{-1}$ form.  (Note that there are many online sources for diagonalizing and inverting matrices.) Explain why the resultant Q makes sense by drawing a diagram of the 5 X points and $\mu_1$ and estimating the implied scaling values and rotation value for $C_1$.  This will also serve as a reality check on your $C_1$ computations.
  * Compute all the way through the new $w_{ij}$ values, but compute only $w_{11}, w_{12}$, and $w_{13}$.

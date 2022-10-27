@@ -31,6 +31,7 @@ Q2
 
 Q3b (Not a!)
  * Note this refers to the table *above* not below
+ * The statement regarding $P(C_i|x_{aj}) = .5$ is somewhat awkward in that i and a should be the same variable.  Simply take it to mean that all such partial probabilities are .5 regardless of point or cluster.
  * You should find you need to compute new values only for one cluster.  Why is this?
  * Factor $\Sigma_1$ into $Q \Lambda Q^{-1}$ form.  (Note that there are many online sources for diagonalizing and inverting matrices.) Explain why the resultant Q makes sense by drawing a diagram of the 5 X points and $\mu_1$ and estimating the implied scaling values and rotation value for $C_1$.  This will also serve as a reality check on your $C_1$ computations.
  * Compute all the way through the new $w_{ij}$ values, but compute only $w_{11}, w_{12}$, and $w_{13}$.

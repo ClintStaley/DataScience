@@ -12,3 +12,7 @@ col = vecs[:,1,:]
 print(col)
 print(np.exp((col * (xform.dot(col.T)).T).sum(axis=1) * -0.5) / det)
 print(math.pow(math.tau, 5/2))
+
+Q = np.array([[.98, -.2], [.2, .98]])
+L = np.array([[.5, 0],[0, 9]])
+print(Q.dot(L.dot(Q.T)));
