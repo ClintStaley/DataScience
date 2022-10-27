@@ -16,3 +16,6 @@ print(math.pow(math.tau, 5/2))
 Q = np.array([[.98, -.2], [.2, .98]])
 L = np.array([[.5, 0],[0, 9]])
 print(Q.dot(L.dot(Q.T)));
+
+sumVecs = vecs.sum(axis=(1,2))
+print(sumVecs.shape, sumVecs, vecs / sumVecs.reshape(3, 1, 1))
