@@ -30,29 +30,26 @@ if verbose:
      print(f"Points: {pts}, Min/max: {minVals}, {maxVals}")
 # while (adjust > eps):
 for step in range(0,1):
-    print(f"Means:\n{means[:2]}\nSigmas: {sigmas[:2]}\nPrbs: {prbs[:2]}\n")
+    print(f"Means:\n{means}\nSigmas: {sigmas}\nPrbs: {prbs}\n")
 
     # Repeat points in numCls columns, arriving at (numPts, numCls, dim) array
     ptDiffs = np.repeat(np.reshape(pts, (numPts, 1, dim)), numCls, axis=1
      ) -  means  # subtract mean values from each cluster column
     
     expScales = np.reciprocal(np.sqrt(np.linalg.det(sigmas)) * tau2halfDim)
-    print(f"Diffs: {ptDiffs[:2]}\nExpScales: {expScales[:2]}\n")
+    print(f"Diffs: {ptDiffs[:2]}\nExpScales: {expScales}\n")
    
     weights = np.ndarray((numPts, numCls))
     for clsIdx in range(0, numCls):
-        col = weights[:][clsIdx]
+        col = ptDiffs[:, clsIdx]  # (numpts, )
         col = (col * (sigmas[clsIdx].dot(col.T)).T).sum(axis=1)* expScales[clsIdx]
-        weights = np.concatenate((weights, col), axis = 1)
+        weights = np.concatenate((weights, col.reshape((numPts, 1))), axis = 1)
 
-    weights = weights.T      # wij is now at weights[i][j]    
-    print(f"Final weights: {weights[:2][:2]}")
-    rawMeans = weights.dot(pts) # numCls x dim
+    print(f"Final weights: {weights}")   # (numPts, numCls)
+    rawMeans = weights.T.dot(pts)          # (numCls, dim)
     denoms = weights.sum(axis=1).reshape((numCls, 1))
     means = rawMeans/denoms
 
-    
-    
 
 if verbose:
     print("Analyzing ", pts[:10], "...", pts[-10:0], " with range ", minVals,
