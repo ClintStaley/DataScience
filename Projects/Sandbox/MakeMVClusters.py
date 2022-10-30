@@ -39,6 +39,5 @@ rnd.shuffle(pts)
 pts.dump(outFile)
 
 if verbose:
-
     print(np.load(outFile, allow_pickle=True)[:10])
     plt.show()
