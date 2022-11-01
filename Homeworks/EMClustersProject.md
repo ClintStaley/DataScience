@@ -38,4 +38,28 @@ Generating  {'dim': 2, 'clusters': [{'mean': [3, 4], 'sigma': [[10, 0], [0, 3]],
 Submit by first demoing a style-correct version for me, and then submitting MakeMVClusters.py to the Canvas assignment.
 
 ## Phase 2 Write EMClusters.py
-In this phase you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.
+In this phase you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.  Create a program EMClusters.py with commandline thus:
+```
+python EMClusters.py inFile outFile numClusters <options>
+```
+where `infile` is an output file from MakeMVClusters, and `<options>` is an optional
+comma-delimited string with "verbose" as its one option currently.
+
+EMClusters performs iterations of the EMCluster algorithm, per Algorithm 13.3 in 
+our text, stopping when the total mean-change is less than .001.  
+
+### Verbose option
+Under the verbose option, EMClusters prints the point set that was read in, and,
+at the start of each iteration of the repeat loop, it prints the 0-based loop number, and the $\mu$, $\Sigma$ and P values for all clusters, along with the resultant computed weights for all cluster/point combinations as a 2-D array.
+
+And, if dimensions = 2, it displays a diagram like that for MakeMVClusters, but with all points simply black, and with a colored "o" point and ellipse for each cluster, showing for that step the position and orientation of the cluster.  Pop up a new diagram for each iteration of the loop, so you can watch the cluster configurations converge.
+
+### Use of Numpy
+Your program must run quickly by using Numpy.  You may start with more Python loops to get an accurate implementation, but ultimately you may have at most three loops
+in the entire program, including the main while-loop driving the iterations.  
+
+Numpy methods you may find useful include uniform, full, repeat, reshape, reciprocal,
+sqrt, det, inv, sum, concatenate, dot, matmul, multiply, subtract and others.  When possible, use these as methods of ndarray, preferably in operator form (e.g "-" instead of "subtract")
+
+### Submission
+Submit by first demoing a style-correct version for me, and then submitting EMClusters.py to the Canvas assignment.

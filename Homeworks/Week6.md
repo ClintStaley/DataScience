@@ -7,7 +7,7 @@ Zaki
 ## Exercises
 ### Zaki
 
-1. Ch 14 Q2
+1. Ch 14 Q2 (but provide only the final distance matrix)
 
 2. Ch 14 Q4b
 

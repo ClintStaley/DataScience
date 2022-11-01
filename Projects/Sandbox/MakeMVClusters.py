@@ -24,7 +24,7 @@ dim = config['dim']
 pts = np.ndarray((0, dim))
 for idx, cluster in enumerate(config['clusters']):
     clsData = rnd.multivariate_normal(
-      cluster['mean'], cluster['sigma'], cluster['numPts'])
+     cluster['mean'], cluster['sigma'], cluster['numPts'])
     pts = np.concatenate((pts, clsData))
     if verbose:
         color = colors[idx % len(colors)]
