@@ -9,9 +9,9 @@ Zaki
 
 1. Ch 14 Q2 (but provide only the final distance matrix)
 
-2. Ch 14 Q4b
+2. Ch 14 Q4a
 
-3. Ch 15 Q1, plus find the clusters that DBScan would discover
+3. Ch 15 Q1
 
 
 ### Information Entropy

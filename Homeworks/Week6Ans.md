@@ -7,7 +7,25 @@ Zaki
 ## Exercises
 ### Zaki
 
+1. Ch 14 Q2
 
+2. Ch 14 Q4a
+
+3. Ch 15 Q1
+
+**a. Core: p, q, v, r, d, h, k, r, s, t, w, i, e, b, c, f, g, j, n**
+
+**b. Yes**
+
+**c. Yes: i, e, c, f, j, n**
+
+**d. No, since y may not be core**
+
+**e No, l is not core**
+
+**f No, for reasons stated above**
+
+**g. {p, q, v, r, s, t, w, x, k, h, d, a}, {m, i, e, b, c, f, g, j, n, o, u} and l is the only noise point**
 
 ### Information Entropy
 
