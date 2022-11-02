@@ -11,6 +11,12 @@ Zaki
 
 2. Ch 14 Q4a
 
+$\frac{n_i}{n_i + n_j}\frac{\sum_{x \in C_i}\sum_{y \in C_r} ||x-y||}{n_i n_r} +
+\frac{n_j}{n_j + n_j}\frac{\sum_{x \in C_j}\sum_{y \in C_r} ||x-y||}{n_i n_r}$\
+= $\frac{\sum_{x \in C_i}\sum_{y \in C_r} ||x-y||}{(n_i+n_j) n_r} +
+\frac{\sum_{x \in C_j}\sum_{y \in C_r} ||x-y||}{(n_i+n_j) n_r}$\
+= $\frac{\sum_{x \in C_i\cup C_j}\sum_{y \in C_r} ||x-y||}{(n_i+n_j) n_r}$
+
 3. Ch 15 Q1
 
 **a. Core: p, q, v, r, d, h, k, r, s, t, w, i, e, b, c, f, g, j, n**
