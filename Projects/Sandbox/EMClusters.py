@@ -35,7 +35,7 @@ if verbose:
      plt.axis('equal')
      ax = plt.gca()
 
-for step in range(0,1):     # while (adjust > eps):
+for step in range(0,3):     # while (adjust > eps):
     print(f"Step {step} -----------------------\n"
      f"Means:\n{means}\nSigmas: {sigmas}\nPrbs: {prbs}\n")
 
@@ -50,23 +50,28 @@ for step in range(0,1):     # while (adjust > eps):
     for clsIdx in range(0, numCls):
         col = ptDiffs[:, clsIdx]  # (numpts, dim)
         invSigma = la.inv(sigmas[clsIdx]) * -.5  # - Sigma^-1 / 2
-        col = (col.dot(invSigma.dot(col.T)).T).sum(axis=1) * expScales[clsIdx]
+        exponents = (col * invSigma.dot(col.T).T).sum(axis=1)
+        col = np.exp(exponents) * expScales[clsIdx] * prbs[clsIdx]
         weights = np.concatenate((weights, col.reshape((numPts, 1))), axis = 1)
-    print(f"Weights: {weights}")                   # (numPts, numCls)
 
+    # Normalize for Bayesian
+    weights = weights / weights.sum(axis=1, keepdims=True) 
+
+    # Redo means
     denoms = weights.T.sum(axis=1)                          # (numCls,)
     means = weights.T.dot(pts)/denoms.reshape((numCls, 1))  # (numCls, dim)
 
-    sigmas = np.ndarray((numCls, dim, dim))
+    # Redo sigmas
+    sigmas = np.ndarray((0, dim, dim))
     for clsIdx in range(0, numCls):
-        col = ptDiffs[:, clsIdx]  # (numpts, dim)
+        col = ptDiffs[:, clsIdx]                         # (numpts, dim)
         sigCol = np.matmul(col.reshape(numPts, dim, 1),  # (numPts, dim, dim)
          col.reshape(numPts, 1, dim))
         sigCol = np.multiply(weights.T[clsIdx].reshape(numPts, 1, 1), sigCol)
-        print(sigCol.shape, sigCol)
         sigma = sigCol.sum(axis=0) / denoms[clsIdx]
-        print(sigma.shape, sigma)
         sigmas = np.append(sigmas, sigma.reshape((1,2,2)), axis=0)
+
+    # Redo Prbs
     prbs = denoms / numPts
         
     if verbose:
@@ -78,9 +83,9 @@ for step in range(0,1):     # while (adjust > eps):
         for mIdx, mean in enumerate(means):
             color = colors[mIdx % len(colors)]
             plt.plot(mean.T[0], mean.T[1], color+'o')
-        #eVals, eVecs = np.linalg.eigh(transform)
-        #print(eVals, eVecs)
-        #ax.add_patch(Ellipse(xy=cluster['mean'], width = 2*eVals[1],
-        # height = 2*eVals[0], facecolor='None', edgecolor='k', linewidth=2,
-        # angle = 360*math.acos(eVecs[1][0])/math.tau))
+            eVals, eVecs = np.linalg.eigh(sigmas[mIdx])
+            #print(eVals, eVecs)
+            ax.add_patch(Ellipse(xy=mean, width = 2*eVals[1],
+            height = 2*eVals[0], facecolor='None', edgecolor='k', linewidth=2,
+             angle = 360*math.acos(eVecs[1][0])/math.tau))
         plt.show()
