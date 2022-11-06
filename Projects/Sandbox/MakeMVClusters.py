@@ -31,9 +31,11 @@ for idx, cluster in enumerate(config['clusters']):
         plt.plot(clsData.T[0], clsData.T[1], color+'.')
         transform = np.array(cluster['sigma'])
         eVals, eVecs = np.linalg.eigh(transform)
+        print(f"Evals: {eVals}\nEVecs: {eVecs}\n")
         ax.add_patch(Ellipse(xy=cluster['mean'], width = 2*eVals[1],
          height = 2*eVals[0], facecolor='None', edgecolor='k', linewidth=2,
-         angle = 360*math.acos(eVecs[1][0])/math.tau))
+         angle = 360*math.atan(eVecs[1][1]/eVecs[1][0])/math.tau))
+        print(f"Angle: {360*math.atan(eVecs[1][1]/eVecs[1][0])/math.tau}")
 
 rnd.shuffle(pts)
 pts.dump(outFile)
