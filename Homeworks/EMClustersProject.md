@@ -8,8 +8,7 @@ count for one or more clusters.  You run it thus:
 
 python MakeMVClusters.py <configFile> <pickleOutputFile> [comma-separated options]
 
-If the word "verbose" is one of the options, MakeMVClusters also prints the configuration, a sample of the first 10 points from the pickle file, and a picture of the generated cluster data, using 
-PyPlot.  This comprises colored point clouds for each cluster, and also an
+If the word "verbose" is one of the options, MakeMVClusters also prints the configuration, a sample of the first 10 points from the pickle file, and a picture of the generated cluster data, using PyPlot.  This comprises colored point clouds for each cluster, and also an
 ellipse at 2 standard deviation distance from the center point.
 
 Here is a sample run of MakeMVClusters:
@@ -34,32 +33,51 @@ Generating  {'dim': 2, 'clusters': [{'mean': [3, 4], 'sigma': [[10, 0], [0, 3]],
  [-15.5385435    2.28277911]]
 ```
 
+### Hints
+1. matplotlib.patches offers an Ellipse class that I found useful for drawing those ellipses.
+2. Other useful methods include `rnd.multivariate`, `rnd.shuffle`, and np.linalg.eigh
+
 ### Submission
 Submit by first demoing a style-correct version for me, and then submitting MakeMVClusters.py to the Canvas assignment.
 
 ## Phase 2 Write EMClusters.py
-In this phase you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.  Create a program EMClusters.py with commandline thus:
+In this phase you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.  Create a program EMClusters.py that performs iterations of the EMCluster algorithm, per Algorithm 13.3 in our text, stopping when the total mean-change 
+is less than .0001.  
+
+Run EMClusters.py thus:
 ```
 python EMClusters.py inFile outFile numClusters <options>
 ```
 where `infile` is an output file from MakeMVClusters, and `<options>` is an optional
-comma-delimited string with "verbose" as its one option currently.
+comma-delimited string with "just5", "verbose" and "diagonal" as options.
+
+Once you've arrived at a clustering, write it out to `outFile` as a text formatted JSON string that is readable by MakeMVClusters.
 
 EMClusters performs iterations of the EMCluster algorithm, per Algorithm 13.3 in 
 our text, stopping when the total mean-change is less than .001.  
 
 ### Verbose option
 Under the verbose option, EMClusters prints the point set that was read in, and,
-at the start of each iteration of the repeat loop, it prints the 0-based loop number, and the $\mu$, $\Sigma$ and P values for all clusters, along with the resultant computed weights for all cluster/point combinations as a 2-D array.
+at the start of each iteration of the repeat loop, it prints the 0-based loop number, and the point-diffs, $\mu$, $\Sigma$ and P values for all clusters, along with the resultant computed weights for all cluster/point combinations as a 2-D array.
 
 And, if dimensions = 2, it displays a diagram like that for MakeMVClusters, but with all points simply black, and with a colored "o" point and ellipse for each cluster, showing for that step the position and orientation of the cluster.  Pop up a new diagram for each iteration of the loop, so you can watch the cluster configurations converge.
 
-### Use of Numpy
-Your program must run quickly by using Numpy.  You may start with more Python loops to get an accurate implementation, but ultimately you may have at most three loops
-in the entire program, including the main while-loop driving the iterations.  
+### Use of Numpy and Limits on Loops
+Your program must run quickly by using Numpy.  You may start with more Python loops to get an accurate implementation, but ultimately you may have at most four computational loops
+in the entire program, including the main while-loop driving the iterations.  You may also have two more loops for constructing the "verbose" pyplot diagrams.
 
-Numpy methods you may find useful include uniform, full, repeat, reshape, reciprocal,
-sqrt, det, inv, sum, concatenate, dot, matmul, multiply, subtract and others.  When possible, use these as methods of ndarray, preferably in operator form (e.g "-" instead of "subtract")
+### Hints
+1. Numpy methods you may find useful include uniform, full, repeat, reshape, reciprocal,
+sqrt, det, inv, sum, concatenate, dot, matmul, multiply, subtract, ones.  Rnd.uniform is also useful.
+
+2. I did not find Numpy.outer useful for computing arrays of outer products, but you might be able to get it to do that; lemme know if you do.
+
+3. I was not able to write this without considerable side-testing of Numpy methods via a short Test.py that I altered over and over to be sure I understooed what each method did.  You should do the same.
+
+4. The Numpy behavior called "broadcasting" is quite important to understand.  See the Numpy docs on this.
+
+
+
 
 ### Submission
 Submit by first demoing a style-correct version for me, and then submitting EMClusters.py to the Canvas assignment.

@@ -6,11 +6,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
-<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+<link rel="stylesheet" href="file:////home/clint/.vscode/extensions/goessner.mdmath-2.7.4/themes/default/style.css">
 
 </head>
 <body class="markdown-body">
-<h1 dir="auto" id="numpy-quiz-1-1">Numpy Quiz 1</h1>
+<h1 dir="auto" id="numpy-quiz-1">Numpy Quiz 1</h1>
 <div  dir="auto" ></div>
 <div style="text-align: right">Name ________________________________________</div>
 <ol dir="auto">
@@ -32,8 +32,8 @@ allPts = np.concatenate((pts, pts2))                  # 3pts
 colsOfPts = np.repeat(pts.reshape(4,1,2), 3, axis=1)  # 5pts
 print(f&quot;All Points:\n{allPts}\n3 cols:\n{colsOfPts}&quot;)
 
-bigVec = la.eigh(pts2)[1][-1]                 # 7pts
-vecAngle = math.acos(bigVec[0])               # 5pts
+bigVec = la.eigh(pts2)[1][-1]                 # 5pts
+vecAngle = math.acos(bigVec[0])               # 7pts
 print(f&quot;Big EV: {bigVec}\nAngle: {vecAngle}&quot;)
 </div></code></code></pre>
 
