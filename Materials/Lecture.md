@@ -497,5 +497,95 @@ Practice
        * bit count example
     * Cluster-specific -- explain meaning **"surprise" or information content of T samples limited to C**
 
-* Fun with numpy
+## Fun with numpy
   * ??
+
+## Linear Discriminants
+  * Review projection concept (first eq in ch20)
+  * Fig 20.1
+    * Note that only w orientation is relevant.  Try moving W to origin.  Changes nothing.
+    * $\bar{D}$ is assumed in much of this
+  * mean of projection is projection of mean
+  * Try exercise where means are aligned on w = [.707, .707] but serious overlap occurs.
+  * Scatter concept
+     * Why not divide by n?  **Allows more populated classes to dominate, like P(C) in EM clustering**
+  * Eq 20.2 pattern
+    * Note that $x^Ty = y^Tx$ iff x and y are one-dimensional
+    * Allows reorganization to concentrate all the unprojected space coefficients into one matrix
+    * Thus, squared *projected* vector equals $w^T\Sigma w$ where $\Sigma$ is correlation matrix in unprojected space.
+    * Same pattern for total scatter (squared variance)
+    * Better form for doing derivatives, next..
+  * Eq 20.8: 
+  * Why is $\frac{d}{dx} w^TBw == 2Bw$?
+     * Conrete example with $B = \begin{bmatrix}a&&b\\c&&d\end{bmatrix}$
+     * $w^TBw = ax_1^2 + bx_1x_2 + cx_1x_2 + dx_2^2$
+     * $\frac{d}{dw}w^TBw = \begin{bmatrix}\frac{d(w^TBw)}{dx_1}\\\frac{d(w^TBw)}{dx_2}\end{bmatrix}
+     = \begin{bmatrix}2ax_1 + bx_2 + cx_2\\bx_1 + cx_1 + 2dx_2\end{bmatrix}
+     = 2\begin{bmatrix}ax_1 + bx_2\\cx_1 + dx_2\end{bmatrix}$ iff b = c
+  * Follow eigenvector math
+  * Follow alg 20.1
+  * Use eq 20.10 with C1 = (6, 1), (1, 0), (1, 2) and (-4, 1), and C2 = -C1
+    * What are means? **(1, 1) and (-1, -1)**
+    * How well does $w = \mu_1 - \mu_2$ separate?  **So-so. extreme points overlap**
+    * What is S? **Same for each** $\begin{bmatrix}50&&0\\0&&2\end{bmatrix}$
+    * What is $(S_1+S_2)^-1$? $\begin{bmatrix}.01&&0\\0&&.25\end{bmatrix}$
+    * What is adjusted w? $\begin{bmatrix}.01&&0\\0&&.25\end{bmatrix}\begin{bmatrix}2\\2\end{bmatrix} = \begin{bmatrix}.02\\.5\end{bmatrix}$, almost a perfect vertical
+    * How is separation now? **Great, even extremes are well separated**
+  * Intuition
+    * S is the transform that "spreads" the two clusters (weight-averaged over both)
+    * $S^{-1}$ is the transform that pulls them back to circular/hyperspherical shape
+    * What is B?
+      * Is it nonsingular or singular? **Singular**
+      * To what space does it map vectors? $\mu_1 - \mu_2$
+      * So, it represents a mapping to the $\mu$-difference vector.  
+    * $S^{-1}B$ 
+
+## PCA
+  * U basis concept, Fig 7.1
+  * Eq 7.3 as dot product projections into U
+  * Truncated projection, eq 7.5.  If d = 4 and r = 3, what does $x^r$ look like?
+  * Eq 7.7 What is $|U_rU_r^T|$ ?  **0, if r < d**
+  * Why is $P_r^2 = P_r$? **Reprojecting onto the same subspace changes nothing**
+  * Eq 7.9 Why are x' and $\epsilon$ orthogonal?  epsilon is in $S_{d-r}$
+  * Vocab: orthogonal complemen
+  * PCA -- Project onto most varied dimensions.  (Fig 7.1 again)
+    * Speculate: what direction would produce most variety, given positive definite matrix? **Highest eigenvalue**
+    * Vocab: first principal component
+  * Eq 7.11 -- familiar pattern?  (scatter matrix concept again)
+    * State the idea?  **squared length of a projected point set, as a function of projection axis or vector u, is $u^T\Sigma u$ where $\Sigma$ is a correlation matrix.
+  * Eq 7.12 Langrangian... Hmmm...
+     * $\alpha$ is constant.  
+     * What if we omit it?  **Max will simply run u up to large value; alpha discourages this** 
+     * What is effect of including it, especially in u-neighborhoods where $u^T\Sigma u$ is at a max? **"Dents" the curve to encourage staying near point where u is unit length**
+  * 7.13 Trace derivatives.
+     * Recall $u^T\Sigma u$ derivative?
+     * Does followon analysis reach conclusion that there is one max? **No, it only says that maxima are at eigenvalues*
+     * So we're right about eigenvalues
+  * Follow math on the MSE
+     * Vocab: trace
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

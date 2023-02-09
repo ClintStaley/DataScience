@@ -7,6 +7,11 @@ from matplotlib.patches import Ellipse
 inFile, outFile = sys.argv[1:3]
 options = sys.argv[3].split(',') if len(sys.argv) > 3 else []
 verbose = "verbose" in options
+for option in options:
+    if option[0:4] == "seed":
+        seed = int(option[5:])
+        print(f"Using seed {seed}\n")
+        rnd.seed(seed)
 
 inFile = open(inFile);
 config = json.load(inFile)

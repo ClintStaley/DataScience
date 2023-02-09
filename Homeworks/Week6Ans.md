@@ -19,7 +19,7 @@ $\frac{n_i}{n_i + n_j}\frac{\sum_{x \in C_i}\sum_{y \in C_r} ||x-y||}{n_i n_r} +
 
 3. Ch 15 Q1
 
-**a. Core: p, q, v, r, d, h, k, r, s, t, w, i, e, b, c, f, g, j, n**
+**a. Core: b, c, d, e, f, g, h, i, j, k, n, o, p, q, r, s, t, v, w  (all but a, l, m, u)**
 
 **b. Yes**
 
@@ -27,11 +27,11 @@ $\frac{n_i}{n_i + n_j}\frac{\sum_{x \in C_i}\sum_{y \in C_r} ||x-y||}{n_i n_r} +
 
 **d. No, since y may not be core**
 
-**e No, l is not core**
+**e. Yes.  l - t - w - x**
 
-**f No, for reasons stated above**
+**f Yes, since reachability from central point goes both ways**
 
-**g. {p, q, v, r, s, t, w, x, k, h, d, a}, {m, i, e, b, c, f, g, j, n, o, u} and l is the only noise point**
+**g. {p, q, v, r, s, t, w, x, k, h, d, a, l}, {m, i, e, b, c, f, g, j, n, o, u}**
 
 ### Information Entropy
 

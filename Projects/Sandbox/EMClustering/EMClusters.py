@@ -14,6 +14,11 @@ def main():
     options = sys.argv[4].split(',') if len(sys.argv) > 4 else []
     verbose = "verbose" in options
     diagonal = "diagonal" in options
+    for option in options:
+        if option[0:4] == "seed":
+            seed = int(option[5:])
+            print(f"Using seed {seed}\n")
+            rnd.seed(seed)
 
     meansDelta = math.inf
 
@@ -37,7 +42,7 @@ def main():
         plt.figure()
         plt.axis('equal')
 
-    while meansDelta > eps:     # while (adjust > eps):
+    for itr in range(0,1): # while meansDelta > eps:     # while (adjust > eps):
         # Repeat points in numCls columns, to get (numPts, numCls, dim) array
         ptDiffs = np.repeat(np.reshape(pts, (numPts, 1, dim)), numCls, axis=1
          ) -  means  # subtract mean values from each cluster column
