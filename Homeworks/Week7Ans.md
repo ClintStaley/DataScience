@@ -17,7 +17,6 @@ $\mu_{11} = \frac{25 + 30}{2} = 27.5$ $\sigma_{11} = \sqrt{\frac{25^2+30^2}{2} -
 $\mu_{21} = \frac{25 + 45 + 20 + 25}{4} = 28.75$ $\sigma_{21} = \sqrt{\frac{25^2+45^2+20^2+25^2}{4} - 28.75^2} = 9.6$
 
 
-
 2. Zaki Ch18Q3, and compute precisely the likelihood of each class given the point.
 
 $x = (3, 4)^T, x-\mu_1 = (2,1)^T, x-\mu_2 = (-2, -1)^T$
