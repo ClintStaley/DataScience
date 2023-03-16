@@ -39,10 +39,11 @@ Generating  {'dim': 2, 'clusters': [{'mean': [3, 4], 'sigma': [[10, 0], [0, 3]],
 
 ### Submission
 Submit by first demoing a style-correct version for me, and then submitting MakeMVClusters.py to the Canvas assignment.
+s
+## Phase 2-4 EMClusters.py
+In these phases you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.  
 
-## Phase 2 Write EMClusters.py
-In this phase you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.  Create a program EMClusters.py that performs iterations of the EMCluster algorithm, per Algorithm 13.3 in our text, stopping when the total mean-change 
-is less than .0001.  
+Create a program EMClusters.py that performs iterations of the EMCluster algorithm, per Algorithm 13.3 in our text, stopping when the total mean-change is less than .0001.  
 
 Run EMClusters.py thus:
 ```
@@ -54,30 +55,58 @@ comma-delimited string with "just5", "verbose" and "diagonal" as options.
 Once you've arrived at a clustering, write it out to `outFile` as a text formatted JSON string that is readable by MakeMVClusters.
 
 EMClusters performs iterations of the EMCluster algorithm, per Algorithm 13.3 in 
-our text, stopping when the total mean-change is less than .001.  
+our text, stopping when the total mean-change is less than .0001.  
 
 ### Verbose option
 Under the verbose option, EMClusters prints the point set that was read in, and,
-at the start of each iteration of the repeat loop, it prints the 0-based loop number, and the point-diffs, $\mu$, $\Sigma$ and P values for all clusters, along with the resultant computed weights for all cluster/point combinations as a 2-D array.
+at the start of each iteration of the repeat loop, it prints the 0-based loop 
+number, the point-diffs, and the $\mu$, $\Sigma$ and P values for all clusters, 
+along with the resultant computed weights for all cluster/point combinations 
+as a 2-D array.
 
-And, if dimensions = 2, it displays a diagram like that for MakeMVClusters, but with all points simply black, and with a colored "o" point and ellipse for each cluster, showing for that step the position and orientation of the cluster.  Pop up a new diagram for each iteration of the loop, so you can watch the cluster configurations converge.
+And, if dimensions = 2, it displays a diagram like this:
+
+![EMClusterPlot](EMClusterPlot.png)
+
+It's similar to the one for MakeMVClusters.  The points are colored according to the cluster they are closest to, and the centers and ellipses are also colored.  Pop up a new diagram for each iteration of the loop, so you can watch the cluster configurations converge.  In this image, for instance, the blue cluster is competing with the green for points.  Further iterations will show it gradually winning those points neares to it and the green cluster gradually concentrating instead on the point cloud to the right.
+
+### Just5 option
+Printing all of the weights and point differences is pretty cumbersome with hundreds of points.  The "just5" option limits outputs to just the first 5 points.  I found this useful for checking the math on the steps of the algorithm without being inundated with data.
+
+### Diagonal option
+The "diagonal" option limits $\Sigma$ values to diagonal arrays.  *Importantly*, this means you do not even represent the $\Sigma$ values as 2-D arrays, bur as 1-D vectors of just the diagonal values, adjusting the relevant Numpy calls accordingly.  This is necessary in order to gain the speed expected from the diagonal assumption.
+
+### Dropping Unpopular Clusters
+A curiosity of the algorithm, not mentioned in the text, is that it's common for one or more clusters to become highly "unpopular", with P values dropping to near zero, and very few points considering the cluster their highest probability.  This can result in Nan values for probability division operations, and also cause nonsingular matrices when only a couple of points are determining the correlation matrix.  Fix this by detecting when the popularity of a cluster drops to a mean point-count under 3 points.  Adjust all cluster-dependent data (means, sigmas, prbs, number of clusters) to eliminate such unpopular clusters.
+
+Note that this feature also makes the algorithm less dependent on accurate estimation of the number of clusters to find, since you can overestimate when you run the program, and let the unpopular-clusters trimming reduce the number of clusters if needed.
 
 ### Use of Numpy and Limits on Loops
-Your program must run quickly by using Numpy.  You may start with more Python loops to get an accurate implementation, but ultimately you may have at most four computational loops
-in the entire program, including the main while-loop driving the iterations.  You may also have two more loops for constructing the "verbose" pyplot diagrams.
+Your program must run quickly by using Numpy.  You may start with more Python loops to get an accurate implementation, but ultimately you may have at most four computational loops in the entire program, including the main while-loop driving the iterations.  You may also have two more loops for constructing the "verbose" pyplot diagrams.
 
 ### Hints
-1. Numpy methods you may find useful include uniform, full, repeat, reshape, reciprocal,
-sqrt, det, inv, sum, concatenate, dot, matmul, multiply, subtract, ones.  Rnd.uniform is also useful.
+1. Numpy methods you may find useful include argmax, full, repeat, reshape, reciprocal, sqrt, det, inv, sum, concatenate, dot, matmul, multiply, subtract, ones, where, count_nonzero.  Rnd.uniform is also useful.
 
-2. I did not find Numpy.outer useful for computing arrays of outer products, but you might be able to get it to do that; lemme know if you do.
+2. For dropping unpopular clusters, you may find `count_nonzero` and `where` useful to generate a vector of clusters to keep.  (E.g. [0, 2, 3] if I'm dropping cluster 1 due to unpopularity).  Note that such an array may be used to index a Numpy array, selecting only the indicated indices.  Once made, it can filter all the relevant arrays, e.g. means, sigmas, etc.
 
-3. I was not able to write this without considerable side-testing of Numpy methods via a short Test.py that I altered over and over to be sure I understooed what each method did.  You should do the same.
+3. I did not find Numpy.outer useful for computing arrays of outer products, but you might be able to get it to do that; lemme know if you do.
 
-4. The Numpy behavior called "broadcasting" is quite important to understand.  See the Numpy docs on this.
+4. I was not able to write this without considerable side-testing of Numpy methods via a short Test.py that I altered over and over to be sure I understooed what each method did.  You should do the same.
 
+5. Be painfully conscious of tensor shapes as you build weights, $\mu, \Sigma$, etc.
+Drop comments to the side next to each tensor you create to remind you of its
+dimensions.
 
-
+6. The Numpy behavior called "broadcasting" is quite important to understand.  See the Numpy docs on this.
 
 ### Submission
-Submit by first demoing a style-correct version for me, and then submitting EMClusters.py to the Canvas assignment.
+This is clearly a sophisticated project, and by the end of it you should be well-familiar with Numpy and the EM Clustering algorithm.  Complete it in the following phases.  For each, submit by first demoing a style-correct version for me, and then submitting EMClusters.py to the relevant Canvas assignment.
+
+## Phase 2 -- Basic Functionality
+Set up initial values for means, sigmas and probabilities, and compute the weight matrix from them.  Write the EM loop, but execute it just three times so you can display the results and check your work.  Don't bother with coloring the points in your verbose display; just show the means and ellipses.  Feel free to use more loops than allowed in this phase.
+
+## Phase 3 -- Full Numpy Use
+Add point coloring, and termination of the main loop when error is small instead of running a fixed number of iterations.  Reduce the number of loops to the required limit.
+
+## Phase 4 -- Output, Diagonal Option, Trim Clusters
+Finish all features, including writing the JSON output file, implementing the diagonal feature and automated dropping of unpopular clusters.

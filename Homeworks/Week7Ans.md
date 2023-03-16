@@ -5,17 +5,44 @@ Zaki Chapter 18
 
 ## Exercises
 
-1. Zaki Ch18Q1, naive Bayes only. Note that this means you'll have one numerical and one categorical attribute
-   * Per Zaki, p 479: "Extending the code in Algorithm 18.2 to incorporate categorical attributes is straightforward".  Well, maybe.  Explain briefly here how you would do that?  What lines of the algorithm change, and why?
+1. Zaki Ch18Q1, naive Bayes only. Note that you'll have one numerical and one categorical attribute.
+   * Per Zaki, p 479: "Extending the code in Algorithm 18.2 to incorporate categorical attributes is straightforward".  Well, maybe...  Explain briefly here how you would do that.  What lines of the algorithm change, and why?
 
    **Lines 5-9 get replaced by $n_i$ counting, and f is redefined on line 11 to be equatino at top of p 479**
 
    * Show the naive Bayes calculation for (Age=23, Car=truck). *Change the age on the first item from 25 to 30*
 
-$\mu_{11} = \frac{25 + 30}{2} = 27.5$ $\sigma_{11} = \sqrt{\frac{25^2+30^2}{2} - 27.5^2} = 2.5$
+$\mu_{11} = \frac{25 + 30}{2} = 27.5$ 
 
-$\mu_{21} = \frac{25 + 45 + 20 + 25}{4} = 28.75$ $\sigma_{21} = \sqrt{\frac{25^2+45^2+20^2+25^2}{4} - 28.75^2} = 9.6$
+$\sigma_{11} = \sqrt{\frac{25^2+30^2}{2} - 27.5^2} = 2.5$
 
+$\mu_{21} = \frac{25 + 45 + 20 + 25}{4} = 28.75$ 
+
+$\sigma_{21} = \sqrt{\frac{25^2+45^2+20^2+25^2}{4} - 28.75^2} = 9.6$
+
+$P(v_{sports} | C_1) = \frac{3}{6} = .5$
+
+$P(v_{vint} | C_1) = \frac{1}{6} = .1666$
+
+$P(v_{suv} | C_1) = \frac{1}{6} = .1666$
+
+$P(v_{truck} | C_1) = \frac{1}{6} = .1666$
+
+$P(v_{sports} | C_2) = \frac{2}{8} = .25$
+
+$P(v_{vint} | C_2) = \frac{2}{8} = .25$
+
+$P(v_{suv} | C_2) = \frac{3}{8} = .375$
+
+$P(v_{truck} | C_2) = \frac{1}{8} = .125$
+
+$P(C_1) = .333; P(C_2) = .667$
+
+$P(X | C_1) = .333(.1666)\frac{e^{(-.5)(\frac{-4.5}{2.5})^2}}{\sqrt{2\pi}2.5} = (.0555)\frac{.198}{6.27} = .00175$
+
+$P(X | C_2) = .666(.125)\frac{e^{(-.5)(\frac{-5.75}{9.6})^2}}{\sqrt{2\pi}9.6} = (.0833)\frac{.836}{23.87} = .00292$
+
+C2 is the chosen class.
 
 2. Zaki Ch18Q3, and compute precisely the likelihood of each class given the point.
 
@@ -55,3 +82,7 @@ $P(c_1) = .206; P(c_2) = .794$
 6. Do the same for a classification problem where naive Bayes is likely to be about as good as full Bayes.
 
 **Many possibilities.  Need cases where each attribute contributes independently to classification, e.g. house classification as low, mid, high range, with properties like square footage, age, location.**
+
+7. So, what about a classification problem where there are, say, 6 attributes, of which the first three are numerical and correlated, and so are the last two, which are categorical, with the others reasonably likely to be independent.  What might you do to combine full and naive Bayes to get the best of both worlds with respect to efficiency and consideration of the subsets of correlated attributes.
+
+**Could use multivariate normal for the first three as their own subunit, plus the full Bayes categorical for the last two, and then naive Bayes to combine 1-3, 4, and 5-6**

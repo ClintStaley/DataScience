@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="chapter-19-20-22-7">Chapter 19, 20, 22, 7</h1>
+<h2 dir="auto" id="readings">Readings</h2>
+<p dir="auto">Zaki Chapter 19, 20.1, 22.1, 7.1, 7.2</p>
+<h2 dir="auto" id="exercises">Exercises</h2>
+<ol dir="auto">
+<li dir="auto">Ch 19 Q1 (and explain your answers)<br>
+<strong>a. False, since high entropy implies uniform spread and low purity</strong><br>
+<strong>b. True, since it may permit finer division of points by category</strong></li>
+<li dir="auto">Ch 19 Q2 Do this using only 2-way categorical splits.  Report the gain resulting from each branch in the tree. Hints:
+<ul dir="auto">
+<li dir="auto">The entropy of a 1/3; 2/3 distribution is worth computing once, and using multiple times here and later. You should find it to be between .9 and .95.</li>
+<li dir="auto">You should end up with just two splits in the tree<br>
+<strong>1/3;2/3 distribution has entropy .918. First split <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∈</mo><mi>S</mi><mi>p</mi><mi>o</mi><mi>r</mi><mi>t</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">\in  Sports</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Sp</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">t</span><span class="mord mathnormal">s</span></span></span></span></eq>, gain .459; Second split &lt; 25, gain .449.  (27, Vintage) =&gt; H</strong></li>
+</ul>
+</li>
+<li dir="auto">Ch 19 Q5.  Hints:
+<ul dir="auto">
+<li dir="auto"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi>B</mi><mo>−</mo><msup><mi>B</mi><mn>2</mn></msup><mo>=</mo><mi>B</mi><mo stretchy="false">(</mo><mi>A</mi><mo>−</mo><mi>B</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">AB-B^2 = B(A-B)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span></eq>.  This is useful.</li>
+</ul>
+</li>
+</ol>
+<table dir="auto">
+<thead dir="auto">
+<tr dir="auto">
+<th>Data</th>
+<th>AB-B^2</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody dir="auto">
+<tr dir="auto">
+<td>1</td>
+<td>less</td>
+<td>H</td>
+</tr>
+<tr dir="auto">
+<td>2</td>
+<td>less</td>
+<td>H</td>
+</tr>
+<tr dir="auto">
+<td>3</td>
+<td>gtr</td>
+<td>L</td>
+</tr>
+<tr dir="auto">
+<td>4</td>
+<td>less</td>
+<td>H</td>
+</tr>
+<tr dir="auto">
+<td>5</td>
+<td>less</td>
+<td>H</td>
+</tr>
+<tr dir="auto">
+<td>6</td>
+<td>gtr</td>
+<td>H</td>
+</tr>
+<tr dir="auto">
+<td>7</td>
+<td>less</td>
+<td>L</td>
+</tr>
+<tr dir="auto">
+<td>8</td>
+<td>gtr</td>
+<td>L</td>
+</tr>
+</tbody>
+</table>
+<p dir="auto">Entropy before = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mo stretchy="false">(</mo><mi mathvariant="normal">.</mi><mn>375</mn><mi>l</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi mathvariant="normal">.</mi><mn>375</mn><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">.</mi><mn>625</mn><mi>l</mi><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi mathvariant="normal">.</mi><mn>625</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mo stretchy="false">(</mo><mi mathvariant="normal">.</mi><mn>375</mn><mo stretchy="false">(</mo><mo>−</mo><mn>1.415</mn><mo stretchy="false">)</mo><mo>+</mo><mi mathvariant="normal">.</mi><mn>625</mn><mo stretchy="false">(</mo><mo>−</mo><mi mathvariant="normal">.</mi><mn>678</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">.</mi><mn>954</mn></mrow><annotation encoding="application/x-tex">-(.375 lg_2(.375) + .625 lg_2(.625)) = -(.375(-1.415)+.625(-.678)) = .954</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mopen">(</span><span class="mord">.375</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">.375</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">.625</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord">.625</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">−</span><span class="mopen">(</span><span class="mord">.375</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">1.415</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">.625</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">.678</span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">.954</span></span></span></span></eq>
+Entropy after = less: $(.8 lg(.8) + .2 lg(.2)) = .722; greater: .333 lg(.333) + .667 lg(.667) = .920 Total: .625 (.722) + .375(.920) = .796</p>
+<p dir="auto">Gain = .954 - .796 = .158</p>
+<ol start="4" dir="auto">
+<li dir="auto">
+<p dir="auto">Ch 20 Q2, and draw both the optimal discriminant and the mean-difference, including how many overlaps each have. Hints:</p>
+<ul dir="auto">
+<li dir="auto">The math for the means is simple, and should arrive at integral coordinates.</li>
+<li dir="auto">Even with the optimal discriminant, you'll get some overlap, but less than with the mean-difference.</li>
+</ul>
+<p dir="auto"><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>μ</mi><mi mathvariant="normal">△</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mn>5</mn><mo separator="true">,</mo><mn>4</mn><mo stretchy="false">)</mo><msub><mi>μ</mi><mi>O</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mn>7</mn><mo separator="true">,</mo><mn>4</mn><mo stretchy="false">)</mo><msub><mi>μ</mi><mi>O</mi></msub><mo>−</mo><msub><mi>μ</mi><mi mathvariant="normal">△</mi></msub><mo>=</mo><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>n</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>e</mi><mi>d</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo><mo separator="true">,</mo><msup><mi mathvariant="normal">Σ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mrow><mo fence="true">[</mo><mtable rowspacing="0.1600em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>1</mn></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mn>0</mn></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mo>=</mo><mrow><mo fence="true">[</mo><mtable rowspacing="0.1600em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">.</mi><mn>056</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mi mathvariant="normal">.</mi><mn>029</mn></mrow></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow><mo separator="true">,</mo><mi>n</mi><mi>o</mi><mi>r</mi><mi>m</mi><mi>e</mi><mi>d</mi><mrow><mo fence="true">[</mo><mtable rowspacing="0.1600em" columnalign="center" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mi mathvariant="normal">.</mi><mn>887</mn></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mo>−</mo><mi mathvariant="normal">.</mi><mn>460</mn></mrow></mstyle></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\mu_\triangle = (5,4) \mu_O = (7, 4) \mu_O - \mu_\triangle = (2,0), normed = (1,0), \Sigma^{-1} \begin{bmatrix}1\\0\end{bmatrix}= \begin{bmatrix}.056\\-.029\end{bmatrix}, normed \begin{bmatrix}.887\\-.460\end{bmatrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">△</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">7</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">4</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">O</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">μ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361079999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">△</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord">Σ</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.40003em;vertical-align:-0.95003em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">.056</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">.029</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.02778em;">or</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size3">[</span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.45em;"><span style="top:-3.61em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">.887</span></span></span><span style="top:-2.4099999999999997em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">−</span><span class="mord">.460</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9500000000000004em;"><span></span></span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size3">]</span></span></span></span></span></span></eq> <strong>Draw a horizontal arrow for mean diff and another arrow at about -.5 slope for optimal.  Show that three points overlap for former, and only one for latter.</strong></p>
+</li>
+<li dir="auto">
+<p dir="auto">What is the determinant of matrix B in eq 20.7.  Why?  Onto what vector does it project, if any?  Why?<br>
+<strong>0 since it projects onto mean-diff vector.</strong></p>
+</li>
+<li dir="auto">
+<p dir="auto">Ch 22 Q5. And give the actual ROC value. <strong>See diagram for ROC curve (2 up, 1 right, 1 up, 3 right, 1 up, 1 right, 1 up) Area is 3.5 - 1 = 2.5</strong></p>
+</li>
+</ol>
+<table dir="auto">
+<thead dir="auto">
+<tr dir="auto">
+<th>.95</th>
+<th>.94</th>
+<th>.87</th>
+<th>.86</th>
+<th>.86</th>
+<th>.86</th>
+<th>.76</th>
+<th>.53</th>
+<th>.44</th>
+<th>.25</th>
+</tr>
+</thead>
+<tbody dir="auto">
+<tr dir="auto">
+<td>+1</td>
+<td>+1</td>
+<td>-1</td>
+<td>+1</td>
+<td>-1</td>
+<td>-1</td>
+<td>-1</td>
+<td>+1</td>
+<td>-1</td>
+<td>+1</td>
+</tr>
+</tbody>
+</table>
+<ol start="7" dir="auto">
+<li dir="auto">
+<p dir="auto">Ch22 Q5, but redo the problem after dividing all P values in half.<strong>Absolutely no change</strong></p>
+</li>
+<li dir="auto">
+<p dir="auto">Ch 7 Q1, but do parts a, b and d by writing and executing appropriate Numpy code, leaving only c and e to do by hand.  Include the code in your answer.</p>
+</li>
+</ol>
+<pre><code dir="auto"><code><div>import numpy as np
+import numpy.linalg as la
+
+def main():
+   d = np.array([[8, -20], [0, -1], [10, -19], [10, -20], [2, 0]])
+   numPts = len(d)
+   mean = d.mean(axis=0)
+   dBar = d - mean
+   sigmas = np.matmul(dBar.reshape(numPts, 2, 1), dBar.reshape(numPts, 1, 2))
+   sigma = sigmas.sum(axis=0) / numPts
+   eVals, eVecs = np.linalg.eigh(sigma)
+   print(f&quot;Mean:\n{mean}\nSigma:\n{sigma}\nEigs:\n{list(zip(eVals, eVecs))}\n&quot;)
+
+main()
+
+Mean:
+[  6. -12.]
+ Sigma:
+[[ 17.6 -38. ]
+ [-38.   88.4]]
+Eigs:
+[(1.0658108756861413, array([-0.91696017, -0.39897876])), (104.93418912431386, array([-0.39897876,  0.91696017]))]
+
+Principal component is (.399, -.917).  Shape is very long ellipse with major axis
+at slope -2.3.  &quot;Intrinsic&quot; dimensionality is 1, since second component has
+eigenvalue of 1 vs first component eigenvalue 105 (10/1 ratio of std dev)
+</div></code></code></pre>
+<ol start="9" dir="auto">
+<li dir="auto">
+<p dir="auto">A PCA analysis on a 5-dimensional dataset D, where |D| = 1000 and var(<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8201099999999999em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span></eq>) = 200, results in <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">\lambda_1 = 40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">λ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">40</span></span></span></span></eq>.  Does this indicate an error in the analysis? If so, why? If there is no error, describe the shape of the point cloud. <strong>If 20% of the variance is in the principal component, then all five components must have 20% each of the variance since they cannot have more variance than prior components.  This in turn implies a 5-D hyperspherical point cloud.</strong></p>
+</li>
+<li dir="auto">
+<p dir="auto">Answer the above question if var(<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8201099999999999em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span></eq>) = 40.
+<strong>Now the principal component has <em>all</em> the variance, with none left for others.  Point cloud is a line along the principal component.</strong></p>
+</li>
+<li dir="auto">
+<p dir="auto">Answer the same question if var(<eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover accent="true"><mi>D</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">\bar{D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8201099999999999em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.19444em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span></eq>) = 201.
+<strong>Analysis error since at least 1/5 of variance must be in principal component.</strong></p>
+</li>
+</ol>
+
+</body>
+</html>
