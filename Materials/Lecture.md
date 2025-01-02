@@ -1,4 +1,6 @@
-# First Day
+# Data Science 1 Lecture Notes
+
+## First Day
  * Syllabus review
    * Challenging course
    * Importance of topic
@@ -8,9 +10,17 @@
    * multiple sources
    * Try CONCRETE EXAMPLES
 
-## Theory Areas (interwoven through course) 
+## Data, patterns, and high-dimensional space review
+* Raw data overview 
+  * data types
+  * discrete/continuous
+  * interval-scaled/ratio-scaled
+  * categorical/numeric attributes
+  * nominal/ordinal
+  * Notion of pattern spaces
 
-###  Data, patterns, and high-dimensional space
+* Pandas dataframe
+
  * Examples of continuous data
    * Numberline-based, int or float
    * income, debt, income growth rate
@@ -23,46 +33,188 @@
  * Example of discrete nominal data
    * Zip code
    * gender
- ◦ Bernoulli (or simply binary) variable has 0/1 value.  Can be nominal or ordinal.  
-   * Did/did not purchase an item
-   * adult/minor
  * Translation of continuous data to points in space
  * Translation of discrete, ordinal data similarly
  * Nominal ("just a name") categorical data results in collection of spaces
- * Vector spaces
-        ◦ Hypercube sequence exercise
-        ◦ Reasoning about patterns in hyperdimensional space
-            ▪ What do "nearby" patterns look like?  
-            ▪ What does a midpoint pattern look like?
-            ▪ What does a pattern of only binary variables look like?
-        ◦ Pattern space reasoning
-            ▪ Typical pattern space is BIG
-            ▪ Is a midpoint pattern an "interpolation" of the endpoints?
-            ▪ Convex vs nonconvex
-        ◦ Dot product computation and geometry
-        ◦ Defining a hyperplane with perpendicular and distance
+ * Vector spaces brief reminder (should be obvious by now)
+    * N dimensional hypercube has how many corners?
+    * Using example of imanges
+      ▪ What do "nearby" patterns look like?  
+      ▪ What does a midpoint pattern look like?
+      * What is a "convex" subspace?
+    * Defining a hyperplane with perpendicular and distance
 
-Practice
-    • Data matrix concept
-        ◦ "select" statement
-        ◦ Pandas dataframe
-        ◦ Spreadsheet
-        ◦ ID-ed list of vectors with typed and named dimensions.
-    • Itemsets as initial study
-        ◦ shopping carts, web pages visited, etc.
-        ◦ Items and transactions; Itemsets and Tidsets
-        ◦ i(T) and t(X) functions
-            ▪ Use text
-            ▪ Subsetting relationships: 
-                • Itemset A is subset/superset of Itemset B.  Effect on t(A) vs t(B)?
-                • Tidset A is subset/superset of Tidset B.  Effect on i(A) vs i(B)?
-        ◦ Bruteforce algorithm
-        ◦ Itemset lattice
-            ▪ Note support will monotonically decrease down the lattice
-        ◦ aPriori algorithm
-            ▪ By hand for example set
+## Math Review/Basics
+* Vector math review
+  * Dot product and projection
+    * What is projection (scalar) of (1, 2, 3) along direction of (2, 1, -2)? **Unit is (.667, .333, -.667), so projection is -.667**
+    * What is the vector projection of (1,2,3) on that direction? **.667(.667, .333, -.667) = (.444, .222, -.444)**
+    * What is the angle between (1, 2, 3) and (1, -2, 1)? **Dot product of 0 means 90 degrees*
+* Bit of linear algebra review
+  * (Text uses T notation for transpose)
+  * Matrix as linear transform
+    * $\begin{bmatrix}1&&2&&-1\\2&&1&&2\\0&&-3&&4\end{bmatrix}$
+    * What do unit vectors translate to?
+    * Do G-J elimination
+       * $\begin{bmatrix}1&&0&&.5\\0&&1&&-.75\\0&&0&&0\end{bmatrix}$
+    * What is rank, rowspace, colspace? **2, top two rows after G-J, (0, 1, 1.333) and (...)
+    * What is determinant?  Why? **0, since rank < 3**>
+  * Symmetric matrices (we'll deal a lot with these)
+    * $Q^{-1}\Lambda Q$ form
+    * Positive semidefinite if all eigenvalues are nonnegative
+       * $x^TMx >= 0$ 
+      * Dot product of transformed x and x itself is nonnegative
+      * What does this say about the "shape"  of the linear transform M? **skews sphere into ellipsoids without inverting or over-rotating**
+  * Outer product $P = xx^T$
+    * We will use this in probability in form of correlation matrix
+    * $Pu$ projects u onto x via dot product, then remultiplies by x
+    * Brief example using x = $\begin{bmatrix}1\\3\\-2\end{bmatrix}$ What is $xx^T$? **$\begin{bmatrix}1&&3&&-2\\3&&9&&-6\\-2&&-6&&4\end{bmatrix}$
+    * Nullspace? **Orthogonal to x**
+    * Laft nullspace? **ditto**
+    * rowspace? colspace? **both x**
+    * Positive definite? **No, but positive semidefinite**
+    * Any other distinctive property? **symmetric**
 
+* Probability review
+  * discrete probability
+    * Discrete, possibly nominal sample space
+  * continuous probability
+    * Continuous, necessarily ordered, sample space
+    * P(X=x) = 0 for any particular x!
+    * Value of CDF for dealing with this (differential values)
+  * mean, median, mode as measures of a probability distribution
+  * variance and std deviation.
+    * Follow logic of Eq 1.8 simplification from Zaki p. 11
+  * Binomial distribution as example of discrete distribution
+    * m tries with p likelihood each.  What are odds of k successes?
+    * View as m tries in a row, with k being successful
+      * How many different such patterns? $m \choose k$
+      * Likelihood of a specific one,  with each outcome exactly as specified...
+        * failures (1-p) likely, successes p likely
+        * $(1-p)^{m-k}p^k$
+        * thus ${m\choose k} p^k (1-p)^{m-k}$
+        * Roll a die 7 times, get exactly 3 1's?  **${7 \choose 3} = 35$, each with $0.1666^3 0.8333^4 = .00223$, so .078**
+    * Single try is called a Bernoulli distribution, e.g. one roll of a die, so binomial distribution is outcome of m Bernoulli trials.
+  * Normal distribution as example of continuous
+     * Examine equation $\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
+     * General shape, meaning of symbols
+     * Symmetrical about ??  **mean**
+     * Impact of squared stdev in power denominator? ** Higher stddev results in wider curve, squared means symmetrical
+     * What should area under curve be? **1**
+     * What happens to area as stdev rises, absent compennsating leading fraction? **Gets too large since same heights, but wider
+     * Purpose of leading fraction?  **Normalize to integral of 1**
+     * Actual integration is a royal pain, so I won't drag you through it.
+     * Why bother with this?
+      * What is the Central Limit Theorem?  **Lookup shows it's the limit of sample mean for most actual distributions.
+      * Also has maximum entropy (most uncertainty) for any distribution where you specify the mean and variance.  
+        * Why not uniform distribution, which normally is most surprising? **Cannot extend infinitely if variance is known**
+      * Foundational in many AI algorithms (Naive Bayes estimation, gaussian "splats" for 3-D vision, VAE latent variables, etc.)
+      * Generally appears *in multiple dimensions* however
+    * $\Nu(\mu, \sigma^2) notation$
+    * Standard normal has mean 0 and variance/stdev 1
+  * Use of cumulative table (See image)
+    * Chance of more than 2 stdevs from mean?  3? 
+  * Joint or multivariate distributions
+    * Discrete case has already been covered
+    * Marginal probablities
+    * Conditional probabilities, e.g. P(color|normal), p(red|normal)
+| | red | non-red |
+|---|---|---|
+|normal | .1 | .5 |
+|sports | .2 | .2 |
+    * Continuous has analogous ideas. f(x,y).  Zaki p 22.
+    * How would we do a marginal distribution for, say, x? **Integrate across y for the given x values: $f_X(x) = \int_{-\infty}^{\infty} f(x,y)dy$**
+    * What about conditional probability? **Divide to arrive at area of 1: $f_{Y|X}(y|x) = \frac{f_{X,Y}(x,y)}{f_X(x)}$**
+    * Independence: $p(x,y) = p(x)p(y)$ 
+      * Can $p(x,y) < p(x)p(y)$?  How much less if so?  **p(x,y) can be zero even if p(x) = p(y) = 1$
+      * Same question the other way.  Can $p(x,y) > p(x)p(y)$?  How much greater if so?  **$p(x,y) = p(x) = p(y)$ is possible**
+ 
+  * Multivariate normal
+    * $\frac{1}{\tau^{\frac{k}{2}}\sqrt{det(\Sigma)}}e^{-\frac{(x-\mu)^T\Sigma^{-1}(x-\mu)}{2}}$
+    * $\Sigma$ is *covariance matrix*.
+      * positive semidefinite
+      * transforms sphere to ellipsoid shape
+      * eigenvectors are the axes, eigenvalues the lengths
+      * Why *inverse* transformation in exponent? **Reversing the spread back to a sphere**
+      * Why dot product? **Like the squared mean-distance in univariate**
+      * Why root of determinant? **Like normalizing with stddev**
+  * Drill down on covariance matrix
+      * Formally, elements i,j are $E((X_i-\mu_i)(X_j-\mu_j))$
+      * Assume mean of 0, or equivalently subtraction from mean
+      * n variables $x_i$
+      * Row i, col j, compares $x_i$ with $x_j$.  Expected product.
+      * Symbol is either $cov(x_i, x_j)$ or $\sigma_{ij}$
+      * What is $\sigma_{ii}$ the same as?  **Variance for $x_i$**
+      * How does $\sigma_{ij}$ relate to $\sigma_{ji}$? **Equal**
+      * What values can covariance take? **Full range neg to positive**
+      * What does coveriance look like for independent variables? **zero**
+      * Does zero covariance imply independence?  **No, there can still be patterns but they don't skew**
+      * What does $\Sigma$ look like when variables are all independent? **Diagonal**
+      * What comments might we make of this covariance matrix, on cars, with dimensions mileage, cost(K), performance, reliability: 
+      $\begin{bmatrix}&&mil&&cost&&perf&&rel\\mil&&100&&1&&-20&&1\\cost&&1&&100&&2&&20\\perf&&-20&&2&&9&&2\\rel&&1&&20&&-2&&4\end{bmatrix}$
+      * Covariance matrix is structured much like outer-product matrix, but does this mean it's rank 1?  Is it just $E(X-\mu)E(X-\mu)^T$? **No, because $E((X_i-\mu_i)(X_j-\mu_j)) <> E(X_i-\mu_i)E(X_j-\mu_j)$ and expectation of product is not product of expectations**
+      * Indeed, under what circumstances are those two the same, and what *is* $E(X_i-\mu_i)E(X_j-\mu_j)$? **Independent distributions, and 0**
+      * Give an example of a realistic *continuous independent* joint distribution, and describe its covariance matrix. **
+  * Related idea of *correlation matrix* normalizes so that $\sigma$ values aren't a factor:
+    * Formally, i,j are $\frac{E((X_i-\mu_i)(X_j-\mu_j))}{\sigma_i\sigma_j}$
+    * What range of element values does this imply? **-1 to 1 inclusive**
+    * Give correlation matrix for prior (repaired) example: ** $\begin{bmatrix}&&mil&&cost&&perf&&rel\\mil&&1&&.01&&-.5&&.05\\cost&&.01&&1&&.067&&1\\perf&&-.5&&.067&&1&&-.33\\rel&&.05&&1&&-.33&&1\end{bmatrix}$
 
+  * Demo a Galton board
+    * Given the balls bounce left/right randomly 50/50, what is the actual distribution? **Binomial**
+    * But, what curve actually arises from many binomial trials? **normal**
+
+  * Statistical sampling
+    * A *statistic* is some numerical measure of a sample of a distribution
+      * Can be mathematically identical to measures like mean, variance, but maintain the distinction -- it's on a *sample*, without assuming the underlying distribution.
+      * A statistic is its own random variable.  A statistic that is the mean of n samples has its own mean, variance, etc.
+    * **Empirical PMF**.  Probability distribution *as determined by the sample*.
+      * Imagine you don't even *know* the underlying PMF
+      * Is this discrete or continuous, or does it depend on underlying PMF? **Always discrete**
+    * Consider the statistic of a sum of n independent samples: $\sum_1^nx_i$
+      * What is the mean of such a statistic? **$n\mu$, for obvious intuitive reasons.**
+      * Can also be geometrically "seen" as center of mass of the sample points.
+    * Expected *variance* of n-sample-sum is more complex.
+      * Sum is on average n times a sample size, so do we expect n-squared the variance?  **Not necessarily because samples may work against one another**
+      * Essential point is that $E(((\sum_1^nx_i)-n\mu)^2)
+       = E((\sum_1^nx_i-\mu)^2)\ = E(n(x_i-\mu)^2) = nE((x_i-\mu)^2) = n\sigma^2$
+      * We can replace the summation with an n-factor because $E((x_1-\mu)+(x_2-\mu)+...+(x_n-\mu))^2 = E((x_1 - \mu)^2 + (x_2-\mu)^2 + ... + (x_n-\mu)^2 + (x_1\mu)(x_2-\mu$ + *other mixed terms*)
+      * For any mixed term $E(x_i-\mu)(x_j-\mu)= 0$
+        * Assuming what condition, and why? **Independence, so that each term will be negative/positive at same rate.**
+    * OK, so variance of a sample-sum grows with n, but not as $n^2$, because only "aligned" terms of the summation actually contribute to the variance.
+  * Now, what about n-sample-average: $\frac{1}{n}\sum_1^nx_i$ What is this statistic's mean? **$\mu$, obviously**
+  * And its variance? 
+    * How does it relate to the variance of the sample-sum? **Each term in the sum is multiplied by $\frac{1}{n^2}$**
+    * So, variance is $\frac{n\sigma^2}{n^2} = \frac{\sigma^2}{n}$
+  * Variance of n-sample-average reduces by 1/n, and stddev by $\frac{1}{\sqrt n}$
+  * Is n-sample-average variance a fair estimate of actual variance?
+    * What if n = 2? 
+
+  * I flip a coin 1,000 times.  What is the chance the total heads is between 490 and 510?
+    * What is the distribution involved? **Binomial**
+    * stddev of the Bermoulli 1-coin flip is, assuming tail is 0 and head is 1? **$sqrt{0.25} = .5**
+    * stddev of a 1000-coin sample-sum? ** $.5\sqrt{1000} = 15.8$
+    * What z-score is indicated? **10/15.8 = .63 stddev**
+       * Do we need to find this for binomial distr? **No,Use a normal table.**
+       * Value is? **.236*2 = .472**
+
+* Practice
+  * Data matrix concept
+    * "select" statement
+    * Pandas dataframe
+    * Itemsets as initial study
+    * shopping carts, web pages visited, etc.
+    * Items and transactions; Itemsets and Tidsets
+    * i(T) and t(X) functions
+      * Use text
+      * Subsetting relationships: 
+        * Itemset A is subset/superset of Itemset B.  Effect on t(A) vs t(B)?
+        * Tidset A is subset/superset of Tidset B.  Effect on i(A) vs i(B)?
+      * Bruteforce algorithm
+      * Itemset lattice
+        * Note support will monotonically decrease down the lattice
+        * aPriori algorithm
+          * By hand for example set
 
 # Chapter 1 Fundamentals (in stages)
 ## 1.3.3 Projection
