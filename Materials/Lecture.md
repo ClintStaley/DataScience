@@ -1,4 +1,4 @@
-# Data Science 1 Lecture Notes
+# Intro and Review
 
 ## First Day
  * Syllabus review
@@ -18,24 +18,22 @@
   * categorical/numeric attributes
   * nominal/ordinal
   * Notion of pattern spaces
-
-* Pandas dataframe
-
- * Examples of continuous data
-   * Numberline-based, int or float
-   * income, debt, income growth rate
-   * purchase volumes for each month of year
-   * square footage, age, neighborhood ranking
-   * grayscale image
- * Example of discrete ordinal data
-   * education level
-   * age group (sometimes there's an underlying continuous variable)
- * Example of discrete nominal data
-   * Zip code
-   * gender
+  * Examples of continuous data
+    * Numberline-based, int or float
+    * income, debt, income growth rate
+    * purchase volumes for each month of year
+    * square footage, age, neighborhood ranking
+    * grayscale image
+  * Example of discrete ordinal data
+    * education level
+    * age group (sometimes there's an underlying continuous variable)
+  * Example of discrete nominal data
+    * Zip code
+    * gender
+  * Discrete one-hot vs discrete sets
  * Translation of continuous data to points in space
  * Translation of discrete, ordinal data similarly
- * Nominal ("just a name") categorical data results in collection of spaces
+ * Nominal ("just a name") categorical data results in one dimension per possible value
  * Vector spaces brief reminder (should be obvious by now)
     * N dimensional hypercube has how many corners?
     * Using example of imanges
@@ -53,24 +51,26 @@
 * Bit of linear algebra review
   * (Text uses T notation for transpose)
   * Matrix as linear transform
-    * $\begin{bmatrix}1&&2&&-1\\2&&1&&2\\0&&-3&&4\end{bmatrix}$
+    * Simple Example: $\begin{bmatrix}1&&2&&-1\\2&&1&&2\\0&&-3&&4\end{bmatrix}$
     * What do unit vectors translate to?
     * Do G-J elimination
-       * $\begin{bmatrix}1&&0&&.5\\0&&1&&-.75\\0&&0&&0\end{bmatrix}$
-    * What is rank, rowspace, colspace? **2, top two rows after G-J, (0, 1, 1.333) and (...)
+       * $\begin{bmatrix}1&&0&&1.67\\0&&1&&-1.33\\0&&0&&0\end{bmatrix}$
+    * What is rank, rowspace, colspace? **2, top two rows of G-J, first/second original cols since these are pivots**
     * What is determinant?  Why? **0, since rank < 3**>
+    * Compute nullspace? **Set third value to 1, compute necessary first/second vals to satisfy Mx = 0: (-1.67, 1.33, 1)**
   * Symmetric matrices (we'll deal a lot with these)
-    * $Q^{-1}\Lambda Q$ form
+    * $Q^{-1}\Lambda Q$ form, with Q orthonormal and $\Lambda$ diagonal
     * Positive semidefinite if all eigenvalues are nonnegative
        * $x^TMx >= 0$ 
       * Dot product of transformed x and x itself is nonnegative
       * What does this say about the "shape"  of the linear transform M? **skews sphere into ellipsoids without inverting or over-rotating**
   * Outer product $P = xx^T$
-    * We will use this in probability in form of correlation matrix
-    * $Pu$ projects u onto x via dot product, then remultiplies by x
-    * Brief example using x = $\begin{bmatrix}1\\3\\-2\end{bmatrix}$ What is $xx^T$? **$\begin{bmatrix}1&&3&&-2\\3&&9&&-6\\-2&&-6&&4\end{bmatrix}$
+    * We will use something similar in probability in form of correlation matrix
+    * $Pu = xx^Tu$ projects u onto x via dot product, then remultiplies by x
+    * Brief example using x = $\begin{bmatrix}1\\3\\-2\end{bmatrix}$ What is $xx^T$? 
+      **$\begin{bmatrix}1&&3&&-2\\3&&9&&-6\\-2&&-6&&4\end{bmatrix}$**
     * Nullspace? **Orthogonal to x**
-    * Laft nullspace? **ditto**
+    * Left nullspace? **ditto**
     * rowspace? colspace? **both x**
     * Positive definite? **No, but positive semidefinite**
     * Any other distinctive property? **symmetric**
@@ -86,56 +86,93 @@
   * variance and std deviation.
     * Follow logic of Eq 1.8 simplification from Zaki p. 11
   * Binomial distribution as example of discrete distribution
-    * m tries with p likelihood each.  What are odds of k successes?
-    * View as m tries in a row, with k being successful
+    * m 0/1 tries, each with p likelihood of a 1.  What are odds of k 1's?
+    * View as m 0/1's, with k being 1s.
       * How many different such patterns? $m \choose k$
-      * Likelihood of a specific one,  with each outcome exactly as specified...
+      * Likelihood of a specific pattern,  with each outcome exactly as specified...
         * failures (1-p) likely, successes p likely
         * $(1-p)^{m-k}p^k$
         * thus ${m\choose k} p^k (1-p)^{m-k}$
         * Roll a die 7 times, get exactly 3 1's?  **${7 \choose 3} = 35$, each with $0.1666^3 0.8333^4 = .00223$, so .078**
-    * Single try is called a Bernoulli distribution, e.g. one roll of a die, so binomial distribution is outcome of m Bernoulli trials.
+    * Single try is called a Bernoulli distribution, e.g. one flip of a (possibly unfair) coin with probability p of a head
+    * Binomial distribution is thus the outcome of m Bernoulli trials.
+
+  * Joint or multivariate distributions
+    * Discrete case has already been covered
+    * Marginal probablities
+    * Conditional probabilities, e.g. P(color|normal), p(red|normal)
+
+| | red | non-red |
+|---|---|---|
+|normal | .1 | .5 |
+|sports | .2 | .2 |
+
+*
+  *
+    * Continuous has analogous ideas. f(x,y).  Zaki p 22.
+    * How would we do a marginal distribution for, say, x? **Integrate across y for the given x values: $f_X(x) = \int_{-\infty}^{\infty} f(x,y)dy$**
+    * What about conditional probability? **Divide to arrive at area of 1: $f_{Y|X}(y|x) = \frac{f_{X,Y}(x,y)}{f_X(x)}$**
+    * Independence: $p(x,y) = p(x)p(y)$ 
+      * Can $p(x,y) < p(x)p(y)$?  How much less if so?  **p(x,y) can be zero even if p(x) = p(y) = 1$**
+      * Same question the other way.  Can $p(x,y) > p(x)p(y)$?  How much greater if so?  **$p(x,y) = p(x) = p(y)$ is possible**
+  * Probability chain rule
+    * p(red, sports) = p(sports)p(red|sports) = p(red)p(sports|red)
+    * Do math **.2 = .4(.5) = (.3)(.667)**
+    * Full version accommodates many variables 
+      * Is this right? p(a, b, c) = p(a)p(b|a)p(c|b) **No, need p(c|a,b)**
+    * $p(x_1,x_2, ... x_n) = \prod\limits_{k=1}^n{p(x_k|x_1, ... x_{k-1})}$
+  * Bayes Theorem
+    * Relates p(x|y) to p(y|x)
+    * In example above, what is p(red|sports)? And p(sports|red)? **.5 and .67** 
+    * How can we compute the latter? 
+      * $p(sports|red) = \frac{p(sports, red)}{p(red)}$
+      * If it's red, that's the "evidence" -- a subset of the probability space
+      * Probability of "sports", given red, is the p(sports, red) portion of this space.
+      * Compute it: **.2/.3 = .67**
+      * Other ways to look at it:
+        * Via chain rule $p(sports|red) = \frac{p(sports)(p(red|sports)}{p(red)}$
+        * $p(x|y) = \frac{p(x)p(y|x)}{p(y)}$
+        * Or a shift of "viewpoint" $p(x|y) = p(x)\frac{p(y|x)}{p(y)}$
+        * $p(hypothesis|evidence) = p(hypothesis)\frac{p(evidence|hypothesis)}{p(evidence)}$  Sometimes p(evidence) is called "marginal" since that's how we generally get p(evidence), e.g. adding up marginal red probability.
+        * ${posterior} = {prior}\frac{p(evidence|hypothesis)}{p(evidence)}$
+          * Generally, x is such-and-such likely, but seeing y, we update it by the chance y would occur assuming x.
+          * Generally, .4 of cars are sports, but we update that by p(red|sports)/p(red) or (.5/.3) to arrive at .667 for p(sports|red)
+        * May need to 
+      * I have a set of 4 fair coins and 6 loaded ones, the latter having .75 likelihood of a head.  I grab a coin, flip it, and get a head.  What is the chance it's a loaded coin?
+        * **$p(loaded|head) = p(loaded)\frac{p(head|loaded)}{p(head)}$**
+        * **p(head) is p(head|loaded)p(loaded) + p(head|fair)p(fair) = .75(.6) + .5(.4) = .65**
+        * So, .6(.75/.65) = .692
+        * Do same for p(fair|head) to confirm
+      * You have a bin of parts, from three makers: 5% from maker A, 45% from B, and 50% from C.  Maker A's parts are 40% defective, B's are 4%, and C's are 1%.  You draw a part at random, and it's defective.  What is the chance it's a maker-A part? **.465**
   * Normal distribution as example of continuous
      * Examine equation $\frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
      * General shape, meaning of symbols
      * Symmetrical about ??  **mean**
      * Impact of squared stdev in power denominator? ** Higher stddev results in wider curve, squared means symmetrical
      * What should area under curve be? **1**
-     * What happens to area as stdev rises, absent compennsating leading fraction? **Gets too large since same heights, but wider
+     * What happens to area as stdev rises, absent compennsating leading fraction? **Gets too large since same heights, but wider**
      * Purpose of leading fraction?  **Normalize to integral of 1**
      * Actual integration is a royal pain, so I won't drag you through it.
      * Why bother with this?
-      * What is the Central Limit Theorem?  **Lookup shows it's the limit of sample mean for most actual distributions.
+      * What is the Central Limit Theorem?  **Lookup shows it's the limit of sample mean for most actual distributions.**
       * Also has maximum entropy (most uncertainty) for any distribution where you specify the mean and variance.  
         * Why not uniform distribution, which normally is most surprising? **Cannot extend infinitely if variance is known**
       * Foundational in many AI algorithms (Naive Bayes estimation, gaussian "splats" for 3-D vision, VAE latent variables, etc.)
       * Generally appears *in multiple dimensions* however
-    * $\Nu(\mu, \sigma^2) notation$
+    * $\mathcal{N}(\mu, \sigma^2) notation$
     * Standard normal has mean 0 and variance/stdev 1
   * Use of cumulative table (See image)
+    * Notion of z-value
     * Chance of more than 2 stdevs from mean?  3? 
-  * Joint or multivariate distributions
-    * Discrete case has already been covered
-    * Marginal probablities
-    * Conditional probabilities, e.g. P(color|normal), p(red|normal)
-| | red | non-red |
-|---|---|---|
-|normal | .1 | .5 |
-|sports | .2 | .2 |
-    * Continuous has analogous ideas. f(x,y).  Zaki p 22.
-    * How would we do a marginal distribution for, say, x? **Integrate across y for the given x values: $f_X(x) = \int_{-\infty}^{\infty} f(x,y)dy$**
-    * What about conditional probability? **Divide to arrive at area of 1: $f_{Y|X}(y|x) = \frac{f_{X,Y}(x,y)}{f_X(x)}$**
-    * Independence: $p(x,y) = p(x)p(y)$ 
-      * Can $p(x,y) < p(x)p(y)$?  How much less if so?  **p(x,y) can be zero even if p(x) = p(y) = 1$
-      * Same question the other way.  Can $p(x,y) > p(x)p(y)$?  How much greater if so?  **$p(x,y) = p(x) = p(y)$ is possible**
- 
+
   * Multivariate normal
     * $\frac{1}{\tau^{\frac{k}{2}}\sqrt{det(\Sigma)}}e^{-\frac{(x-\mu)^T\Sigma^{-1}(x-\mu)}{2}}$
     * $\Sigma$ is *covariance matrix*.
       * positive semidefinite
       * transforms sphere to ellipsoid shape
-      * eigenvectors are the axes, eigenvalues the lengths
-      * Why *inverse* transformation in exponent? **Reversing the spread back to a sphere**
+      * eigenvectors are the axes, eigenvalues the lengths, and conditional variances
+      * Why *inverse* transformation in exponent? **Reversing the spread back to a sphere, and using that for probability computation**
+      * But don't we need to "reverse" both vectors? **Sigma is squared**
       * Why dot product? **Like the squared mean-distance in univariate**
       * Why root of determinant? **Like normalizing with stddev**
   * Drill down on covariance matrix
@@ -152,13 +189,18 @@
       * What does $\Sigma$ look like when variables are all independent? **Diagonal**
       * What comments might we make of this covariance matrix, on cars, with dimensions mileage, cost(K), performance, reliability: 
       $\begin{bmatrix}&&mil&&cost&&perf&&rel\\mil&&100&&1&&-20&&1\\cost&&1&&100&&2&&20\\perf&&-20&&2&&9&&2\\rel&&1&&20&&-2&&4\end{bmatrix}$
+        * **Mileage and performance are inversely correlated, as is reasonable**
+        * **It's not a covariance matrix since not symmetrical**
+        * **Cost and reliability correlated, again as is reasonable**
+        * **Reliability and mileage, cost and mileage, cost and performance, all largely unrelated**
+        * **Variances of mil and cost exceed those of perf and rel, but this can be simply a matter of units used, e.g. reliability as a 1-5 score**
       * Covariance matrix is structured much like outer-product matrix, but does this mean it's rank 1?  Is it just $E(X-\mu)E(X-\mu)^T$? **No, because $E((X_i-\mu_i)(X_j-\mu_j)) <> E(X_i-\mu_i)E(X_j-\mu_j)$ and expectation of product is not product of expectations**
       * Indeed, under what circumstances are those two the same, and what *is* $E(X_i-\mu_i)E(X_j-\mu_j)$? **Independent distributions, and 0**
-      * Give an example of a realistic *continuous independent* joint distribution, and describe its covariance matrix. **
+      * Give an example of a realistic *continuous independent* joint distribution, and describe its covariance matrix.
   * Related idea of *correlation matrix* normalizes so that $\sigma$ values aren't a factor:
     * Formally, i,j are $\frac{E((X_i-\mu_i)(X_j-\mu_j))}{\sigma_i\sigma_j}$
     * What range of element values does this imply? **-1 to 1 inclusive**
-    * Give correlation matrix for prior (repaired) example: ** $\begin{bmatrix}&&mil&&cost&&perf&&rel\\mil&&1&&.01&&-.5&&.05\\cost&&.01&&1&&.067&&1\\perf&&-.5&&.067&&1&&-.33\\rel&&.05&&1&&-.33&&1\end{bmatrix}$
+    * Give correlation matrix for prior (repaired) example: **$\begin{bmatrix}&&mil&&cost&&perf&&rel\\mil&&1&&.01&&-.5&&.05\\cost&&.01&&1&&.067&&1\\perf&&-.5&&.067&&1&&-.33\\rel&&.05&&1&&-.33&&1\end{bmatrix}$**
 
   * Demo a Galton board
     * Given the balls bounce left/right randomly 50/50, what is the actual distribution? **Binomial**
@@ -170,12 +212,12 @@
       * A statistic is its own random variable.  A statistic that is the mean of n samples has its own mean, variance, etc.
     * **Empirical PMF**.  Probability distribution *as determined by the sample*.
       * Imagine you don't even *know* the underlying PMF
-      * Is this discrete or continuous, or does it depend on underlying PMF? **Always discrete**
     * Consider the statistic of a sum of n independent samples: $\sum_1^nx_i$
+      * Assume we do n samples, and compute the sum, over and over, to get many sample sums.
       * What is the mean of such a statistic? **$n\mu$, for obvious intuitive reasons.**
       * Can also be geometrically "seen" as center of mass of the sample points.
     * Expected *variance* of n-sample-sum is more complex.
-      * Sum is on average n times a sample size, so do we expect n-squared the variance?  **Not necessarily because samples may work against one another**
+      * Sum is on average n times a sample size, so do we expect n-squared the variance?  **Not necessarily because mean of a set of n-samples won't actually be $\mu$**
       * Essential point is that $E(((\sum_1^nx_i)-n\mu)^2)
        = E((\sum_1^nx_i-\mu)^2)\ = E(n(x_i-\mu)^2) = nE((x_i-\mu)^2) = n\sigma^2$
       * We can replace the summation with an n-factor because $E((x_1-\mu)+(x_2-\mu)+...+(x_n-\mu))^2 = E((x_1 - \mu)^2 + (x_2-\mu)^2 + ... + (x_n-\mu)^2 + (x_1\mu)(x_2-\mu$ + *other mixed terms*)
@@ -187,8 +229,9 @@
     * How does it relate to the variance of the sample-sum? **Each term in the sum is multiplied by $\frac{1}{n^2}$**
     * So, variance is $\frac{n\sigma^2}{n^2} = \frac{\sigma^2}{n}$
   * Variance of n-sample-average reduces by 1/n, and stddev by $\frac{1}{\sqrt n}$
-  * Is n-sample-average variance a fair estimate of actual variance?
-    * What if n = 2? 
+    * Is sample average *actually* the same as $\mu$ every time? **No, its expected value is $\mu$ but it has a variance equal to $\sigma^2/n$
+    * So is n-sample-average variance (squared difference from *sample average*) different from actual variance? **Yes, we'd intuitively expect the sample average to reduce sample variance by a factor of 1/n**
+    * In particular, consider Zaki eq 2.18/2.19.  Sample variance is indeed $\frac{n-1}{n}\sigma^2$, so we compensate by estimating actual variance from sample by using n-1 in denominator, not n.
 
   * I flip a coin 1,000 times.  What is the chance the total heads is between 490 and 510?
     * What is the distribution involved? **Binomial**
@@ -198,323 +241,17 @@
        * Do we need to find this for binomial distr? **No,Use a normal table.**
        * Value is? **.236*2 = .472**
 
-* Practice
-  * Data matrix concept
-    * "select" statement
-    * Pandas dataframe
-    * Itemsets as initial study
-    * shopping carts, web pages visited, etc.
-    * Items and transactions; Itemsets and Tidsets
-    * i(T) and t(X) functions
-      * Use text
-      * Subsetting relationships: 
-        * Itemset A is subset/superset of Itemset B.  Effect on t(A) vs t(B)?
-        * Tidset A is subset/superset of Tidset B.  Effect on i(A) vs i(B)?
-      * Bruteforce algorithm
-      * Itemset lattice
-        * Note support will monotonically decrease down the lattice
-        * aPriori algorithm
-          * By hand for example set
-
-# Chapter 1 Fundamentals (in stages)
-## 1.3.3 Projection
- * Equation 1.11, with diagram
- * Why divide by |a| twice?
- * Compute for a = (1, 1, 1) b = (1, 2, 3).  **Should get 6/3 = 2. **
-    * Significance...  What point does project hit on (1, 1, 1) direction
-    * What if reversed a <-> b?  **6/14**
-    * Closest point along a of (1,2,3)?  **(2,2,2)**
-    * Closest along b of (1,1,1)? **(6/14, 12/14, 18/14)**
-
-## Day 2 --------------------------------
-
-## Prelim test
-
- * t({C, D}) =?
- * i({2,4}) = ?
- * t(0) = ?
- * How many yotta-atoms in a mole?  ($6 * 10^{23}$)
-
-## Example 8.3
-
- * Possible for item in $F^(3)$ to not be prefix of some item in $F^(2)$?
-
-## Association Rules
-
- * Compute $sup(AB \rightarrow D)$  **Answer: 3**
- * Compute $conf(AB \rightarrow D)$  **Answer: 3/4 = .75**
- * Can conf(X->Y) be greater than 1.0?  Why or why not?
-
-## Brute Force Algorithm
- * Walk through and expalin each step
- * Consider complexity
- * How to improve?  What order would you explore the itemsets?  Why?  Can we trim?
-   * This is how you should do reading: question and anticipate
- * Look at lattice
-   * How does sup change as you move down?
-
-## Apriori
- * Walk through ComputeSupport for sample itemsets
-   * Why is this better?
- * Walk through 
-   * Reframe line 19 a bit.  "if for all $X_j \subset X_{ab}...$"
-   * What is sup value for eleements of $C^{(k)}$ at start of call?
- * Pick a homework problem or two to analyze
-
+## Day 3 ------------------------------------
 ## Python Lab
  * Get Pandas and Numpy installed
  * Pull down zip file
  * Do a Pandas read-in of Orders100.csv and try out a bit of Pandas
 
-## Day 3 ------------------------------------
-
-## Eclat / dEclat (assumes reading and Q/A)
- * Quiz (use our sample database):
-     * Find a 3-itemset X for which d(X) = $\emptyset$
-     * What is the largest $|d(X)|$ possible in our sample database? Why?
-
-  * Discuss book suggestion of starting with Eclat or t(X) values and shifting to d(X)
-    * Would this be useful with our sample database?
-    * What about a typical shopping database?
-    * Why go to d(X) at 2-itemsets?  Might t(X) still be smaller than d(X) that early?
-    * Is it *even possible* for t(X) to be smaller than d(X) if $|X| \geq 2$? 
-  
-## FPGrowth
- * FP Tree
-   * Compact version of the entire database and supports; used in place of it
-   * Build FP-tree from ACE BCE BCD CE
-   * Do the same with order ABCDE, just to show less efficient version
-   * Can support increase as we descend? (No)
-   * Can we generate all subsets as paths in tree?  (No)
- * Generating subsets from FPTree
-   * Start with 1-itemsets, then 2-itemsets, etc.
-   * Easy degenerate FPTree case
-     * Do actual exercise on AC A ACE ACED ACE
-     * Generate 1-itemsets, 2-itemsets, etc reading right off the tree
-     * Use least-supported (lowest) node as support for each itemset
-     * Actually generate the 16 possibles from this example
-     * They come up with alternate example using 4 items and try it.
- * General FPTree case
-  * Subsets spread across multiple paths.
-  * Try to reduce to degenerate case.
-  * Generate "projected" (filtered or collapsed) FP trees for each item.
-    * Effectively dividing the database into A,B,C,D... groups
-    * Easy to do from leaf values.  
-    * Can least-supported elements ever have children in the FP-tree?
-    * Can we do a subtree *assuming D is in the itemsets*?
-      * Count support by scanning tree
-      * Rehang the paths to create subtree for patterns 
-    * Now remove the D leaves, and we're left with the same solution for
-      C patterns minus any D patterns
-    * Do the same for C, A, etc.
-    * How do we understand B?
-      * Will it ever appear a lower than top level?
-      * Is it the *only* top level element?
-      * What does the prefix tree of "itemsets with B, and no other elements" look like?
- * Pseudocode in Algorithm 8.5
-   * Will line 1 remove internal nodes?  What happens if so? **No.  Any infrequent item has only other infrequents as descendants**
-   * What about line 13 -- just from root to node? What if interior? **Effective removal of less-supported leaves is OK since they're already covered under other trees.
-   * Finish up recursive call for D, then generate sets.
- * Another example 
-
-## Generating Association Rules
- * Independent of algorithm.
- * If we know ABCD is a frequent itemset, what rules can we deduce?
-    * AB -> CD for instance?  What confidence that this is so?
-    * What might it take for AB -> CD to be very lightly supported?  Very heavily?
- * Equation 8.7
- * What might it take for all inferences to be low confidence?
- * Algorithm 8.6
-    * What type of thing is X?  (itemset)
-    * Why choose maximal on line 4?
-
-# Chapter 9 Representing Itemsets
-
-## Maximal Itemsets
-  * Intro concept
-  * Different "directions" of expansion
-  * Maximal means we can't add an element without losing a transaction and dropping below min support
-  * Could we possibly add an element and both gain/lose one transaction to "hold even"?
-
-## Closed itemset
-  * Idea of closure of X: i(t(X))
-  * What effect does closure operation have on support? (None)
-  * 9.3 in English? (Can't add an item without losing a transaction.)
-  * Ask: isn't a closure the same as a maximal? (No, could be at a higher level of support than minsup.)
-  * 9.4
-    * Can maximal itemset be expanded by closure? (No, so M $\subseteq$ C)
-    * Is closed itemset automatically maximal? (No)
-
-## Min Generator
-  * English meaning of 9.5?  ("Can't lose an item without gaining a transaction")
-  * Unique min-generator to maximal subset pairing? (No, can lose different items without gaining transactions)
-  * Consider ABCD, ABC, ACD,
 
 ## Fig 9.2
 
-# Sequence Mining
-
-## Basics
- * Sequence, subsequence, and substring
- * Fig 10.0
-    * What is different about this tree vs the itemsets lattice?
- * Support concepts
-    * Definition of support
-    * Explain a few of the nodes in the tree
-    * SAuper/sub *sequences* not subsets
-    * Still monotonic?  Why/why not?  **subseq has to also be supported same.  superseq can't be more.** 
- * Trace standard apriori style algorithm, DFS on the tree
-    * Note similarities to Apriori
-    * Why children(parent) on 17, and no a<b?  **symbols, including self, are repeatable.**
-    * Trace tree development briefly
- * Spade algorithm
-    * Concept of final-symbol potential locations
-    * Trace logic of 10.4 tree, for a few.  Then have them trace the rest.
-    * Algorithm 10.2: 
-       * What is definition of intersection on line 6?
-       * What is the algorithm analagous to?
 
 
-## GSP Algorithm
- * What the heck does this, in 10.2.1, mean: "It uses the antimonotonic property of support toprune c andidate patterns, that is, no supersequence of an infrequent sequence can be frequent, and all subsequences of a frequent sequence must be frequent."
- * 
-
-## Suffix trees
- * Review basic suffix tree idea.  
-   * Do exercises, adding new strings
-   * Efficiencies
-      * Substring ranges on branches
-      * Track support
-   * Use for finding substrings
-   * Trie, Patricia tree or radix tree
-   * Why suffix and not prefix?  **forward seeking requires suffix mode**
-   * Order of complexity for string hunt -- clear choice at each node
- * Building one fast.  Ukkonen's.  
-   * (Sample patterns  CAGAAGT TGACAG, abcabxabcd, abracadabra)
-   * Build by extension
-   * Try simple case like abcd -- all explicit suffixes
-   * ABCABCD implicit suffixes
-     * How do we find the "fallback location"? **Simple search if off of root**
-   * Try ABCABXABCD
-     * Need skip into fallback prefix
-   * Run example
-     * How to get second level of suffix links to be used? ABCABXABCDABCX
-
-
-## Evaluating Itemsets
- * Well-supported itemsets aren't the final result
-   * Lots of them.  Still a "data science" job to cull them
-   * Some are less meaningful, e.g. {milk, eggs, bread}
-   * Rich set of quantitative measures for evaluating itemsets and association rules, clearly from many research papers
-     * Understand all in order to reason well about this, and to deepen probability thinking
-     * Confidence and lift are most common in my limited experience, especially lift
-
- * First look at Association Rules more closely
-   * Is confidence a sufficient indicator?
-      * Example of Lox -> Bagel 40% confidence vs Lox -> Milk 40%
-      * Even highly confident rule can indicate *reverse* causation.
-   * Lift concept
-      * EQ 12.4
-      * Advantages
-      * Takes background likelihood into account.  
-      * If Bagel is .05 likely, lox .03 and milk .5, what are the lifts of our bagel/lox/milk example?
-         * Lox -> Bagel **.4 / .05 = 8
-         * Lox -> Milk **.4 / .5 = .08
-      * Can be high or low (above or less than 1.0)
-         * Arrive at a lift of 10?  **probs of .1 can arrive at lift of 10**
-         * How about low lift?  How low can it go? **0 for any completely disjoint X and Y**
-      * Disadvantages
-      * Show how a rare pair of events can result in lift of 1000?  **Both .001 likely, but 100% correlated**
-      * Symmetrical.  Why is this bad?  **No causality info**
-
-   * Leverage concept
-      * Looks to me like this is just lift - 1.0, or "differential lift".  Is this so? **No, because it's lift-1.0 times rsup(X)*rsup(Y)**
-      * So, like lift, but differential, and magnified by joint support (support of itemset XY).
-      * What is max leverage possible?  How obtained?  **Can't exceed 1.0 due to probs, but worse than that.  X and Y = 1/2 and fully correlated gets leverage of .25**
-      * How about min leverage?  **Fully uncorrelated with .5 prob for X and Y gets -.25**
-      * What is leverage like with light data (low probs), such as high-lift rare case earlier?  ** Tends to near zero.  Fully correlated with .001 -> .00999.  Uncorrelated -.000001 **
-
-   * Jaccard
-      * What share of the Venn diagram is the rule?
-      * Symmetric
-      * Sensitive to low prob values.
-
-   * Conviction 
-      * Conviction takes into account how likely rule is to *fail*, in particular X -> !Y$
-      * Lift of this measure is bad if larger, so invert to 1 / lift(x -> !y)
-      * Assymetrical
-      * How to make high?  How high can it go?
-
-   * Odds ratio
-      * "Odds" concept.  Alternate way to state relative probability, intuitively considering the "not" case also.
-        * Mathematically p/(1-p) ratio, e.g. .75 probability is 3:1 odds.  (Usually state with 1 in "denominator")
-        * They do 5:1 odds is what probability **.8333**.  .9 probabililty is what odds? **9:1**
-        * Vs probability, has what range?  **0 to infinity**
-      * Ratio of chance of Y with and without X.
-        * Significance of 1?
-        * How to get 0 even if X -> Y is supported? **If Y is always there anyway**
-        * Example 12.8
-   
-   
- * Evaluating entire pattern or itemset
-   * Total lift eq 12.9
-     * (Product notation)
-     * Make lift of an itemset be 1 even if its support is 100% **All items are 100%**
-   * Need to consider lift or other measures for *all rules derived*
-     * Q-partition and 12.10
-     * Revise the min notation
-   * Max, min, or average may be used.
-     * Table 12.14
-     * Discuss which is more important (min, max, ave) and why
-       * Min susses out "duh" cases if these are fully explanatory
-       * Max finds significance
-   * "Productive" itemsets
-     * Productive itemset if *all* A->B rules have lift > 1, or $lift_2(X) > 1.0$
- * Productive association rules
-  * Idea of "more general" -- reduce antcedent by at least one member
-  * Productive association cannot be made more general without loss of confidence
-    * Why confidence instead of support? **More general cannot reduce support, only increase it**
-    * Example of more general rule with less confidence?  **buns and dogs -> mustard vs dogs -> mustard if dogs are very common**
-    * Concept of "improvement": 12.12.
-  * Fisher Exact Test
-    * Hypergeometric distribution.  
-     * Pick X people from a N-person pool of known C1 and C2 categories e.g. studiers/nonstudiers, what is chance of Y C1s and X-Y C2s?
-     * Universe of possible X-person choices $N \choose X$
-     * Most won't have X C1s.  How many will?  
-     * Gotta choose Y from C1, so $C1 \choose Y$.  But, there are also
-         many ways to choose the X-Y C2s, so also $C2 \choose {X-Y}$
-     * ratio is likelihood of X C1s from N.  $\frac{{C1 \choose Y}{C2 \choose {X-Y}}}{N \choose X}$
-  * OK, now consider a second division of the N items into groups, say men/women. 
-     * Four-way table: categories (significant or not?) plus C1 and C2, generally termed "success" and "failure"
-     * Women/men studier/nonstudier example
-     * Question is whether second division has an impact on first.
-       * Null hypothesis is "no", but is this believable based on the data?
-       * Can get C1, C2 and N from the table/sample: C1 = a+b, C2 = c+d, N = a+b+c+d  Also X = a + c or b + dfrom a column.
-       * What is chance of X?  If under, say P-value of .01, then we reject null hypothesis.
-       * Do the math for column 1.
-       * They expand to simple fraction model.
-       * They do the math for column 2 and show it's the same!
-       * Do exercise with a, b, c, d = 3, 12, 9, 8 **Likelihood of .049, rejecting null hypothesis at P-value .05**
-     * But, is this a complete picture? It gives likelihood of *exactly* 3 male studiers, but treats more extreme cases (2 studiers?) as part of the 95.1% other possibilities.
-       * What are "more extreme cases"? Bit of an open question, but a reasonable measure maintains both category counts.
-       * Lower our example to two male studiers while maintaining row/col totals? **2, 13, 10, 7**
-       * (Can you do that as a simple change from the earlier case?) **Yes, multiply by 3*8/13*10**
-       * And again for 1?
-       * How does null hypothesis look now?
-     * What about the other way?  Does success/failure have an effect on men/women?
-       * Intuitively should work both ways, with a being equally unlikely from either perspective
-       * Do the math to show this is so.  **Left as homework**
-  * Powerful way to evaluate an association rule, assuming existing database is itself just a sample space
-    * Use Fisher test to determine whether the effect of a generalization is "surprising".
-    * Generalize by removing an antecedent subset Z, so X = W|Z
-    * Table 2.17
-      * Null hypothesis: Z has no impact on Y.  Rows don't matter.
-      * Or equivalently, and somewhat more subtly, can't tell whether Z was in antecedent or not based just on Y vs notY.  (Can't determine whether studier or not based on man or woman)
-      * Explore odds calculation eq 12.13
-         * Note that it's symmetrical wrt rows/cols, as expected
-         * Explore counterexamples to convince all that this is so.   
-         * Follow through with Fisher test 12.14
-         * Summation in 12.15
 
 ## Clustering
 * Section 13.1 KMeans
