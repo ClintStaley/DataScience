@@ -1,0 +1,78 @@
+# Representative (EM) Clustering
+
+## Readings
+Zaki
+  * Chapter 13.1 through 13.3.2
+
+## Exercises
+
+1. Can $P(C_i)$ be zero for any cluster?  Describe how if so, or explain why this isn't possible. **Not possible.  Every datapoint contributes some nonzero value to each $P(C_i)$ no matter how distant since the multivariate normal is everywhere > 0**
+
+2. A is a 1xN vector, and B is a Nx1 vector.  What is the order of complexity, wrt N, of these two product computations?
+
+* AB   **Ans $O(N)$ since it's a dot product**
+* BA   **Ans: $O(N^2)$ since it's an outer product**
+
+**The next questions consider the four points (2, 0), (0, 1), (-2, 0), (0, -1), and using these as sample points for a 2-D normal:**
+
+3. Compute the $\Sigma$ and $\Sigma^{-1}$ matrices using eq 13.12 with n=4 for the four points.  
+**Ans: $\Sigma = \begin{bmatrix}2 & 0 \\ 0 && 0.5 \\ \end{bmatrix} \Sigma^{-1} = \begin{bmatrix}0.5 && 0 \\ 0 && 2 \\ \end{bmatrix}$**
+
+4. Compute the $\sigma_x$ and $\sigma_y$ values for the points.  **Ans: $\sigma_x = 1.414, \sigma_y = .707$**
+
+5. Assuming X = $[\sigma_x, \sigma_y]$, compute $X\Sigma^{-1}X^T$ and explain why the result is expected based on the intuitive purpose of $\Sigma^{-1}$ in the 2-D normal distribution.  In a different example case, where we arrived at a different $\Sigma$ and different $\sigma_x$ and $\sigma_y$, how might this result change? **Ans: $X\Sigma^{-1}X^T = 2$ This is reasonable because $\Sigma^{-1}$ converts the scaled rotated multivariate $X - \mu$ into a simple multivariate normal with $\sigma_x = \sigma_y = 1$, and the product of X with itself arrives at the squared distance from mean, with $\sigma = 1$, which would be $1^2 + 1^2 = 2$  The result should be exactly the same with a different example case.**
+
+6. Based on the prior step, predict, without actually doing the matrix math, the result of the same computation for $[0, \sigma_y]$, $[-\sigma_x, \sigma_y]$ and $[\sigma_x, 0]$ **By the reasoning above, we'd get 1, 2, and 1, respectively.**
+
+7. Compute the orthonormal matrix Q representing a $30^o$ counterclockwise rotation.
+**Ans: $\begin{bmatrix}.866 && -.5\\.5 && .866\\ \end{bmatrix}$**
+
+8. Apply Q to the four points to rotate the entire distribution counterclockwise $30^o$ **Ans: $(\pm 1.7321, \pm1), (\pm.5, \mp.866)$**
+
+9. Compute the new covariance matrix $\Sigma'$, per eq 13.12, with n = 4 for the four rotated points **Ans: $\begin{bmatrix}1.625 && .65\\.65 && .875\\ \end{bmatrix}$**
+
+10.  Compute also the positive definite matrix $\Sigma''=Q \Sigma Q^{-1}$, which is the same transform as $\Sigma$ but rotated $30^o$ 
+
+**Ans: $\begin{bmatrix}.866 && -.5\\.5 && .866\\ \end{bmatrix}
+ \begin{bmatrix}2 & 0 \\ 0 && 0.5 \\ \end{bmatrix}
+ \begin{bmatrix}.866 && .5\\-.5 && .866\\ \end{bmatrix} = 
+ \begin{bmatrix}1.625 && .65\\.65 && .875\\ \end{bmatrix}$**
+
+11. Compare $\Sigma'$ and $\Sigma''$.  Why does the result make sense? **The same, since the covariance matrix is the transform needed to scale and rotate the spherical multivariate normal**
+
+12. Zaki Ch13 Q2 
+ * Note this refers to the table *above* not below
+
+**Q2a $\mu_1 = \frac{2(.9)+3(.8)+7(.3)+2(.9)+1(.8)}{.9+.8+.3+.1+.9+.8)} = \frac{9.8}{3.8} = 2.58$; $\mu_2 = 6.62$ similarly**
+
+**Q2b $P(5|C_1) = \frac{e^{-\frac{(x-2)^2}{2}}}{\sqrt{2\pi}} = .0044$
+$P(5|C_2) = \frac{e^{-\frac{(x-7)^2}{2}}}{\sqrt{2\pi}} = .054$, so since all P(C) are equal, $P(C_1|5) = \frac{P(5|C_1)}{P(5|C_1)+P(5|C_2)}=\frac{.0044}{.0044+.054} = .075$; similarly $P(C_2|5) = \frac{.054}{.0044+.054} = .925$**
+
+
+13. Zaki Ch13 Q3b (Not a!)
+ * Note this refers to the table *above* not below
+ * The statement regarding $P(C_i|x_{aj}) = .5$ is somewhat awkward in that i and a should be the same variable.  Simply take it to mean that all such partial probabilities are .5 regardless of point or cluster.
+ * You should find you need to compute new values only for one cluster. 
+ * Compute all the way through the new $w_{ij}$ values, but compute only $w_{11}, w_{12}$, and $w_{13}$.
+ * Submit precisely these new values, showing your work, and highlighting these values on the page: $\mu_1, \mu_2, \Sigma_1, \Sigma_2, \Sigma_1^{-1}, P(C_1), P(C_2), w_{11}, w_{12}, w_{13}$
+
+ **The interesting thing here is that the w values are preset, so we don't need to know prior $\theta$ values, and also they are uniform, so both clusters will have identical $\mu$, $\Sigma$ and P values. So, we have\
+  $\mu_1 = \mu_2 = \frac{\begin{bmatrix}5.75 && 2 \end{bmatrix}}{2.5} = \begin{bmatrix}2.3 && .8 \end{bmatrix}$\
+ And, $\Sigma_1 = \Sigma_2 = \ \frac{\begin{bmatrix}12.9 && .4 \\ .4 && 2.4\end{bmatrix}}{2.5} = \begin{bmatrix}5.16 && .16 \\ .16 && .96\end{bmatrix}$\
+And, $\Sigma^{-1} = \begin{bmatrix}.195 && -.032 \\ -.032 && 1.047\end{bmatrix}$\
+And $P(C_1) = P(C_2) = .5$\
+And $w_{11} = w_{12} = w_{13} = .5$ since the $\mu$ and $\Sigma$ are identical**
+
+14. Zaki Ch13 3b Followup\
+Using your results from the prior question, factor $\Sigma_1$ into $Q \Lambda Q^{-1}$ form.  (Note that there are many online sources for diagonalizing and inverting matrices.)  Explain why the resultant Q makes sense.  Draw a diagram of the 5 points and $\mu_1$ and estimate the implied scaling values and rotation value for $C_1$.  This will also serve as a reality check on your $C_1$ computations.\
+\
+Submit the factoring, the estimated scaling factors, the diagram, and an explanation of how the Q and the scaling factors lead to an ellipse that corresponds with the 5 points.\
+\
+Finally, comment on how long the EM algorithm will take to converge in this case, and what lessons might be drawn from this regarding initialization.
+
+**Ans: The factoring results in $\Lambda = \begin{bmatrix}5.16 && 0\\ 0 && .95 \end{bmatrix}$ and $Q = \begin{bmatrix}.999 && -.038 \\ .038 && .999 \end{bmatrix}$\
+The Q is thus nearly I, with a slight ccw twist.  The major axis of the ellipse is thus X, slightly CCW, magnitude $\sqrt{5.16} = 2.27$. The nearly symmetrical, long-rectangle layout of the points about their (2.3, .8) mean is consistent with a major scaling in X, and a slight ccw skew from point (1.5, 0)\
+\
+And in the given scenario the algorithm will never make any progress.  Lesson learned is to start with asymmetrical values, or with actual random cluster stats.**
+
+

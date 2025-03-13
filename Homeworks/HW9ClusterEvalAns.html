@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="cluster-evaluation">Cluster Evaluation</h1>
+<h2 dir="auto" id="readings">Readings</h2>
+<ul dir="auto">
+<li dir="auto">Zaki Ch 17</li>
+<li dir="auto">Info Theory Overview</li>
+</ul>
+<ol dir="auto">
+<li dir="auto">Describe a situation where <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>e</mi><msub><mi>c</mi><mi>i</mi></msub><mo>=</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">prec_i = 1.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">re</span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1.0</span></span></span></span></eq> but <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mi>e</mi><mi>c</mi><mi>a</mi><mi>l</mi><msub><mi>l</mi><mi>i</mi></msub><mo>=</mo><mi mathvariant="normal">.</mi><mn>1</mn></mrow><annotation encoding="application/x-tex">recall_i = .1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">rec</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">.1</span></span></span></span></eq> for all values of i.  How many classes are needed?  What is the F-score in this case?</li>
+</ol>
+<p dir="auto"><strong>10 classes have the same <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>T</mi><msub><mi>j</mi><mi>i</mi></msub></msub></mrow><annotation encoding="application/x-tex">T_{j_i}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3280857142857143em;"><span style="top:-2.357em;margin-left:-0.05724em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.143em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></eq>, with no other samples in other columns. F = .182</strong></p>
+<ol start="2" dir="auto">
+<li dir="auto">What is the total purity and recall of a K-NN classifier with K=1, assuming the sample points used are the same as those for training?  What does this say about the measures and choice of test sample points?</li>
+</ol>
+<p dir="auto"><strong>Both are 1.0, yet the 1-NN isn't a great classifier, so measures are imperfect, and we would do better with sample points not from the training set</strong></p>
+<ol start="3" dir="auto">
+<li dir="auto">
+<p dir="auto">Say we trade off precision vs recall in various ways, but always so that precision = 1 - recall.  What is the highest and lowest possible F-score? <strong>.5 and 0</strong></p>
+</li>
+<li dir="auto">
+<p dir="auto">Assume you have a non-uniform probability distribution, with event probabilities ranging from .25 down to .01.  You divide one of the existing events into two equally-likely events, e.g. dividing an event E with 20% probability into E1 and E2 each with 10% probability.  Assuming <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">log_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>, what is the largest possible increase in entropy resulting from such a division?  The smallest?</p>
+</li>
+</ol>
+<p dir="auto"><strong>Dividing a .25 event will result in increase of .25 entropy.  Dividing a .01 event results in .01 entropy increase.</strong></p>
+<ol start="5" dir="auto">
+<li dir="auto">If r = k, and I(C,T) = 4, what is the minimum possible value for r and k and why?  What will the contingency table look like in this case? (Do <em>not</em> try this by messing with the equations -- reason it out intuitively)</li>
+</ol>
+<p dir="auto"><strong>This implies that C and T each communicate 4 bits of information about the other.  For this to be possible, there must be 4 bits of entropy in C and T, which implies a minimum of r = k = 16, and uniform likelihood of C and T elements.  The contingency table has 16 nonzero elements, all with same <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>n</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></mrow><annotation encoding="application/x-tex">n_{ij}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span></eq>, though not necessarily on the diagonal as long as there are no common rows or columns</strong></p>
+<ol start="6" dir="auto">
+<li dir="auto">If I(C,T) = 0, what does this say about the value of &quot;match&quot;?</li>
+</ol>
+<p dir="auto"><strong>All matches are equally good.</strong></p>
+<ol start="7" dir="auto">
+<li dir="auto">I transmit information about the classes of a set of sample values from a known ground-truth clustering.  But, I send the C values for each sample, not the T value, which means there may be some error.  For each case, indicate how many <em>additional</em> bits per sample I must transmit to correct any errors, on average, or indicate that you can't tell this from the value given.</li>
+</ol>
+<p dir="auto">a. I(C, T) = 4  <strong>Can't tell -- depends on H(T)</strong>
+b. H(T|C) = 3  <strong>3 additional bits</strong>
+c. H(C|T) = 3  <strong>Can't tell</strong>
+d. I(C, T) = 2 and H(C) = 3 <strong>Still can't tell</strong>
+e. I(C, T) = 2 and H(T) = 4 <strong>2 additional bits</strong></p>
+<ol start="8" dir="auto">
+<li dir="auto">Now, assume instead I'm trying to communicate the results of a C-based classification of a set of samples from a known ground-truth T.  Answer the same question as above, for the same data:</li>
+</ol>
+<p dir="auto">a. I(C, T) = 4  <strong>Can't tell -- depends on H(C)</strong>
+b. H(T|C) = 3  <strong>Can't tell</strong>
+c. H(C|T) = 3  <strong>3 additional bits</strong>
+d. I(C, T) = 2 and H(C) = 3 <strong>1 additional bit</strong>
+e. I(C, T) = 2 and H(T) = 4 <strong>Can't tell</strong></p>
+
+</body>
+</html>

@@ -1,0 +1,525 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="itemsets">ItemSets</h1>
+<h2 dir="auto" id="itemsets-1">Itemsets</h2>
+<ul dir="auto">
+<li dir="auto">shopping carts, web pages visited, etc.</li>
+<li dir="auto">Items and transactions; Itemsets and Tidsets</li>
+<li dir="auto">i(T) and t(X) functions
+<ul dir="auto">
+<li dir="auto">Use text definitions</li>
+<li dir="auto">Subsetting relationships:
+<ul dir="auto">
+<li dir="auto">Itemset A is subset/superset of Itemset B.  Effect on t(A) vs t(B)?</li>
+<li dir="auto">Tidset A is subset/superset of Tidset B.  Effect on i(A) vs i(B)?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="example-83">Example 8.3</h2>
+<ul dir="auto">
+<li dir="auto">Possible for item in <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">F^{(3)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">3</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq> to not be prefix of some item in <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>F</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">F^{(2)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mtight">2</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq>? <em>No</em></li>
+</ul>
+<h2 dir="auto" id="association-rules">Association Rules</h2>
+<ul dir="auto">
+<li dir="auto">Compute <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><mi>p</mi><mo stretchy="false">(</mo><mi>A</mi><mi>B</mi><mo>→</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">sup(AB \rightarrow D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></eq>  <strong>Answer: 3</strong></li>
+<li dir="auto">Compute <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mi>o</mi><mi>n</mi><mi>f</mi><mo stretchy="false">(</mo><mi>A</mi><mi>B</mi><mo>→</mo><mi>D</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">conf(AB \rightarrow D)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">co</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathnormal">A</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="mclose">)</span></span></span></span></eq>  <strong>Answer: 3/4 = .75</strong></li>
+<li dir="auto">Can conf(X-&gt;Y) be greater than 1.0?  Why or why not?</li>
+</ul>
+<h2 dir="auto" id="example-problem-to-consider">Example problem to consider</h2>
+<ul dir="auto">
+<li dir="auto">|I| = 10,000: 10,000 distinct items</li>
+<li dir="auto">|D| = 1,000,000,000 transactions of average 5 items, but 1% (10,000,000) have 100 items</li>
+<li dir="auto">What is average <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>u</mi><mi>p</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">sup(x_i)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">u</span><span class="mord mathnormal">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq> for single item? <strong>(5,000,000,000 + 95*10,000,000)/10,000 = 5,950,000,000/10,000 = 595,000</strong></li>
+<li dir="auto">With relative minsup = .01, what is absolute minsup, then?<br>
+<strong>10,000,000</strong></li>
+</ul>
+<h2 dir="auto" id="brute-force-algorithm">Brute Force Algorithm</h2>
+<ul dir="auto">
+<li dir="auto">Walk through and explain each step</li>
+<li dir="auto">Compute complexity
+<ul dir="auto">
+<li dir="auto">Iterations of loop 8? <strong>|D|</strong></li>
+<li dir="auto">Line 9? (Assume both sets are ordered by item) <strong>|i(t)|, not |I|</strong></li>
+<li dir="auto">So, around 5,950,000,000 steps in ComputeSupport</li>
+<li dir="auto">And, number of iterations for line 2? <strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi mathvariant="normal">∣</mi><mi>I</mi><mi mathvariant="normal">∣</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2^{|I|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">∣</span></span></span></span></span></span></span></span></span></span></span></span></eq> possible, and <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>100</mn></msup></mrow><annotation encoding="application/x-tex">2^{100}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">100</span></span></span></span></span></span></span></span></span></span></span></span></eq> in our example.  Hmm...</strong></li>
+<li dir="auto">Plus, DB scan for each candidate set.  DBs can be large enough to need out-of-memory I/O
+<ul dir="auto">
+<li dir="auto">Our D is how big? <strong>Assuming two bytes/item just under 12G.  Fits in memory -- maybe.</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">How to improve?  What order would you explore the itemsets: big to small? Small to big? Item order? Can we trim?
+<ul dir="auto">
+<li dir="auto">This is how you should do reading: question and anticipate</li>
+</ul>
+</li>
+<li dir="auto">Look at lattice
+<ul dir="auto">
+<li dir="auto">How does sup change as you move down?</li>
+<li dir="auto">What are definitions of partial order and DAG? <strong>Should know from prior courses</strong></li>
+<li dir="auto">Lattice adds to partial order an &quot;up and down convergence&quot;, roughly speaking.  Up/down bounds of empty set and full set make this DAG a lattice.</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="apriori">Apriori</h2>
+<ul dir="auto">
+<li dir="auto">Walk through ComputeSupport for sample itemsets
+<ul dir="auto">
+<li dir="auto">Why is this better?</li>
+<li dir="auto">Note ComputeSupport works &quot;in reverse&quot;, generating all k-subsets of each i(t).</li>
+<li dir="auto">Would it be faster to go through each <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo>∈</mo><msup><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">c\in C^{(k)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathnormal">c</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq>?  <strong>Probably not, since we can arrange <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">C^{(k)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq> by prefix order for faster hunt.</strong></li>
+</ul>
+</li>
+<li dir="auto">ExtendPrefixTree
+<ul dir="auto">
+<li dir="auto">What are b and a in line 17? <strong>Sequence left to right, or if you like, first differing letter after common prefix</strong></li>
+<li dir="auto">What does line 18 really do? How much larger is <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">X_{ab}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ab</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> than <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">X_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> or <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">X_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>? <strong>Adds next letter to <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">X_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>, by merge with <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>b</mi></msub></mrow><annotation encoding="application/x-tex">X_b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">b</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>, to get to next tree level.</strong></li>
+<li dir="auto">Reframe line 19 a bit.  &quot;if for all <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>j</mi></msub><mo>⊂</mo><msub><mi>X</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">X_j \subset X_{ab}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ab</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> such that <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∣</mi><msub><mi>X</mi><mi>j</mi></msub><mi mathvariant="normal">∣</mi><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">|X_j| = k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord">∣</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span></eq>, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>j</mi></msub><mo>∈</mo><msup><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">X_j \in C^{(k)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq> then add <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">X_{ab}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ab</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>&quot; Why? <strong>This tests for k-sized subsets of the new <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mrow><mi>a</mi><mi>b</mi></mrow></msub></mrow><annotation encoding="application/x-tex">X_{ab}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">ab</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> that are infrequent.</strong>
+<ul dir="auto">
+<li dir="auto">What happens if we omit this test? **Still finds inadequate support, but with another D traverse in ComputeSupport.  The test uses our existing knowledge of <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">C^{(k)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq> to cull new elements of <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">C^{(k+1)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mbin mtight">+</span><span class="mord mtight">1</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq></li>
+<li dir="auto">Name one node in Fig 8.3 that is culled by this test. Needs to be a node that has non-culled ancestors, but a culled subset. <strong>ONLY BCD on level 3 -- all other dotted circles are due to culled ancestors</strong></li>
+</ul>
+</li>
+<li dir="auto">What is lowest sup value for all elements of <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></msup></mrow><annotation encoding="application/x-tex">C^{(k)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span></span></span></span></eq> at start of ExtendPrefixTree? <strong>All have at least minsup or would have been trimmed</strong></li>
+<li dir="auto">Why the final removal of non-productive leaves <em>and their ancestors</em>? <strong>Want to keep only leaves that are possibly productive, and only at the current &quot;k&quot; level.</strong></li>
+</ul>
+</li>
+<li dir="auto">Does <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>C</mi><mo stretchy="false">(</mo></msup><mi>k</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C^({k})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.138em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mopen mtight">(</span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span><span class="mclose">)</span></span></span></span></eq> contain only leaf nodes? <strong>No, it keeps all parents of current leaves. Culling is only by the final lines of the code.</strong></li>
+<li dir="auto">&quot;a priori&quot; - &quot;having to do with what came before&quot;.  Why does this relate to algorithm? <strong>Considers support of smaller subsets that build into current one</strong></li>
+<li dir="auto">Run time?
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">ComputeSupport</p>
+<ul dir="auto">
+<li dir="auto">Database scan reduction, since we do it once per level</li>
+<li dir="auto">Subset computation on line 14?  Always a worry to do subset scans..
+<ul dir="auto">
+<li dir="auto">But only for k-subsets, not all... How bad can this get?</li>
+<li dir="auto"><strong>Consider |i(t)| = 100 and k = 10? <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mo fence="true">(</mo><mfrac linethickness="0px"><mn>100</mn><mn>10</mn></mfrac><mo fence="true">)</mo></mrow><mo>=</mo><mn>1.7</mn><mi>x</mi><mn>1</mn><msup><mn>0</mn><mn>13</mn></msup></mrow><annotation encoding="application/x-tex">{100 \choose 10} = 1.7x10^{13}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.245118em;vertical-align:-0.35001em;"></span><span class="mord"><span class="mord"><span class="mopen delimcenter" style="top:0em;"><span class="delimsizing size1">(</span></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8951079999999999em;"><span style="top:-2.3550000000000004em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span><span style="top:-3.144em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">100</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose delimcenter" style="top:0em;"><span class="delimsizing size1">)</span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1.7</span><span class="mord mathnormal">x</span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">13</span></span></span></span></span></span></span></span></span></span></span></span></eq> -- 17 trillion</strong></li>
+<li dir="auto">So what kind of itemset data will make this algorithm very slow? <strong>Large i(t) values, and even modestly large k-sets</strong></li>
+<li dir="auto">Could we fix this?  <strong>Possibly, by doing foreach( <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>∈</mo><msup><mi>C</mi><mi>k</mi></msup></mrow><annotation encoding="application/x-tex">X \in C^k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span></span></span></span></eq>) instead...</strong></li>
+<li dir="auto">But how big might even <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>c</mi><mn>10</mn></msup></mrow><annotation encoding="application/x-tex">c^{10}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">10</span></span></span></span></span></span></span></span></span></span></span></span></eq> be?  <strong>10,000<em>9,999</em>...9,901 = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>40</mn></msup></mrow><annotation encoding="application/x-tex">10^{40}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">40</span></span></span></span></span></span></span></span></span></span></span></span></eq> if none are culled.</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Line 14? <strong><eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi mathvariant="normal">∣</mi><mi>i</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2^{|i(t)|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathnormal mtight">i</span><span class="mopen mtight">(</span><span class="mord mathnormal mtight">t</span><span class="mclose mtight">)</span><span class="mord mtight">∣</span></span></span></span></span></span></span></span></span></span></span></span></eq> for 5 items, 32 but for 100 items <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>100</mn></msup></mrow><annotation encoding="application/x-tex">2^{100}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">100</span></span></span></span></span></span></span></span></span></span></span></span></eq></strong></p>
+<ul dir="auto">
+<li dir="auto">Better have fairly small transactions</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Line 13 is clearly O(|D|), so multiply all this by 1 billion</p>
+</li>
+<li dir="auto">
+<p dir="auto">Other lines are harder to count, but how many times will we add a set on lines 18-20?</p>
+<ul dir="auto">
+<li dir="auto">Is this the number of sets <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><mi mathvariant="normal">∣</mi><mi>I</mi><mi mathvariant="normal">∣</mi></mrow></msup></mrow><annotation encoding="application/x-tex">2^{|I|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8879999999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8879999999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">∣</span><span class="mord mathnormal mtight" style="margin-right:0.07847em;">I</span><span class="mord mtight">∣</span></span></span></span></span></span></span></span></span></span></span></span></eq> Why or why not? <strong>No, it's vastly less because we drop off sets as support wanes, moving down tree.</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">And how expensive is the subset-scan on line 19?
+<strong>Candidate sets can't be supported if larger than largest tidsets, but still could be that <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>100</mn></msup></mrow><annotation encoding="application/x-tex">2^{100}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">100</span></span></span></span></span></span></span></span></span></span></span></span></eq> we were hit by earlier.</strong></p>
+</li>
+</ul>
+</li>
+<li dir="auto">So, much better than brute force, but still a problem for what cases?
+<ul dir="auto">
+<li dir="auto"><strong>large |D|</strong></li>
+<li dir="auto"><strong>above all large |i(t)| with low minsup</strong></li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="eclatdeclat">Eclat/DEclat</h2>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Maintenance of explicit support lists</p>
+<ul dir="auto">
+<li dir="auto">No need to rescan D</li>
+<li dir="auto">Follow tree in book and Eclat code</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">How does this improve on APriori?</p>
+<ul dir="auto">
+<li dir="auto">No multiple passes through D</li>
+<li dir="auto">No powerset operations</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">How is it weaker than APriori?</p>
+<ul dir="auto">
+<li dir="auto">Whopping large support lists and intersection ops.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Tid-difference concept</p>
+<ul dir="auto">
+<li dir="auto">Definition of set subtraction as <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mi mathvariant="normal">\</mi><mi>B</mi><mo stretchy="false">(</mo><mi>s</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>s</mi><mi>A</mi><mo>−</mo><mi>B</mi><mo stretchy="false">)</mo><mo>=</mo><mi>A</mi><mo>∩</mo><mover accent="true"><mi>B</mi><mo>ˉ</mo></mover></mrow><annotation encoding="application/x-tex">A \backslash B (sometimes A-B) = A \cap \bar{B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">A</span><span class="mord">\</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mopen">(</span><span class="mord mathnormal">so</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord mathnormal">t</span><span class="mord mathnormal">im</span><span class="mord mathnormal">es</span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∩</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8201099999999999em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8201099999999999em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span></span><span style="top:-3.25233em;"><span class="pstrut" style="height:3em;"></span><span class="accent-body" style="left:-0.16666em;"><span class="mord">ˉ</span></span></span></span></span></span></span></span></span></span></eq> or A minus anything that was in B.</li>
+<li dir="auto">Why does it make <em>sense</em> that <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mo stretchy="false">(</mo><msub><mi>X</mi><mi>a</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mi>t</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mi mathvariant="normal">\</mi><mi>t</mi><mo stretchy="false">(</mo><msub><mi>X</mi><mi>a</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d(X_a) = t(X) \backslash t(X_a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mord">\</span><span class="mord mathnormal">t</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></eq>? <strong>Because what we lose in support by including <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">X_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> is what was in X's support but not in <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>X</mi><mi>a</mi></msub></mrow><annotation encoding="application/x-tex">X_a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.07847em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq>'s support.</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Quiz (use our sample database):</p>
+<ul dir="auto">
+<li dir="auto">Say for an itemset ABC, d(X) = <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">∅</mi></mrow><annotation encoding="application/x-tex">\emptyset</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">∅</span></span></span></span></eq>.  What does this say about the relevant transactions? <strong>Any transaction that includes AB also includes C</strong></li>
+<li dir="auto">What is the largest <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∣</mo><mi>d</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">∣d(X)|</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mrel">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">d</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mord">∣</span></span></span></span></eq> possible in our sample database? Why? <strong>10,000,000 if item is in no transactions</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Discuss book suggestion of starting with t(X) values and shifting to d(X)</p>
+<ul dir="auto">
+<li dir="auto">Would this be useful with our sample database? <strong>Yes.  Initial support per-item averages 5300 transactions</strong></li>
+<li dir="auto">What about a typical shopping database? <strong>Even more so given smaller carts and larger inventory</strong></li>
+<li dir="auto">Why go to d(X) at 2-itemsets? Might t(X) still be smaller than d(X) that early? <strong>Sure, if we lost more than half the support of the 1-itemsets when adding second items</strong></li>
+<li dir="auto">Do we have to make the t(x) -&gt; d(x) shift at the same level across the tree? <strong>No, each branch gets a separate recursive call</strong></li>
+<li dir="auto">Broadly, when is dEclat preferred?  <strong>With lots of large transactions and slow reduction of support downtree</strong></li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="fpgrowth">FPGrowth</h2>
+<ul dir="auto">
+<li dir="auto">Building the FPTree
+<ul dir="auto">
+<li dir="auto">Compact version of the entire database and supports; used in place of it</li>
+<li dir="auto">Build FP-tree from ACE BCE BCD CE</li>
+<li dir="auto">Note the &quot;layers&quot; in DCAEB order from bottom to top.</li>
+<li dir="auto">Could maintain linked lists through those layers</li>
+<li dir="auto">Do the same with order ABCDE, just to show less efficient version</li>
+<li dir="auto">Can support increase as we descend? <strong>No</strong></li>
+<li dir="auto">Can we generate all subsets as paths in tree? <strong>No</strong></li>
+</ul>
+</li>
+<li dir="auto">Generating subsets from FPTree
+<ul dir="auto">
+<li dir="auto">Start with 1-itemsets, then 2-itemsets, etc.</li>
+<li dir="auto">Easy degenerate FPTree case
+<ul dir="auto">
+<li dir="auto">Do actual exercise on AC A ACE ACED ACE
+<ul dir="auto">
+<li dir="auto">**Should end with degenerate A(5)-&gt;C(4)-&gt;E(3)-&gt;D(2)</li>
+</ul>
+</li>
+<li dir="auto">Generate 1-itemsets, 2-itemsets, etc reading right off the tree</li>
+<li dir="auto">Use least-supported (lowest) node as support for each itemset</li>
+<li dir="auto">Actually generate the 16 possibles from this example</li>
+<li dir="auto">They come up with alternate example using 4 items and try it.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">General FPTree case</li>
+<li dir="auto">Subsets spread across multiple paths.</li>
+<li dir="auto">Try to reduce to degenerate case.</li>
+<li dir="auto">Generate &quot;projected&quot; (filtered or collapsed) FP trees for each item.
+<ul dir="auto">
+<li dir="auto">Effectively dividing the database into A,B,C,D... groups</li>
+<li dir="auto">Easy to do from leaf values.</li>
+<li dir="auto">Can least-supported elements ever have children in the FP-tree? Why/Whynot? <strong>No, since they are always last added in paths.</strong></li>
+<li dir="auto">Can we do a subtree <em>assuming D is in the itemsets</em>?
+<ul dir="auto">
+<li dir="auto">Count support by scanning tree</li>
+<li dir="auto">Rehang the paths to create subtree for patterns</li>
+</ul>
+</li>
+<li dir="auto">Now remove the D leaves, and we're left with the same solution for
+C patterns minus any D patterns</li>
+<li dir="auto">Do the same for C assuming no D at all
+<ul dir="auto">
+<li dir="auto">Ditto for A assuming no C or D, etc.</li>
+</ul>
+</li>
+<li dir="auto">For each such generated tree, track assumed prefix, and do recursion.</li>
+<li dir="auto">How do we understand B?
+<ul dir="auto">
+<li dir="auto">Will it ever appear a lower than top level? <strong>No, even as we generate subcases</strong></li>
+<li dir="auto">What does the prefix tree of &quot;itemsets with B, and no other elements&quot; look like? <strong>Just B itself, with its support</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">Pseudocode in Algorithm 8.5
+<ul dir="auto">
+<li dir="auto">Will line 1 remove frequent nodes that are children of infrequent? <strong>No.  Any infrequent item has only other infrequents as descendants</strong></li>
+<li dir="auto">What is X for on lines 9 and 16? <strong>Prefix of subcall</strong></li>
+<li dir="auto">Does subset operation on line 3 include emptyset? <strong>No, because already handled on line 11</strong></li>
+<li dir="auto">Finish up recursive call for D, then generate sets.</li>
+</ul>
+</li>
+<li dir="auto">Another example</li>
+</ul>
+<h2 dir="auto" id="generating-association-rules">Generating Association Rules</h2>
+<ul dir="auto">
+<li dir="auto">Independent of algorithm</li>
+<li dir="auto">how we use frequent itemsets to deduce causality</li>
+<li dir="auto">If we know ABCD is a frequent itemset, what rules can we deduce?</li>
+<li dir="auto">AB -&gt; CD for instance?  Can we assume that AB in an item set often or always means CD will also be there?
+<ul dir="auto">
+<li dir="auto">Support for such a rule?  How often have we seen it happen? <strong>Support for ABCD</strong></li>
+<li dir="auto">Reality check: Do we also need support for, say, ABCDEF? <strong>No, sup(ABCDEF) &lt;= sup(ABCD)</strong></li>
+<li dir="auto"><em>Confidence</em> c for such a rule?  How often is it followed vs broken?
+<ul dir="auto">
+<li dir="auto">Ratio of ABCD cases to all AB classes</li>
+<li dir="auto">Zaki eq 8.7</li>
+</ul>
+</li>
+<li dir="auto">How might we get:
+<ul dir="auto">
+<li dir="auto">sup(AB -&gt; CD) = 100, c(AB -&gt; CD) = .1 <strong>100 ABCDs and 9,900 AB with only C or D at most</strong></li>
+<li dir="auto">sup(AB -&gt; CD) = 4, c(AB -&gt; CD) = .9 (trick question)? <strong>Can't.  Lowest non-1 confidence would be .8</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">ABCD also supports other association rules, e.g. A -&gt; BCD, CD -&gt; AB, etc.</li>
+<li dir="auto">How many, assuming n items in the set and at least one item on each side of the -&gt;? <strong>powerset for LHS, minus full and empty sets, so <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">2^n - 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.747722em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></eq></strong></li>
+<li dir="auto">How do c(B-&gt;ACD), c(AB-&gt;CD) and c(ABD-&gt;C) relate? <strong>Monotonically higher, since supports of left hand sides monotonically decrease</strong></li>
+<li dir="auto">What is the minimum requirement for all association rules to be &lt; 50% confidence if sup(Z) = 100?
+<ul dir="auto">
+<li dir="auto">Need at least n*101 itemsets each missing just one of the items from Z.</li>
+</ul>
+</li>
+<li dir="auto">Algorithm 8.6
+<ul dir="auto">
+<li dir="auto">Why |Z| &gt;= 2 on line 1? <strong>Need a left and right side</strong></li>
+<li dir="auto">Why choose maximal on line 4? <strong>Reasons just explored.  Subsets will be dropped if superset lacks confidence.  Aim high</strong></li>
+</ul>
+</li>
+</ul>
+<h1 dir="auto" id="chapter-9-representing-itemsets">Chapter 9 Representing Itemsets</h1>
+<h2 dir="auto" id="maximal-itemsets">Maximal Itemsets</h2>
+<ul dir="auto">
+<li dir="auto">Intro concept</li>
+<li dir="auto">Different &quot;directions&quot; of expansion</li>
+<li dir="auto">Maximal means we can't add an element without losing a transaction and dropping below min support</li>
+<li dir="auto">Could we possibly add an element and both gain/lose one transaction to &quot;hold even&quot;? <strong>No.  Gain by adding an element is impossible</strong></li>
+</ul>
+<h2 dir="auto" id="closed-itemset">Closed itemset</h2>
+<ul dir="auto">
+<li dir="auto">Idea of closure of X: i(t(X))</li>
+<li dir="auto">What effect does closure operation have on support? <strong>None</strong></li>
+<li dir="auto">9.3 in English? <strong>Can't add an item without losing a transaction.</strong></li>
+<li dir="auto">Ask: isn't a closure the same as a maximal? <strong>No, could be at a higher level of support than minsup.</strong></li>
+<li dir="auto">9.4
+<ul dir="auto">
+<li dir="auto">Can maximal itemset be expanded by closure? <strong>No, so M <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>⊆</mo></mrow><annotation encoding="application/x-tex">\subseteq</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">⊆</span></span></span></span></eq> C</strong></li>
+<li dir="auto">Is closed itemset automatically maximal? <strong>No</strong></li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="min-generator">Min Generator</h2>
+<ul dir="auto">
+<li dir="auto">English meaning of 9.5?  <strong>&quot;Can't lose an item without gaining a transaction&quot;</strong></li>
+<li dir="auto">Unique min-generator to maximal subset pairing? <strong>No, can lose different items without gaining transactions</strong></li>
+</ul>
+<h2 dir="auto" id="figure-92-big-picture">Figure 9.2 Big Picture</h2>
+<ul dir="auto">
+<li dir="auto">Consider maximal set C <em>for given set t</em>.
+<ul dir="auto">
+<li dir="auto">Must be unique for t.  Why? <strong>Two would be mergeable to make larger union</strong></li>
+</ul>
+</li>
+<li dir="auto">All subsets of C are also supportable by at least t.  Some may be supported by exactly t.</li>
+<li dir="auto">Some t-supported subsets will be minimal.  Not necessarily unique</li>
+<li dir="auto">The maximal sets for t-sets with cardinality minsup are the &quot;maximals&quot;.  May be several, one per t-set.</li>
+</ul>
+<h2 dir="auto" id="eclat-modification">Eclat modification</h2>
+<ul dir="auto">
+<li dir="auto">Algorithm 9.1 generates maximal sets
+<ul dir="auto">
+<li dir="auto">Compare with Eclat</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="evaluating-itemsets">Evaluating Itemsets</h2>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Well-supported itemsets aren't the final result</p>
+<ul dir="auto">
+<li dir="auto">Lots of them.  Still a &quot;data science&quot; job to cull them</li>
+<li dir="auto">Some are less meaningful, e.g. {milk, eggs, bread}</li>
+<li dir="auto">Rich set of quantitative measures for evaluating itemsets and association rules, clearly from many research papers
+<ul dir="auto">
+<li dir="auto">Understand all in order to reason well about this, and to deepen probability thinking</li>
+<li dir="auto">Confidence and lift are most common in my limited experience, especially lift</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">First look at Association Rules more closely</p>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Is confidence a sufficient indicator?</p>
+<ul dir="auto">
+<li dir="auto">Example of Lox -&gt; Bagel 40% confidence vs Lox -&gt; Milk 40%
+<ul dir="auto">
+<li dir="auto">Which is more significant, and why?  <strong>Former, because bagels aren't that common, while milk is</strong></li>
+</ul>
+</li>
+<li dir="auto">Even highly confident rule can indicate <em>reverse</em> causation.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Lift concept</p>
+<ul dir="auto">
+<li dir="auto">EQ 12.4</li>
+<li dir="auto">Emphasizes concept of statistical independence, and has an information theoretic feel.</li>
+<li dir="auto">Takes background likelihood of Y into account.</li>
+<li dir="auto">If Bagel is .05 likely, lox .03 and milk .5, what are the lifts of our bagel/lox/milk example?
+<ul dir="auto">
+<li dir="auto">**Lox -&gt; Bagel <strong>.4 / .05 = 8</strong></li>
+<li dir="auto">**Lox -&gt; Milk <strong>.4 / .5 = .08</strong></li>
+</ul>
+</li>
+<li dir="auto">Is a confidence of 1.0 with rsup .5 always an indication of causation?  What can lift be in  this case: min/max? <strong>Lift can be 1.0, indicating no causation because Y always happens anyway.  It can also be 2.0 if only have Y with X</strong></li>
+<li dir="auto">How about low lift?
+<ul dir="auto">
+<li dir="auto">Can it be less than confidence? <strong>Cannot be less than confidence since divisor is &lt;= 1.0</strong></li>
+<li dir="auto">So, if I have .5 confidence, lift must be at least .5? <strong>Yes, and actually more since P(Y) &lt; 1.0 in this case</strong></li>
+<li dir="auto">Significance?  <strong>X actually discourages Y</strong></li>
+<li dir="auto">Does confidence of 0 mean that X <em>prevents</em> Y? <strong>Not necessarily, if P(Y) = 0</strong></li>
+</ul>
+</li>
+<li dir="auto">Consider min/max cases
+<ul dir="auto">
+<li dir="auto">How high can it be?  <strong>No limit, with low rsup(Y) and high confidence</strong></li>
+<li dir="auto">How low? <strong>0 if X and Y are completely disjoint, so confidence is 0</strong></li>
+<li dir="auto">Arrive at a lift of 10?  <strong>probs of .1 can arrive at lift of 10</strong></li>
+<li dir="auto">Show how a rare pair of events can result in lift of 1000?  <strong>Both .001 likely, but 100% correlated</strong></li>
+<li dir="auto">Tends to have high ceiling with rare Y -- focuses on probability ratio, not absolute values**</li>
+</ul>
+</li>
+<li dir="auto">Symmetrical.  Why is this bad?  <strong>No causality info</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Leverage concept</p>
+<ul dir="auto">
+<li dir="auto">Eq 12.5</li>
+<li dir="auto">Division through by P(X)P(Y) results in lift - 1.0.  So is this just &quot;differential lift&quot;? *<em>No, because it's lift-1.0 times rsup(X)<em>rsup(Y)</em></em></li>
+<li dir="auto">So, like lift, but differential, and magnified by joint support (support of itemsets X and Y).</li>
+<li dir="auto">What is max leverage possible?  How obtained?  <strong>Can't exceed 1.0 due to probs, but worse than that.  X and Y = 1/2 and fully correlated gets leverage of .25</strong></li>
+<li dir="auto">How about min leverage?  <strong>Fully uncorrelated with .5 prob for X and Y gets -.25</strong></li>
+<li dir="auto">What is leverage like with light data (low probs), such as high-lift rare case earlier?  <strong>Tends to near zero.  Fully correlated with .001 -&gt; .00999.  Uncorrelated -.000001</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">There are a <em>lot</em> of others, but of increasingly less general use.  Support, confidence, lift, and leverage are the major measures.  Here are two brief examples.</p>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Jaccard</p>
+<ul dir="auto">
+<li dir="auto">Draw Venn diagram.  Ratio of intersection ot &quot;outer areas&quot;</li>
+<li dir="auto">Sensitive at low prob values since just a ratio.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Conviction</p>
+<ul dir="auto">
+<li dir="auto">Conviction takes into account how likely rule is to <em>fail</em>, in particular X -&gt; !Y$</li>
+<li dir="auto">Lift of this measure is bad if larger, so invert to 1 / lift(x -&gt; !y)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Evaluating entire pattern or itemset, not just a particular X-&gt;Y</p>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Support translates directly</p>
+</li>
+<li dir="auto">
+<p dir="auto">Total lift</p>
+<ul dir="auto">
+<li dir="auto">Eq 12.9 (Product notation)</li>
+<li dir="auto">Min/max
+<ul dir="auto">
+<li dir="auto">How large? <strong>Maxed if all items occur concurrently.  1/P(item), so no limit</strong></li>
+<li dir="auto">How small? <strong>Min of 0 if no items occur together ever.  Not going to have support, though</strong></li>
+<li dir="auto">Can lift of an itemset be 1 even if its support is 100%? <strong>Yes, all items are 100% likely</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Need to consider lift or other measures for <em>all rules derived</em></p>
+<ul dir="auto">
+<li dir="auto">Essentially conisdering all causal relationships that might be derived from the itemset</li>
+<li dir="auto">Max, min, or average may be used.
+<ul dir="auto">
+<li dir="auto">Table 12.14</li>
+<li dir="auto">Discuss which is more important (min, max, ave) and why
+<ul dir="auto">
+<li dir="auto">Min susses out &quot;duh&quot; cases if these are fully explanatory</li>
+<li dir="auto">Max finds significance</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Tradeoff of closed vs maximal</p>
+<ul dir="auto">
+<li dir="auto">Closed gives maximal items (relationships) while maintaining support</li>
+<li dir="auto">Maximal will have most items (relationships) but with minimal support</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">&quot;Productive&quot; itemsets</p>
+<ul dir="auto">
+<li dir="auto">EQ 12.11</li>
+<li dir="auto">Productive itemset if <em>all</em> A-&gt;B rules have lift &gt; 1, or <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>i</mi><mi>f</mi><msub><mi>t</mi><mn>2</mn></msub><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>&gt;</mo><mn>1.0</mn></mrow><annotation encoding="application/x-tex">lift_2(X) &gt; 1.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">i</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1.0</span></span></span></span></eq></li>
+<li dir="auto">Every item subset has some impact on remainder</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Evaluating different rules</p>
+<ul dir="auto">
+<li dir="auto">specificity vs generality
+<ul dir="auto">
+<li dir="auto">ABC-&gt;D (specific) vs AB-&gt;D (general)</li>
+<li dir="auto">Can specific have more support than general? <strong>No, support only drops for superset</strong></li>
+<li dir="auto">If support is equal, what might we say about ABC-&gt;D?  <strong>Redundant, don't really need C; could just work with AB</strong></li>
+<li dir="auto">Redundant rule is one where you can lose a precedent item without loss of support</li>
+</ul>
+</li>
+<li dir="auto">Productive rules
+<ul dir="auto">
+<li dir="auto">Productive association cannot be made more general without loss of confidence</li>
+<li dir="auto">Why confidence instead of support? <strong>More general cannot reduce support, only increase it</strong></li>
+<li dir="auto">So can confidence go <em>up</em> with more specific and less support? <strong>Sure, because the X is narrowed, so it might be that it's more likely to get Y with a less-supported X than a general one.</strong></li>
+<li dir="auto">Example of more spscific rule with more confidence despite less support?  <strong>buns and dogs -&gt; mustard vs dogs -&gt; mustard if dogs are very common</strong></li>
+</ul>
+</li>
+<li dir="auto">Concept of overall &quot;improvement&quot;
+<ul dir="auto">
+<li dir="auto">Eq 12.12.</li>
+<li dir="auto">Minimal boost in confidence over what we'd get with more general rule.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>

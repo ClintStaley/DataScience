@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="sequences-and-substrings-1">Sequences and Substrings</h1>
+<h2 dir="auto" id="readings-1">Readings</h2>
+<p dir="auto">Zaki</p>
+<ul dir="auto">
+<li dir="auto">Chapter 10</li>
+</ul>
+<h2 dir="auto" id="exercises-1">Exercises</h2>
+<ol dir="auto">
+<li dir="auto">
+<p dir="auto">Zaki Ch10 Q1
+For a, just use the simple GSP algorithm, and draw the tree, or in text, show
+each level of the tree with child nodes roughly aligned below parent.</p>
+</li>
+<li dir="auto">
+<p dir="auto">Zaki Ch10 Q2 d and e only</p>
+<ul dir="auto">
+<li dir="auto">For Spade use minsup = 5, and develop only sequences starting with A</li>
+<li dir="auto">For PrefixSpan use minsup = 4, but develop only sequences starting with A or C, and use only <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">s_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> through <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>s</mi><mn>5</mn></msub></mrow><annotation encoding="application/x-tex">s_5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> from the database.  Remember to use 1-based numbering like the text.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Zaki Ch10 Q6
+Number the existing nodes 0 - 6, from top to bottom, left to right, for
+reference sake.  Number added nodes 7-&gt;, <strong>in the order you add them,
+not necessarily level-order</strong></p>
+</li>
+</ol>
+<p dir="auto">Based on that numbering, first list any existing suffix links that would
+have to exist assuming Ukkonen's had been used to build the current suffix tree
+in format N# -&gt; N#.  There are three.</p>
+<p dir="auto">Now, for each of the 10 added symbols, show new nodes and their suffix, the
+changes to active_node, active_edge/len (or none), active_length, and
+remainder including possibly several such changes.  Also list any new suffix
+links created. Since this is complicated, here are the first 6 lines of the
+desired answer.  You must add another 12.</p>
+<pre><code dir="auto">G          N#, none, remainder 1 (G)
+GA         N6, none, remainder 2 (GA)
+GAA        N6, A/1, remainder 3 (GAA)
+GAAG       N6, A/2, remainder 4 (GAAG)
+GAAGC      add N7/C for GAAGC. Use N6-&gt;N1. N1, A/2, remainder 3 (AAG)
+           add N8/C for AAGC. Add N7-&gt;N8. N5, none, remainder 2 (AG)
+</code></pre>
+<ol start="4" dir="auto">
+<li dir="auto">
+<p dir="auto">Consider the Spade tree in Figure 10.2, and the generation of node GAAG
+from parents GAA and GAG.  Adding G as a final symbol to GAA results in
+the <em>L</em> value given for GAAG, derived from the <em>L</em> of GAA and GAG.  But,
+we're only adding G to the end of GAA, not adding the full sequence GAG,
+so shouldn't we be doing a sequential join using the <em>L</em> for sequence G
+alone (at the top of the tree) which has more positions than the <em>l</em> for GAG.<br>
+Why or why not?</p>
+</li>
+<li dir="auto">
+<p dir="auto">In figure 10.3, in the <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>A</mi></msub></mrow><annotation encoding="application/x-tex">D_A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> branch,  <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> is just AG, rather than the
+CAG that might be expected from projecting on the <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi mathvariant="normal">∅</mi></msub><msub><mi>S</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">D_\emptyset S_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9024219999999998em;vertical-align:-0.2190919999999999em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198000000000005em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∅</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2190919999999999em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq> value
+of TGACAG.  Why is this, and what line of code in Algorithm 10.3 makes
+this change?</p>
+</li>
+</ol>
+
+</body>
+</html>

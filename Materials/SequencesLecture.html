@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="sequence-mining">Sequence Mining</h1>
+<h2 dir="auto" id="basics">Basics</h2>
+<ul dir="auto">
+<li dir="auto">Sequence, subsequence, and substring
+<ul dir="auto">
+<li dir="auto">Definition of support: Number of sequences, not number of occurrences.</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="subsequence-mining">Subsequence Mining</h2>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">Fig 10.1</p>
+<ul dir="auto">
+<li dir="auto">What is different about this tree vs the itemsets lattice?</li>
+<li dir="auto">Super/sub <em>sequences</em> not subsets</li>
+<li dir="auto">Order matters, so all letters extend</li>
+<li dir="auto">Support still monotonic?  Why/why not?<br>
+<strong>subseq has to also be supported same.  superseq can't be more.</strong></li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Brief overview GSP</p>
+<ul dir="auto">
+<li dir="auto">APriori style approach (GSP -- Generalized Sequential Pattern)</li>
+<li dir="auto">Why children(parent) on 17, and no a&lt;b?  <strong>symbols, including self, are repeatable.</strong></li>
+<li dir="auto">Trace tree development briefly</li>
+<li dir="auto">Really isn't optimal for this problem, so no detailed analysis needed</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">SPADE algorithm</p>
+<ul dir="auto">
+<li dir="auto">Sequential Pattern Discovery Using Equivalence Classes</li>
+<li dir="auto">Concept of final-symbol potential locations</li>
+<li dir="auto">How to merge different locations (left must have value lower than right)
+<ul dir="auto">
+<li dir="auto">First level is obvious</li>
+<li dir="auto">Clarify that later levels can merge <strong>with siblings</strong>
+<ul dir="auto">
+<li dir="auto">Only need final letter, which is guaranteed at the given spot</li>
+<li dir="auto">Only need to know if a subsequences is anywhere present.
+<ul dir="auto">
+<li dir="auto">Does this find <em>all</em> instances per sequence?
+<ul dir="auto">
+<li dir="auto">How many AAs in s1? <strong>Three, so not all are represented</strong></li>
+<li dir="auto">What if s2 was GGACAG?  Does it keep the GG at 2? <strong>No, gets eliminated</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">Trace logic of 10.4 tree, for a few.  Then have them trace the rest.
+<ul dir="auto">
+<li dir="auto">Note minsup = 3, and diagram may show dead leaves, but not develop them.</li>
+</ul>
+</li>
+<li dir="auto">Algorithm 10.2:
+<ul dir="auto">
+<li dir="auto">What is definition of intersection on line 6? <strong>Read to reinforce concept from above</strong></li>
+<li dir="auto">What is the algorithm analagous to?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">PrefixSpan</p>
+<ul dir="auto">
+<li dir="auto">Faster than SPADE</li>
+<li dir="auto">Figure 10.3
+<ul dir="auto">
+<li dir="auto">Recursive breakdown by letter</li>
+<li dir="auto">Prefilter all next-letters to remove infrequent -- thus no <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>C</mi></msub></mrow><annotation encoding="application/x-tex">D_C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07153em;">C</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></eq></li>
+</ul>
+</li>
+<li dir="auto">Similar to?? <strong>FPGrowth</strong></li>
+<li dir="auto">Walk through tree in Fig 10.3</li>
+<li dir="auto">Walk through Algorithm 10.3
+<ul dir="auto">
+<li dir="auto">&quot;Projection&quot; means cutting down based on assumption of current prefix</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="suffix-trees">Suffix trees</h2>
+<ul dir="auto">
+<li dir="auto">Review basic suffix tree idea.
+<ul dir="auto">
+<li dir="auto">Do exercises, adding new strings</li>
+<li dir="auto">Efficiencies
+<ul dir="auto">
+<li dir="auto">Substring ranges on branches</li>
+<li dir="auto">Track support</li>
+</ul>
+</li>
+<li dir="auto">Use for finding substrings</li>
+<li dir="auto">Trie, Patricia tree or radix tree</li>
+<li dir="auto">Why suffix and not prefix?  <strong>forward seeking requires suffix mode</strong></li>
+<li dir="auto">Order of complexity for string hunt -- clear choice at each node, so O(n) in # of symbols.</li>
+</ul>
+</li>
+<li dir="auto">Building one fast.  Ukkonen's algorithm.
+<ul dir="auto">
+<li dir="auto">(Sample patterns  CAGAAGT TGACAG, abcabxabcdabcde, abracadabra,ABCABXABCDABCX)</li>
+<li dir="auto">Reduce storage by reference to original strings on legs</li>
+<li dir="auto">Start by building suffix tree <em>for a prefix of S</em>
+<ul dir="auto">
+<li dir="auto">Takes double-thinking.  We extend a given &quot;phase&quot; by adding a new symbol at the end, and extending existing suffixes.</li>
+<li dir="auto">Illustrate a phase or two for ABCD using animation site.</li>
+</ul>
+</li>
+<li dir="auto">Implicit suffixes!
+<ul dir="auto">
+<li dir="auto">ABCDABCX as example
+<ul dir="auto">
+<li dir="auto">The prefix-suffix repeats will <em>eventually</em> be on this branch, but we don't have enough info to know where it breaks.</li>
+<li dir="auto">Build up an &quot;IOU&quot; stack</li>
+<li dir="auto">When we get a break, then &quot;pay off&quot; the IOUs
+<ul dir="auto">
+<li dir="auto">Do the main branch, then fall back by taking away first char!</li>
+<li dir="auto">How do we find the &quot;fallback location&quot;? <strong>Simple search if off of root</strong></li>
+<li dir="auto">Will fallback always also require a new node? <strong>Yes, since e.g. if ABC but not X is in tree, so is BC but not X.</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">Try ABCABXABCD</li>
+</ul>
+</li>
+<li dir="auto">OK, now make it <em>really</em> efficient
+<ul dir="auto">
+<li dir="auto">Describe legs by index ranges, leaving content in the actual string.</li>
+<li dir="auto">Generalize final index as # or e, so we can &quot;lengthen&quot; ALL leaf legs by a single increment.</li>
+<li dir="auto">When we do a &quot;fallback&quot;, REMEMBER where we went so we don't repeat it.  Not a big deal with one level, but is with many.</li>
+</ul>
+</li>
+<li dir="auto">Don't try to understand this from Zaki; explanation sucks.  Use the SO post instead.</li>
+<li dir="auto">Run example, inviting prediction of next steps
+<ul dir="auto">
+<li dir="auto">How to get second level of suffix links to be used?</li>
+</ul>
+</li>
+<li dir="auto">All this ultimates in an O(n) algorithm.  Each step requires advancing a couple of markers, and possibly an &quot;IOU&quot; payment.
+<ul dir="auto">
+<li dir="auto">Can IOU payment be arbitrarily long? <strong>Yes, but total of all IOUS cannot exceed n</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>

@@ -110,46 +110,119 @@
   * Density-reachability.  
     * Why nonsymmetric?  **x need not be core point**
     * Symmetric if all points are core? **Yes**
-  * Alg 15.1
+  * DBScan Alg 15.1
      * Read and explain
      * Concept of flood fill
      * Is order of graph search DFS or BFS? **DFS**
      * Error in loop 12-17? **Yes, it doesn't flag already visited**
      * Can cores compete for a border?  If so, who wins? **Yes, highest k**
+   
+  * Concepts of density
+     * Start at Eq 15.3
+       * Unidimensional for now
+       * Notion that $x - x_i$ is normalized by h.  Like z-values
+       * What happens as $h \rightarrow 0$? As $h \rightarrow \infty$? **Infinte spikes of density;s uniform $\frac{n}{h}$ thus dropping to zero**
+       * Fig 15.5
+     * Eq 15.5
+       * Essentially a z-distribution
+       * How many points are in the neighborhood of x? **All of them**
+     * Eq 15.6
+         * Why $h^d$? **hypervolume of hypercube**
+         * Can one point be out of neighborhood, but still be closer than points in neighborhood?  **Yes, sides vs corners of hypercube**
+     * Eq 15.7
+         * What if we use $|\bold{z}|$ rather than $|z_j|$? **We get hypersphere not hypercube.**
+     * Eq 15.8-9
+         * Shape of neighborhood? **Hypersphere, not hypercube**
+         * What if we consider one dimension more important than another? **Adjust $\Sigma$**
+     * Fig 15.8
+     * 15.2.3
+         * Define neighborhood by point count, not distance
+         * Plusses/minuses? **No anomalous zero-data regions; varying precision**
+         * Is it continuous or discrete in x? **Discrete**
 
-     -------------REVIEW BELOW -------------------
-     
   * DENCLUE algorithm (15.2.2)
-      * Concept of hypercube
-      * Eq 15.6/.7 
-         * Why $h^d$? (hypervolume of hypercube)
-         * In 15.7, what if we use $|\bold{z}|$ rather than $|z_j|$? **We get hypersphere not hypercube.**
-      * NN density -- brief review
-      * eq 15.10
-        * What is shape of $\frac{\partial\hat{f}}{\partial\textbf{x}}$?  **Vertical vector of dimension d**
+      * Brief reminder of gradient ascent
+      * Eq 15.10
+        * What is $\Sigma$ in the kernel, and why? **It's I, because we don't weight different dimensions differently in measuring volume**
+        * What is tensor shape of $\frac{\partial\hat{f}}{\partial\textbf{x}}$?  **Vertical vector of dimension d**
         * How about $\frac{\partial\textbf{z}^T\textbf{z}}{\partial\textbf{x}}$ with x and z vectors?
            * Write the dot product
            * Consider partial wrt $x_1$ as example
            * Remaining terms drop out
            * Summarizing form as $-\textbf{z}\frac{\partial\textbf{z}}{\partial\textbf{x}}$
+         * If I am on the SE side of mean, in a circular K, what does z look like? What gradient direction results and why? **z points NW, proportional to distance from mean/h**
+         * How does reducing h affect the derivative, and why **Increases it because slope of distribution is increased by reducing h, proportionally, and because K value is raised**
       * eq 15.11
-      * eq 15.12  weighted average of each other point pulling on x
-      * Gradient descent/ascent concept
-        * 2-D example of gradient descent
-        * Refinements (simulated annealing,S momentum for saddles, possible irrelevance of local optima)
+      * eq 15.12  
+         * What are the $x_i$ values in the landscape? **peak points**
+         * Which peaks will pull most? **Closest ones**
+         * What is sum of all "pull" factors? **1, due to denominator**
       * Alg 15.2
+        * Meaning of each parameter?
         * A is set of maxima, *not* in the actual dataset
         * R are points attracted to As
-      
+        * How do we implement line 7??
+
+* Hierarchical Clustering
+  * Basic concept. 
+    * Example 4.1
+    * Note one can choose a number of clusters post-analysis
+  * Ignore math for number of partitions.  Just "really big"
+  * Alg 14.1
+    * Very simple algorithm.  It's about how you choose closeness, and how you track pairwise distances.
+  * Read distance math
+    * They explain meaning of each expression up to Ward's
+    * Ward's
+      * SSE vs variance
+        * Is this basically a measure of cluster "diameter"? **No. Not divided\
+          by n, so larger for bigger clusters same diameter**
+      * Follow math
+        * 14.6 What happened to middle term? **Same as classic variance computation.  $x^T$ sums to $n\mu$**
+        * 14.8 
+          * Why do summations cancel? **ij summation is total of the other two -- they're not mean-centered**
+        * 14.9 is simple algebra
+      * So, two cluster pairs, same variance, same distance.  
+        * Which gets merged preferentially by Ward's? **Larger ones since $n_in_j$ grows faster than $n_i + n_j$**
+   * Lance-Williams
+      * A nice summation of 5 different metrics
+      * Try it out for Single Link and Group Average **Get reasonable answers**
+      * Also demonstrates that removing $C_i,C_j$ and inserting $C_ij$, where there are n clusters, takes what order of complexity? **O(n) since we need to redo 2n pairs, but each is O(1)**
+  * Computation complexity of the entire process
+     * Assume we merge all the way to one cluster
+     * Why not just O(n) since Alg 14.1 loop runs n times? **Lines 2, 4 and 7 are not O(1)**
+     * Complexity for 4? What DS to use? **Min heap gives O(1) for this line**
+     * Complexity for 7?  Is it just O(n) per earlier discussion? **No, since each new distance also needs insertion into heap**
+     * So, then, heap insertion is $O(nlog(n^2))$ since heap has $O(n^2)$ elements? **No, it's just $O(nlog(n))$ since $O(log(n^2)) = O(n2log(n)) = O(log(n)$**)
+     * So, big loop is $O(n^2log(n))$
+     * But what about initialization step on 2?**$O(n^2log(n))$ also**
+     * OK, but, there is one more independent variable to be considered.  What if we have, for instance, points in a 1,000,000 dimension space? Now what O(1) step becomes O(d) and how does that affect complexity? **Each initial computation, so $O(n^2(d+log(n)))** 
+     * Note, not $O(n^2dlog(n))$ which would be worse!
+     * Also, does line 7 also need an added d factor? **No, it works off the already-known distances to $C_i, C_j$, which is why Ward-Williams is so useful**
+     * So, in the final estimation, which part of this algorithm is the most timeconsuming, but a slight margin? **Initialization! This is not uncommon in algorithm analysis**
+
 * Cluster Validation
-  * Like itemset validation in that it's a research lit review.  We'll do only part
+  * Like itemset validation in that it's a research lit review.
   * External
     * We know the right clustering; this is about checking algorithms.
     * cluster vs partition.  Partition is "ground truth".
       * |C| = r; |T| = k
-    * 17.1  Read and give intuititive definition.  **Assume highest partition is ground truth cluster attempts to match.  How high a percent is that**
-    * Matching.  What assumption of r and k is sorta implied? **Equality**
+      * Can r and k be different? Why? **Clustering algorithm may arrive at wrong count of clusters**
+    * Contingency table concept
+      * What is sum across rows? **Sizes of C clusters**
+      * Across columns? **Sizes of T clusters**
+      * Is it symmetric if square? **No. $C_i$ vs 
+      * But if it is square? **Then yes, symmetric**
+      * Related to ?? **Confusion matrix**
+      * Is it principally diagonal, if the classification is good? **Technically no since the order of classes in T and C need not be identical**
+    * 17.1 
+      * Give intuititive definition.  **Assume highest partition is ground truth that cluster attempts to match.  How high a percent is that?**
+      * Max value? **1.0 as weighted sum**
+    * Matching.  
+      * What does the bipartite graph look like? **C connects to T**
+      * Match definition implies what assumption of r and k? **Equality**
+      * How many matchings are possible? **r! or k!**
     * 17.3. What meaning? **How much of a partition does a cluster capture?**
     * Entropy and 17.1.2
        * bit count example
     * Cluster-specific -- explain meaning **"surprise" or information content of T samples limited to C**
+

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="python-analysis-of-normal-distributions">Python Analysis of Normal Distributions</h1>
+<h2 dir="auto" id="readings">Readings</h2>
+<p dir="auto">&quot;Your Python Code&quot;:
+Review the most sophisticated Python app or two that you wrote in 171 or other earlier courses.</p>
+<h2 dir="auto" id="exercises">Exercises</h2>
+<ol dir="auto">
+<li dir="auto">
+<p dir="auto">Python Build Environment</p>
+<ul dir="auto">
+<li dir="auto">Update (or install for the first time) a recent Python3 interpreter on your machine, and the Python VSCode plugin.</li>
+<li dir="auto">Use venv to create a Python environment for the class.  Install numpy and matplotlib in addition to the standard libraries.</li>
+<li dir="auto">From VSCode, take one of the Python example programs from your review reading, bring it up in VSCode and run it from VSCode. Edit it trivially and rerun it.</li>
+<li dir="auto">Submit an image of Python working from VSCode.</li>
+</ul>
+</li>
+<li dir="auto">
+<p dir="auto">Write Python script CheckCorrelation.py to read Properties.tsv, a file of 8-dimensional patterns, with properties we'll call P0 through P7.  Analyze appropriately the relationships between these 8 properties, and for each, output the other property that has the strongest relationship with it, whether positive or negative. Submit your Python code and an output of 8 lines, each listing the zero-based property number that most influences that property.  And again, no Python loops of any sort.</p>
+</li>
+<li dir="auto">
+<p dir="auto">Write a python script CheckSeparableClouds.py to output an equation for a hyperplane in 5 dimensional space that separates the points in Set1.tsv and Set2.tsv, with the first on one side of the hyperplane, and the second on the opposite side.  Do this thus:</p>
+<ul dir="auto">
+<li dir="auto">Read each set into a numpy array</li>
+<li dir="auto">Find the center of mass (the mean) of each set.</li>
+<li dir="auto">Find the unit vector direction p that leads from one center to the other.</li>
+<li dir="auto">Determine whether that vector direction actually <em>can</em> separate the clouds, or whether the two overlap so as to make separation impossible.  In the latter case print an error and exit.</li>
+<li dir="auto">Compute a &quot;d&quot; value for projection along that vector that splits the two clouds with the dividing plane pX = d being equally far from either cloud's nearest point to it.</li>
+<li dir="auto">Print p and d\</li>
+</ul>
+<p dir="auto">And, <em>importantly</em>, use no python loops nor list comprehensions.  Do the entire job with numpy operations.  (They do the looping, and they operate in C, and are much faster.)</p>
+</li>
+<li dir="auto">
+<p dir="auto">Once you have done problem 3, extend CheckSeparableClouds.py to read file ToTest.tsv as a third command line parameter, and classify each line it in as belonging to Set1 or Set2.  Output each row of ToTest.tsv, followed by a final column with value 1.0 or 2.0, indicating the set it belongs to.  As before, use no Python loops of any sort.  Submit your final Python code, and the augmented file as ToTestLabels.tsv, as your answer for this and the prior problem.</p>
+</li>
+</ol>
+
+</body>
+</html>

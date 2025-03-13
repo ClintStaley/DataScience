@@ -65,5 +65,24 @@ So we need 36.5+19.1 = 55.6, rounded up to 56$**
   * Bag 2: 50% red, 25% green, 25% blue
   * Bag 3: 90% red, 5% green, 5%% blue
 
-**$p(b2|red) = \frac{p(red|b2)p(b2)]}{p(red)} = .4(.5) / (.1(.1) + .4(.5) + .5(.9) = .2 / .66 = .303$
+**Ans: $p(b2|red) = \frac{p(red|b2)p(b2)]}{p(red)} = .4(.5) / (.1(.1) + .4(.5) + .5(.9) = .2 / .66 = .303$**
 
+9. Say today is after the 29th of the month (the 30th or 31st).  What is the chance that the month is March?
+
+**Ans: $P(March|date) = \frac{P(date \land March)}{P(date)} = \frac{2}{18} = .111$**
+
+10. You take a test with a 5% false positive rate and a 10% false negative rate.  (%5 of the positive results are incorrect, as are 10% of the negative results.)  You test positive, but you also know that on average, only 1% of the population is actually positive for this test.  What is the chance that your positive test is accurate?  (Your answer should make use of both the false positive and false negative stat)
+
+**Ans: $P(real|pos) = \frac{P(pos \land real)}{P(pos \land real)+P(pos \land \lnot real)}
+ = \frac{.90 .01}{.90 .01 + .05 .99} = .154$**
+
+11. A college has these statistics.  What is the chance that a random CSCI major, who we know is not a senior, is a freshman?
+
+|Class | % of all students | % that are CSCI majors |
+|--------------|-----------|------------|
+| Freshman     | 30    | 4       |
+| Sophomore   | 25  | 8       |
+| Junior    | 20  | 9       |
+| Senior     | 25  | 7       |
+
+**Ans: $P(Fr|CSCI) = \frac{P(Fr \land CSCI)}{P(Fr \land CSCI)+P(So \land CSCI)+P(Jr \land CSCI)} = \frac{.3(.04)}{.3(.04)+.25(.08)+.2(.09)} = .24$**
