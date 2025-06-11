@@ -7,7 +7,7 @@ Ch 1, 2, 3.1
 ## Exercises
 1. Provide a 3x3 matrix that rotates $\tau/8$ about the z-axis, folllowed by $-\tau/4$ about the y axis.
 
-**Answer: $\begin{bmatrix}0&&0&&-1\\0&&1&&0\\1&&0&&0\end{bmatrix}\begin{bmatrix}.707&&-.707&&0\\.707&&.707&&0\\0&&0&&1\end{bmatrix}=\begin{bmatrix}0&&0&&1\\.707&&.707&&0\\.707&&-.707&&0\end{bmatrix}$**
+**Answer: $\begin{bmatrix}0&&0&&-1\\0&&1&&0\\1&&0&&0\end{bmatrix}\begin{bmatrix}.707&&-.707&&0\\.707&&.707&&0\\0&&0&&1\end{bmatrix}=\begin{bmatrix}0&&0&&-1\\.707&&.707&&0\\.707&&-.707&&0\end{bmatrix}$**
 
 2. Prove Zaki Eq 2.18, by starting with the right side, and evolving it into the left.  You should need at least 6 steps.\
 **Answer:
@@ -20,7 +20,7 @@ $= \Sigma{(x_i - \mu)^2}$**
 
 3. Assume a set of 11 test scores, all between 0 and 100
 
-   a. If the average score is above 90, what is the lowest possible median score?  **With 5 100s, 5 80s, and 1 81 you get 90.09 avg and 81 median**
+   a. If the average score is above 90, what is the lowest possible median score?  **5 100s and 6 82's gives mean of 90.18 and median of 82**
 
    b. If the average score is under 50, what is the highest possible median score? **6 91s, and 5 0s gives median of 91**
 
@@ -32,9 +32,9 @@ In the course of a 365-day year, how likely is it they will be out on exactly\
 is a 99.9% chance there won't be more days than that?  Show your work.  
 
 **Binomial distribution ${365\choose36} .1^{36}.9^{329} = .0696$.  
-Bernoulli distribution has $\mu = .1, \sigma^2 = .1(.9)^2 + .9(.1)^2 = 0.9, \sigma = .3$ 
-Need z-value of 3.1 for 99.9% For 365 samples, $\sigma = .3\sqrt{365} = 19.1$  
-So we need 36.5+19.1 = 55.6, rounded up to 56$**
+Bernoulli distribution has $\mu = .1, \sigma^2 = .1(.9)^2 + .9(.1)^2 = 0.09, \sigma = .3$ 
+Need z-value of 3.1 for 99.9% For 365 samples, $\sigma = .3\sqrt{365} = 5.73$  
+So we need 36.5+3.1(5.73) = 54.3, rounded up to 55$**
 
 5. Say a 3-D distribution is formed by multiplying independent univariate normal distributions $\mathcal{N}(x|\mu_x, \sigma_x^2)$, $\mathcal{N}(y|\mu_y, \sigma_y^2)$ and $\mathcal{N}(z|\mu_z, \sigma_z^2)$.  Give a single multivariate normal distribution that describes that 3-D distribution, in $\mathcal{N}(X|\Mu, \Sigma)$ form, with X representing $[x,y,z]^T$.  What are the values of $\Mu$ and $\Sigma$?
 

@@ -10,6 +10,8 @@ Zaki
 1. Zaki Ch 9 Q1
 
 2. Zaki Ch 9 Q2
+For 2b, specify frequent, closed, and maximal in the order they appear in
+the tree, level by level, left to right, with a pipe symbol between each level.  You should have 20 frequent, 12 closed, and 4 maximal sets.
 
 3. Zaki Ch 9 Q3
 

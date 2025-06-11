@@ -43,14 +43,13 @@ foreach $X \in C^{(k)}$ do\
 
 **Pretty much no case.  The number of dropped transactions at each level is 99x the number of undropped**
 
-10. Consider the FPGrowth tree look like for this scenario.\
-a) What would the first three or four levels look like?\
-b) About how many levels would you expect overall?\
-c) How wide could the widest level be at most?\
-d) What would you expect, say, level 10 to look like? What support per node? How many children per node?
+10. Consider the initial FPTree for FPGrowth.  What would it look like for this scenario?\
+a) About how many levels would you expect overall?\
+b) How wide could the widest level be at most?\
+c) How wide would you expect level 10 to be? What support per node? How many children per node?
 
-**a. Top 3-4 levels would have almost, but not quite, 10,000 branches\
-b. Widest level would < 1,000,000,000.\
-c. Up to around 150 levels, however.\
-d. Level 10 would be close to a billion wide, almost all 1-support nodes, with just one child**
+**a. Need none of the prior i's to be in any itemset, so $.99^{x-1}1000000000 = \
+a. Widest level would < 1,000,000,000.\
+b. Up to around 150 levels, however.\
+c. Level 10 would be close to a billion wide, almost all 1-support nodes, with just one child per node**
 

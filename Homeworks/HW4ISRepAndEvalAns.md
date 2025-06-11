@@ -1,4 +1,4 @@
-# Week 4 Itemset Representation and Evaluation
+# Itemset Representation and Evaluation
 
 ## Readings
 Zaki
@@ -15,6 +15,8 @@ c. True.  Maximal is closed since can't add any element w/o losing support.\
 d. False.  Could e.g. have A as maximal and BCD maximal, but BC nonmaximal**
 
 2. Zaki Ch 9 Q2
+For 2b, specify Frequent, closed, and maximal in the order they appear in
+the tree, level by level, left to right, with a pipe symbol between each level.  You should have 20 frequent, 12 closed, and 4 maximal sets.
 
 ```
 a. C(AE) = ABCE, so AE is not closed
@@ -34,11 +36,11 @@ b. See diagram on paper.  Note support groups are:
 235 CE BCE
 
 
-Frequent: A, B, C, D, E, AB, AC, AD AE, BC, BD, BE, CD, CE, ABC, ABE, ACE, BCE, ABCE
+Frequent: A, B, C, D, E | AB, AC, AD, AE, BC, BD, BE, CD, CE | ABC, ABE, ACD, ACE, BCE | ABCE
 
-Closed (by root level): AC, B, C, D, BE | ABC, AD, ABCE, BC, BD, CD, BCE
+Closed (by root level): B, C, D | AC, BC, BD, BE, CD | ABC, ACD, BCE | ABCE
 
-Maximal: BD, AD, CD, ABCE
+Maximal: BD | ACD | ABCE
 ```
 
 
@@ -49,7 +51,7 @@ A, B, C, D, AB, AC, AD, BC, CD, ABC, ACD**
 
 4. For a rule X -> Y, describe a situation that would give a confidence of 1, but only a lift of 1.  What is the leverage in this case?
 
-**X and Y occur in all itemsets.  Leverage would be 0**
+**Regardless of X, Y occurs in all itemsets.  Leverage would be 0**
 
 5. For a rule X -> Y with confidence .5, what are the largest possible values for rsup(X) and rsup(Y)?  What are lift and conviction in this case?
 

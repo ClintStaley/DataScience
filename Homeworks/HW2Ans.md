@@ -23,7 +23,7 @@ Mean1: [-2.887  7.085 -4.221 -8.218 -9.302]
 Mean2: [ 8.301  1.286 -7.468  8.888  4.611]
 Min1: -17.93551729945652 Max1: -9.456795019219607
 Min2: 9.567497406944499 Max2: 14.945888437513897
-Direction: [ 0.437 -0.227 -0.127  0.668  0.543], Midpoint projection: -0.07475611289574857
+Direction: [ 0.437 -0.227 -0.127  0.668  0.543], Midpoint projection: 0.05535
 ```
 
 3. Once you have done problem 2, extend the program to read file ToTest.tsv, and classify each line it in as belonging to Set1 or Set2.  (Output a single column of "1" or "2" for each row of ToTest.tsv).  As before, use no Python loops of any sort.

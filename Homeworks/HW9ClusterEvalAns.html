@@ -44,18 +44,18 @@
 <ol start="7" dir="auto">
 <li dir="auto">I transmit information about the classes of a set of sample values from a known ground-truth clustering.  But, I send the C values for each sample, not the T value, which means there may be some error.  For each case, indicate how many <em>additional</em> bits per sample I must transmit to correct any errors, on average, or indicate that you can't tell this from the value given.</li>
 </ol>
-<p dir="auto">a. I(C, T) = 4  <strong>Can't tell -- depends on H(T)</strong>
-b. H(T|C) = 3  <strong>3 additional bits</strong>
-c. H(C|T) = 3  <strong>Can't tell</strong>
-d. I(C, T) = 2 and H(C) = 3 <strong>Still can't tell</strong>
+<p dir="auto">a. I(C, T) = 4  <strong>Can't tell -- depends on H(T)</strong><br>
+b. H(T|C) = 3  <strong>3 additional bits</strong><br>
+c. H(C|T) = 3  <strong>Can't tell</strong><br>
+d. I(C, T) = 2 and H(C) = 3 <strong>Still can't tell</strong><br>
 e. I(C, T) = 2 and H(T) = 4 <strong>2 additional bits</strong></p>
 <ol start="8" dir="auto">
 <li dir="auto">Now, assume instead I'm trying to communicate the results of a C-based classification of a set of samples from a known ground-truth T.  Answer the same question as above, for the same data:</li>
 </ol>
-<p dir="auto">a. I(C, T) = 4  <strong>Can't tell -- depends on H(C)</strong>
-b. H(T|C) = 3  <strong>Can't tell</strong>
-c. H(C|T) = 3  <strong>3 additional bits</strong>
-d. I(C, T) = 2 and H(C) = 3 <strong>1 additional bit</strong>
+<p dir="auto">a. I(C, T) = 4  <strong>Can't tell -- depends on H(C)</strong><br>
+b. H(T|C) = 3  <strong>Can't tell</strong><br>
+c. H(C|T) = 3  <strong>3 additional bits</strong><br>
+d. I(C, T) = 2 and H(C) = 3 <strong>1 additional bit</strong><br>
 e. I(C, T) = 2 and H(T) = 4 <strong>Can't tell</strong></p>
 
 </body>

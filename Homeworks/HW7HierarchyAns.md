@@ -6,7 +6,7 @@ Zaki
 
 ### Exercises
 
-1. Zaki Ch 14 Q2 But just show the merges e.g.(`ab, ckg -> abckg`) , not the full matrix each time.  And do this for both single and full linking, commenting on the difference. Which method works better in this case do you think?  If we define a set's "diameter" as the largest distance between any two points in the set, which method results in smaller diameter groups?**
+1. Zaki Ch 14 Q2 But just show the merges e.g.(`ab, ckg -> abckg`) , not the full matrix each time.  And do this for both single and full linking, which should result in 7 merges in each case.  Comment on the difference. Which method works better in this case do you think?  If we define a set's "diameter" as the largest distance between any two points in the set, which method results in smaller diameter groups?**
 
 **Single:\
 c,k -> ck\
@@ -15,6 +15,7 @@ d,e -> de\
 de, i -> dei\
 a,b -> ab\
 ab, ckg -> abckg\
+abckg, f -> abcfkg\
 \
 Full\
 c,k -> ck\
@@ -43,7 +44,7 @@ b. He cites $O(log(n))$ as heap update/add cost, but there are $n^2$ items in th
 
 c. He cites initial heap construction as $O(n^2)$ but this is incorrect.  How, and does it affect the final result? **Each insert is $Olog(n)$ so init should be $O(n^2log(n))$ but this is same as merging complexity, so no change**
 
-d. He does not take into account dimension d, which for some cases may be large.  How does this affect the complexity?  Roughly speaking, what value of d would begin to matter?  **Adds d to initialization, but nowhere else, given Lance-Williams.  So, complexity changes to $O(n^2d + n^2log(n))$ Roughly, $d > log(n)$ begins to make d of interest.**
+d. He does not take into account dimension d, which for some cases may be large.  How does this affect the complexity?  Roughly speaking, what value of d would begin to matter?  **Adds d to initialization, but nowhere else, given Lance-Williams.  So, complexity changes to $O(n^2log(n)d + n^2log(n))$ Roughly, $d > log(n)$ begins to make d of interest.**
 
 
 ### Numpy

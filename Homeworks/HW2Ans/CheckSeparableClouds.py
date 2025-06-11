@@ -40,7 +40,10 @@ if __name__ == "__main__":
     if min1 <= max2 and min2 <= max1:
         print("The two sets are not separable.")
         sys.exit(1)
-    avg_projection = (np.dot(mean1, direction) + np.dot(mean2, direction)) / 2
+    if min1 < min2:
+        avg_projection = (max1 + min2) / 2
+    else:
+        avg_projection = (min1 + max2) / 2
     
     # Set print precision to 3 decimal places and print the data
     np.set_printoptions(precision=3)

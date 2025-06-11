@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="regression">Regression</h1>
+<h2 dir="auto" id="graph-basics">Graph Basics</h2>
+<ul dir="auto">
+<li dir="auto">Review initial concepts from Zaki 4.1</li>
+<li dir="auto">Review DFS basics
+<ul dir="auto">
+<li dir="auto">Basic stack-based process</li>
+<li dir="auto">Forward and backward edges</li>
+</ul>
+</li>
+</ul>
+<h2 dir="auto" id="gspan----finding-isomorphisms">GSpan -- finding Isomorphisms</h2>
+<ul dir="auto">
+<li dir="auto">Zaki Ch 11</li>
+<li dir="auto">Graph example in Fig 11.1, including labels.</li>
+<li dir="auto">Isomoprhism and &quot;subgraph isomorphism&quot; -- Fig 11.3
+<ul dir="auto">
+<li dir="auto">Review &quot;injective&quot; -- domain is covered</li>
+<li dir="auto">Review &quot;surjective&quot; -- codomain or range is inversely covered.</li>
+<li dir="auto">Another name for &quot;injective and surjective&quot;? <strong>One to one</strong></li>
+</ul>
+</li>
+<li dir="auto">Review mappints in Example 11.3 to see that isomorphism can be &quot;slippery&quot;</li>
+<li dir="auto">DFS concept
+<ul dir="auto">
+<li dir="auto">Use Figure 11.4 for an example</li>
+<li dir="auto">Do a DFS that has a path of 7.  <strong>Multiple possibilities</strong></li>
+<li dir="auto">One with a path of at most 2.  <strong>Start at c</strong></li>
+<li dir="auto">Forward and backward edges.
+<ul dir="auto">
+<li dir="auto">Can there be forward edges not in the DFS tree? <strong>No, since they'd have become forward edges from the opposite side</strong></li>
+<li dir="auto">Could there be with a <em>directed</em> graph? <strong>Yes, directed graphs result in two new categories, often termed forward and cross, with &quot;tree edge&quot; for those in the DFS</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">Jump to Fig 11.6
+<ul dir="auto">
+<li dir="auto">Are the three graphs isomorphic? <strong>Yes, but a little hard to see that, even with just four nodes</strong></li>
+<li dir="auto">Can we use DFS to identify isomorphisms?</li>
+<li dir="auto">Edge orders in the DFScodes for each</li>
+</ul>
+</li>
+<li dir="auto">Fig 11.5, a systematic way to pick a representative DFS
+<ul dir="auto">
+<li dir="auto">At each node as we traverse
+<ul dir="auto">
+<li dir="auto">Do all reverse edges before proceeding, and in order from root down.</li>
+<li dir="auto">When backtracking to pick alternate forward paths, do so in order from leaf to root.
+<ul dir="auto">
+<li dir="auto">This is natural for DFS anyway.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li dir="auto">Try this on Fig 11.2, preferring lower labels first</li>
+</ul>
+</li>
+<li dir="auto">Now back to Fig 11.6
+<ul dir="auto">
+<li dir="auto">Strict rules for ordering of edges, Eq 11.2</li>
+<li dir="auto">Review each of the steps for edge-order, ask for intuition on each</li>
+<li dir="auto">Analyze noncanonical cases in Fig 11.6.</li>
+<li dir="auto">Try another DFS, starting with b, and produce its edges.  Are they canonical?</li>
+</ul>
+</li>
+</ul>
+
+</body>
+</html>

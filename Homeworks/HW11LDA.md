@@ -16,8 +16,9 @@ Zaki Chapter 20.1
 mean-difference, including how many overlaps each have. Hints:\
 
     * The math for the means is simple, and should arrive at integral coordinates.
-    * Even with the optimal discriminant, you'll get some overlap, but less than with the mean-difference.
-
+    * Discriminants are *normalized*, per the presentation in Zaki.
+    * The optimal discriminant should be clearly superior to the mean-difference.
+    
 3. What is the determinant of matrix B in eq 20.7.  Why?  Onto what vector 
 does it project, if any?  Why?
 

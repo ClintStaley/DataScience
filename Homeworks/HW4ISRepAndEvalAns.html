@@ -10,14 +10,14 @@
 
 </head>
 <body class="markdown-body">
-<h1 dir="auto" id="week-4-itemset-representation-and-evaluation-2">Week 4 Itemset Representation and Evaluation</h1>
-<h2 dir="auto" id="readings-2">Readings</h2>
+<h1 dir="auto" id="itemset-representation-and-evaluation-1">Itemset Representation and Evaluation</h1>
+<h2 dir="auto" id="readings-1">Readings</h2>
 <p dir="auto">Zaki</p>
 <ul dir="auto">
 <li dir="auto">Chapter 9.1 - 9.3</li>
 <li dir="auto">Chapter 12 through page 317 (minus Odds Ratio)</li>
 </ul>
-<h2 dir="auto" id="exercises-2">Exercises</h2>
+<h2 dir="auto" id="exercises-1">Exercises</h2>
 <ol dir="auto">
 <li dir="auto">Zaki Ch 9 Q1</li>
 </ol>
@@ -26,7 +26,9 @@ b. True<br>
 c. True.  Maximal is closed since can't add any element w/o losing support.<br>
 d. False.  Could e.g. have A as maximal and BCD maximal, but BC nonmaximal</strong></p>
 <ol start="2" dir="auto">
-<li dir="auto">Zaki Ch 9 Q2</li>
+<li dir="auto">Zaki Ch 9 Q2
+For 2b, specify Frequent, closed, and maximal in the order they appear in
+the tree, level by level, left to right, with a pipe symbol between each level.  You should have 20 frequent, 12 closed, and 4 maximal sets.</li>
 </ol>
 <pre><code dir="auto">a. C(AE) = ABCE, so AE is not closed
 
@@ -45,11 +47,11 @@ b. See diagram on paper.  Note support groups are:
 235 CE BCE
 
 
-Frequent: A, B, C, D, E, AB, AC, AD AE, BC, BD, BE, CD, CE, ABC, ABE, ACE, BCE, ABCE
+Frequent: A, B, C, D, E | AB, AC, AD, AE, BC, BD, BE, CD, CE | ABC, ABE, ACD, ACE, BCE | ABCE
 
-Closed (by root level): AC, B, C, D, BE | ABC, AD, ABCE, BC, BD, CD, BCE
+Closed (by root level): B, C, D | AC, BC, BD, BE, CD | ABC, ACD, BCE | ABCE
 
-Maximal: BD, AD, CD, ABCE
+Maximal: BD, CD | ACD | ABCE
 </code></pre>
 <ol start="3" dir="auto">
 <li dir="auto">Zaki Ch 9 Q3</li>
@@ -59,7 +61,7 @@ A, B, C, D, AB, AC, AD, BC, CD, ABC, ACD</strong></p>
 <ol start="4" dir="auto">
 <li dir="auto">For a rule X -&gt; Y, describe a situation that would give a confidence of 1, but only a lift of 1.  What is the leverage in this case?</li>
 </ol>
-<p dir="auto"><strong>X and Y occur in all itemsets.  Leverage would be 0</strong></p>
+<p dir="auto"><strong>Regardless of X, Y occurs in all itemsets.  Leverage would be 0</strong></p>
 <ol start="5" dir="auto">
 <li dir="auto">For a rule X -&gt; Y with confidence .5, what are the largest possible values for rsup(X) and rsup(Y)?  What are lift and conviction in this case?</li>
 </ol>

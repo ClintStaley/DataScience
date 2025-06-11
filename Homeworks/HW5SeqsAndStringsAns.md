@@ -22,9 +22,8 @@ there are $4^k$ possible sequences.**
 
 2. Zaki Ch10 Q2 d and e only
    * For Spade use minsup = 5, and develop only sequences starting with A
-   * For PrefixSpan use minsup = 4, but develop only sequences starting with A or C, and use only $s_1$ through $s_5$ from the database.  Remember to use 1-based numbering like the text.
+   * For PrefixSpan use minsup = 4, but after setting up $D_\empty$, develop only sequences starting with A or C, and use only $s_1$ through $s_5$ from the database.  Remember to use 1-based numbering like the text.
    
-
    **d. [Spade minsup 5](HW5Spade.jpg)\
    e. [Prfix minsup 4](HW5Prefix.jpg)**
 
@@ -49,7 +48,7 @@ links created. Since this is complicated, here are the first 6 lines of the
 desired answer.  You must add another 12.
 
 ```
-G          N#, none, remainder 1 (G)
+G          N3, none, remainder 1 (G)
 GA         N6, none, remainder 2 (GA)
 GAA        N6, A/1, remainder 3 (GAA)
 GAAG       N6, A/2, remainder 4 (GAAG)
@@ -64,7 +63,7 @@ GAAGCA     N0, C/2, remainder 2 (CA)
 GAAGCAG    N0, C/3, remainder 3 (CAG)
 GAAGCAGA   N2, A/1, remainder 4 (CAGA)
 GAAGCAGAA  N2, A/2, remainder 5 (CAGAA)
-GAABCAGAA$ add N9/$ for CAGAA$. Use N2->N5. N5 A/2, remainder 4 (AGAA)
+GAAGCAGAA$ add N9/$ for CAGAA$. Use N2->N5. N5 A/2, remainder 4 (AGAA)
            add N10/$ for AGAA$. Add N9->N10, use N5->N3. N6 A/1, remainder 3 (GAA)
            add N11/$ for GAA$. Add N10->N11, use N6->N1. N1 A/1, remainder 2 (AA)
            add N12/$ for AA$. Add N11->N12. N1, none, remainder 1 (A)

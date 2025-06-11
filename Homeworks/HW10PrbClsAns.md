@@ -16,9 +16,9 @@ $\mu_{11} = \frac{25 + 30}{2} = 27.5$
 
 $\sigma_{11} = \sqrt{\frac{25^2+30^2}{2} - 27.5^2} = 2.5$
 
-$\mu_{21} = \frac{25 + 45 + 20 + 25}{4} = 28.75$ 
+$\mu_{21} = \frac{20 + 45 + 20 + 25}{4} = 27.5$ 
 
-$\sigma_{21} = \sqrt{\frac{25^2+45^2+20^2+25^2}{4} - 28.75^2} = 9.6$
+$\sigma_{21} = \sqrt{\frac{20^2+45^2+20^2+25^2}{4} - 27.5^2} = 10.3$
 
 $P(v_{sports} | C_1) = \frac{3}{6} = .5$
 
@@ -40,7 +40,7 @@ $P(C_1) = .333; P(C_2) = .667$
 
 $P(X | C_1) = .333(.1666)\frac{e^{(-.5)(\frac{-4.5}{2.5})^2}}{\sqrt{2\pi}2.5} = (.0555)\frac{.198}{6.27} = .00175$
 
-$P(X | C_2) = .666(.125)\frac{e^{(-.5)(\frac{-5.75}{9.6})^2}}{\sqrt{2\pi}9.6} = (.0833)\frac{.836}{23.87} = .00292$
+$P(X | C_2) = .666(.125)\frac{e^{(-.5)(\frac{-4.5}{10.3})^2}}{\sqrt{2\pi}10.3} = (.0833)\frac{.901}{25.8} = .00291$
 
 C2 is the chosen class.
 
@@ -53,7 +53,7 @@ $P(x | c_1) = \frac{e^{-\frac{\begin{bmatrix}2 && 1\end{bmatrix}\begin{bmatrix}2
 $P(x | c_2) = \frac{e^{-\frac{\begin{bmatrix}-2 && -1\end{bmatrix}\begin{bmatrix}0.5&&0\\0&&1\end{bmatrix}\begin{bmatrix}-2\\-1 \end{bmatrix}}{2}}}{2\pi\sqrt{|\begin{bmatrix}2&&0\\0&&1\end{bmatrix}|}} = \frac{e^{-1.5}}{2\pi\sqrt{2}} = .0251$
 
 $P(c_1|x) = \frac{.0965(.5)}{.0965(.5) + .0251(.5)} = .794$
-$P(c_1|x) = \frac{.0251(.5)}{.0965(.5) + .0251(.5)} = .206$
+$P(c_2|x) = \frac{.0251(.5)}{.0965(.5) + .0251(.5)} = .206$
 
 3. For the prior problem what P values for the classes would be necessary to change the classification of x?  
 
@@ -87,9 +87,9 @@ $P(c_1) = .206; P(c_2) = .794$
 
 **Could use multivariate normal for the first three as their own subunit, plus the full Bayes categorical for the last two, and then naive Bayes to combine 1-3, 4, 5, 6, 7 and 8-9**
 
-9. Compare the order of complexity for K-Nearest classification, and NB, both training and evaluation of samples.  Use K, k (# of classes), n, and d as variables. Assume no special data structure that will speed determination of near points -- distance to all must be computed.  Don't assume k is trivial wrt n.  Describe a situation where K-NN would actually be about as fast as NB in evaluation.
+9. Compare the order of complexity for K-Nearest classification, and NB, both training and evaluation of samples.  Use K, c (# of classes), n, and d as variables. Assume no special data structure that will speed determination of near points -- distance to all must be computed.  Don't assume c is trivial wrt n.  Describe a situation where K-NN would actually be about as fast as NB in evaluation.
 
-**No training, so far better than NB's O(nd) there.  Evaluation is O(nd + (n+k)logn), vs NB O(kd), so far worse, unless k = O(n)**
+**K-NN has no training, so far better than NB's O(nd) there, or equal if you account for time reading data.  K-NN evaluation is O(nd + (nlogK) + c), since n neighbors must be inserted into a heap that contains K at a time, and then highest value must be chosen out of c classes (though the c term might reasonably be dropped), vs NB O(cd), so worse unless c = O(n)**
 
 10. Say we have just two classes, each with the same number of sample points, and with sample points uniformly spread around the space.  How would NB classification divide the space between the two classes?  What, roughly, would the division look like?  How would KNN, do so, with K=1?  (Use an appropriate term for the shape of the spaces in the KNN case).   
 

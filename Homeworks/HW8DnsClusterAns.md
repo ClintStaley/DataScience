@@ -10,7 +10,7 @@
 
 **b. Yes**
 
-**c. Yes: i, e, c, f, j, n**
+**c. Yes: i, e, c, f, j or g, n**
 
 **d. No, since y may not be core**
 
@@ -20,7 +20,7 @@
 
 **g. {p, q, v, r, s, t, w, x, k, h, d, a, l}, {m, i, e, b, c, f, g, j, n, o}  U is noise**
 
-2. Zaki Ch 15 Q5 but for numbers 2, 2.5, 3, 4, 4.3, 5, 6.1
+2. Zaki Ch 15 Q5 but for numbers 2, 2.5, 3, 4, 4.3, 5, 6.1.  The neighborhood you describe must include 4 of these points, even if its center is not one of them.
 
 **Want to find point where 4 neighbors span smallest distance, and name the centerpoint.  That's 2.5 - 4.3, span 1.8, center is 3.4, density is $\frac{4}{7(1.8)} = .317**
 

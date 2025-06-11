@@ -41,7 +41,8 @@ Zaki
 11. Compare $\Sigma'$ and $\Sigma''$.  Why does the result make sense? **The same, since the covariance matrix is the transform needed to scale and rotate the spherical multivariate normal**
 
 12. Zaki Ch13 Q2 
- * Note this refers to the table *above* not below
+ * Note this refers to the table *above* not below.  And, do not take Zaki's prior probability of .029 as correct.  The algorithm would
+ expect you to compute this from $P(x|C_1)$ and $P(x|C_2)$, so do that.  You should get a value slightly different from .029.
 
 **Q2a $\mu_1 = \frac{2(.9)+3(.8)+7(.3)+2(.9)+1(.8)}{.9+.8+.3+.1+.9+.8)} = \frac{9.8}{3.8} = 2.58$; $\mu_2 = 6.62$ similarly**
 
@@ -64,7 +65,7 @@ And $P(C_1) = P(C_2) = .5$\
 And $w_{11} = w_{12} = w_{13} = .5$ since the $\mu$ and $\Sigma$ are identical**
 
 14. Zaki Ch13 3b Followup\
-Using your results from the prior question, factor $\Sigma_1$ into $Q \Lambda Q^{-1}$ form.  (Note that there are many online sources for diagonalizing and inverting matrices.)  Explain why the resultant Q makes sense.  Draw a diagram of the 5 points and $\mu_1$ and estimate the implied scaling values and rotation value for $C_1$.  This will also serve as a reality check on your $C_1$ computations.\
+Using your results from the prior question, do a spectral decomposition of $\Sigma_1$ into $Q \Lambda Q^{-1}$ form.  (Note that there are many online sources for spectrally decomposing and inverting matrices.)  Explain why the resultant Q makes sense.  Draw a diagram of the 5 points and $\mu_1$ and estimate the implied scaling values and rotation value for $C_1$.  This will also serve as a reality check on your $C_1$ computations.\
 \
 Submit the factoring, the estimated scaling factors, the diagram, and an explanation of how the Q and the scaling factors lead to an ellipse that corresponds with the 5 points.\
 \
