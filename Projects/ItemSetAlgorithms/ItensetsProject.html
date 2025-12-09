@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="itemsets-project-1">Itemsets Project</h1>
+<h2 dir="auto" id="overview-1">Overview</h2>
+<p dir="auto">In this project, you'll analyze a large set of transactions with many items, and search for two patterns:</p>
+<ul dir="auto">
+<li dir="auto">itemsets that comprise a unit -- all appear together in transactions</li>
+<li dir="auto">association rules where two items result in the presence of a third</li>
+</ul>
+<h2 dir="auto" id="specification-1">Specification</h2>
+<p dir="auto">You'll use two files, supplying the filenames in response to an initial prompt:</p>
+<p dir="auto"><code>Enter config file name: config1.json</code><br>
+<code>Enter data file name: cstaley_items.txt</code></p>
+<h3 dir="auto" id="configuration-file-1">Configuration file</h3>
+<p dir="auto">The configuration file specifies various parameters surrounding the two searches described in the overview.</p>
+<p dir="auto">Read this file using the javax.json package; don't write your own JSON parser!  And arrange to obtain that package by building a Maven project, and including the javax.json as a dependency, so Maven will automatically fetch it for you.  (It's not in the standard libraries.)</p>
+<h3 dir="auto" id="data-file-1">Data file</h3>
+<p dir="auto">You'll get a data file specific to you, named <code>&lt;login&gt;_items.txt</code>.  It has the format:</p>
+<pre><code dir="auto">&lt;numItems&gt;
+&lt;transaction lists&gt;
+</code></pre>
+<p dir="auto">The <code>&lt;numItems&gt;</code> gives the number of different items, which are identified by id numbers from 0 to <numItems>-1.  Be ready to accommodate values up to 30,000.</p>
+<p dir="auto">The <code>&lt;transaction lists&gt;</code> give transactions, one per line.  Each transaction is a blank-separated list of item IDs, not necessarily in sorted order, and possibly with repeated items.  Ignore the repeats if so.  Expect transaction counts up to 100,000,000 and transaction sizes averaging up to 30.  Identify transactions by their row number, from 0.</p>
+<h3 dir="auto" id="computation-1">Computation</h3>
+<p dir="auto">You are seeking within these transactions two things</p>
+<ol dir="auto">
+<li dir="auto">
+<p dir="auto">Maximal itemsets of at least 5 with whole-itemset lift and leverage as specified in the config file.  With the right lift and leverage, these can be seen as purchase units, e.g. the parts for some device, or spices for a recipe.</p>
+</li>
+<li dir="auto">
+<p dir="auto">Causal relationships of form AB -&gt; C, where a pair items results in the third item, again with lift and leverage as specified in the config file.</p>
+</li>
+</ol>
+<p dir="auto">The configuration file will specify which algorithm to use for these: Aprior, eClat/deClat, or FPGrowth.  Use an OO Strategy pattern, setting up a general interface with three implementations.  Part of the exercise is to test the relative speed and effectiveness of these algorithms.</p>
+<h3 dir="auto" id="output-1">Output</h3>
+<p dir="auto">Print to standard output:</p>
+<ol dir="auto">
+<li dir="auto">All itemsets meeting criterion 1, starting with their lift and leverage and followed by the item numbers, in sorted order.  For each, also indicate whether it is productive or nonproductive as an itemset, e.g.</li>
+</ol>
+<p dir="auto"><code>Lift: 2.0  Lvr: .2  98 132 453 751 887 998 nonproductive</code></p>
+<ol start="2" dir="auto">
+<li dir="auto">All association rules meeting criterion 2, in form:<br>
+<code>&lt;lift&gt; &lt;leverage&gt; AB -&gt; C</code>, e.g.</li>
+</ol>
+<p dir="auto"><code>Lift 2.0 Lvr: .1  42 987 -&gt; 886</code></p>
+
+</body>
+</html>

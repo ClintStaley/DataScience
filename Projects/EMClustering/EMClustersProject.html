@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="emclustering-coding-project">EMClustering Coding Project</h1>
+<p dir="auto">This project will produce a Numpy implementation of EMClustering, along with a data generation tool to support testing the EMClustering implementation.  Learning to use Numpy and PyPlot is a principal goal of this assignment.</p>
+<h2 dir="auto" id="phase-1-write-a-dataset-generator">Phase 1 Write a dataset generator</h2>
+<p dir="auto">Use the supplied MakeMVClusters.py scaffold, and fill in missing steps to produce a program that generates a pickle file containing a single numpy array of d-dimensional points.  MakeMVClusters reads a JSON formatted file like the
+supplied MV1.in, which gives a dimension value, and the mean, sigma, and point
+count for one or more clusters.  You run it thus:</p>
+<p dir="auto">python MakeMVClusters.py <configFile> <pickleOutputFile> [comma-separated options]</p>
+<p dir="auto">If the word &quot;verbose&quot; is one of the options, MakeMVClusters also prints the configuration, a sample of the first 10 points from the pickle file, and a picture of the generated cluster data, using PyPlot.  This comprises colored point clouds for each cluster, and also an
+ellipse at 2 standard deviation distance from the center point.</p>
+<p dir="auto">Here is a sample run of MakeMVClusters:</p>
+<p dir="auto">The pyplot display:</p>
+<p dir="auto"><img src="ClusterDiagram.png" alt="Clusters" data-src="ClusterDiagram.png"></p>
+<p dir="auto">And the command and text output (Your values may differ since they're random, but they must not all come from the same cluster):</p>
+<pre><code dir="auto"><code><div>$ python MakeMVClusters.py MV1.in MV1.out verbose
+Generating  {'dim': 2, 'clusters': [{'mean': [3, 4], 'sigma': [[10, 0], [0, 3]], 'numPts': 100}, {'mean': [-15, 1], 'sigma': [[6.5, 3.5], [3.5, 6.5]], 'numPts': 200}, {'mean': [-3, -10], 'sigma': [[1, 2], [2, 8]], 'numPts': 400}]}
+[[-14.44887245   0.80871476]
+ [ -1.70872688  -7.6049518 ]
+ [  4.1507679    6.41269918]
+ [ -2.32286371 -10.61501481]
+ [ -3.3545244  -12.41835679]
+ [-12.97114612   6.75887577]
+ [ -2.54195976   4.23352316]
+ [ -3.38364657  -9.11110374]
+ [ -2.27414744 -11.90995098]
+ [-15.5385435    2.28277911]]
+</div></code></code></pre>
+<h3 dir="auto" id="hints">Hints</h3>
+<ol dir="auto">
+<li dir="auto">matplotlib.patches offers an Ellipse class that I found useful for drawing those ellipses.</li>
+<li dir="auto">Other useful methods include <code>rnd.multivariate</code>, <code>rnd.shuffle</code>, and np.linalg.eigh</li>
+</ol>
+<h3 dir="auto" id="submission">Submission</h3>
+<p dir="auto">Submit by first demoing a style-correct version for me, and then submitting MakeMVClusters.py to the Canvas assignment.
+s</p>
+<h2 dir="auto" id="phase-2-4-emclusterspy">Phase 2-4 EMClusters.py</h2>
+<p dir="auto">In these phases you take the output from MakeMVClusters.py and perform the EMClustering algorithm on it.</p>
+<p dir="auto">Create a program EMClusters.py that performs iterations of the EMCluster algorithm, per Algorithm 13.3 in our text, stopping when the total mean-change is less than .0001.</p>
+<p dir="auto">Run EMClusters.py thus:</p>
+<pre><code dir="auto"><code><div>python EMClusters.py inFile outFile numClusters &lt;options&gt;
+</div></code></code></pre>
+<p dir="auto">where <code>infile</code> is an output file from MakeMVClusters, and <code>&lt;options&gt;</code> is an optional
+comma-delimited string with &quot;just5&quot;, &quot;verbose&quot; and &quot;diagonal&quot; as options.</p>
+<p dir="auto">Once you've arrived at a clustering, write it out to <code>outFile</code> as a text formatted JSON string that is readable by MakeMVClusters.</p>
+<p dir="auto">EMClusters performs iterations of the EMCluster algorithm, per Algorithm 13.3 in
+our text, stopping when the total mean-change is less than .0001.</p>
+<h3 dir="auto" id="verbose-option">Verbose option</h3>
+<p dir="auto">Under the verbose option, EMClusters prints the point set that was read in, and,
+at the start of each iteration of the repeat loop, it prints the 0-based loop
+number, the point-diffs, and the <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi></mrow><annotation encoding="application/x-tex">\mu</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span></span></span></span></eq>, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Σ</span></span></span></span></eq> and P values for all clusters,
+along with the resultant computed weights for all cluster/point combinations
+as a 2-D array.</p>
+<p dir="auto">And, if dimensions = 2, it displays a diagram like this:</p>
+<p dir="auto"><img src="EMClusterPlot.png" alt="EMClusterPlot" data-src="EMClusterPlot.png"></p>
+<p dir="auto">It's similar to the one for MakeMVClusters.  The points are colored according to the cluster they are closest to, and the centers and ellipses are also colored.  Pop up a new diagram for each iteration of the loop, so you can watch the cluster configurations converge.  In this image, for instance, the blue cluster is competing with the green for points.  Further iterations will show it gradually winning those points neares to it and the green cluster gradually concentrating instead on the point cloud to the right.</p>
+<h3 dir="auto" id="just5-option">Just5 option</h3>
+<p dir="auto">Printing all of the weights and point differences is pretty cumbersome with hundreds of points.  The &quot;just5&quot; option limits outputs to just the first 5 points.  I found this useful for checking the math on the steps of the algorithm without being inundated with data.</p>
+<h3 dir="auto" id="diagonal-option">Diagonal option</h3>
+<p dir="auto">The &quot;diagonal&quot; option limits <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Σ</span></span></span></span></eq> values to diagonal arrays.  <em>Importantly</em>, this means you do not even represent the <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord">Σ</span></span></span></span></eq> values as 2-D arrays, bur as 1-D vectors of just the diagonal values, adjusting the relevant Numpy calls accordingly.  This is necessary in order to gain the speed expected from the diagonal assumption.</p>
+<h3 dir="auto" id="dropping-unpopular-clusters">Dropping Unpopular Clusters</h3>
+<p dir="auto">A curiosity of the algorithm, not mentioned in the text, is that it's common for one or more clusters to become highly &quot;unpopular&quot;, with P values dropping to near zero, and very few points considering the cluster their highest probability.  This can result in Nan values for probability division operations, and also cause nonsingular matrices when only a couple of points are determining the correlation matrix.  Fix this by detecting when the popularity of a cluster drops to a mean point-count under 3 points.  Adjust all cluster-dependent data (means, sigmas, prbs, number of clusters) to eliminate such unpopular clusters.</p>
+<p dir="auto">Note that this feature also makes the algorithm less dependent on accurate estimation of the number of clusters to find, since you can overestimate when you run the program, and let the unpopular-clusters trimming reduce the number of clusters if needed.</p>
+<h3 dir="auto" id="use-of-numpy-and-limits-on-loops">Use of Numpy and Limits on Loops</h3>
+<p dir="auto">Your program must run quickly by using Numpy.  You may start with more Python loops to get an accurate implementation, but ultimately you may have at most four computational loops in the entire program, including the main while-loop driving the iterations.  You may also have two more loops for constructing the &quot;verbose&quot; pyplot diagrams.</p>
+<h3 dir="auto" id="hints-1">Hints</h3>
+<ol dir="auto">
+<li dir="auto">
+<p dir="auto">Numpy methods you may find useful include argmax, full, repeat, reshape, reciprocal, sqrt, det, inv, sum, concatenate, dot, matmul, multiply, subtract, ones, where, count_nonzero.  Rnd.uniform is also useful.</p>
+</li>
+<li dir="auto">
+<p dir="auto">For dropping unpopular clusters, you may find <code>count_nonzero</code> and <code>where</code> useful to generate a vector of clusters to keep.  (E.g. [0, 2, 3] if I'm dropping cluster 1 due to unpopularity).  Note that such an array may be used to index a Numpy array, selecting only the indicated indices.  Once made, it can filter all the relevant arrays, e.g. means, sigmas, etc.</p>
+</li>
+<li dir="auto">
+<p dir="auto">I did not find Numpy.outer useful for computing arrays of outer products, but you might be able to get it to do that; lemme know if you do.</p>
+</li>
+<li dir="auto">
+<p dir="auto">I was not able to write this without considerable side-testing of Numpy methods via a short Test.py that I altered over and over to be sure I understooed what each method did.  You should do the same.</p>
+</li>
+<li dir="auto">
+<p dir="auto">Be painfully conscious of tensor shapes as you build weights, <eq><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>μ</mi><mo separator="true">,</mo><mi mathvariant="normal">Σ</mi></mrow><annotation encoding="application/x-tex">\mu, \Sigma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">μ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">Σ</span></span></span></span></eq>, etc.
+Drop comments to the side next to each tensor you create to remind you of its
+dimensions.</p>
+</li>
+<li dir="auto">
+<p dir="auto">The Numpy behavior called &quot;broadcasting&quot; is quite important to understand.  See the Numpy docs on this.</p>
+</li>
+</ol>
+<h3 dir="auto" id="submission-1">Submission</h3>
+<p dir="auto">This is clearly a sophisticated project, and by the end of it you should be well-familiar with Numpy and the EM Clustering algorithm.  Complete it in the following phases.  For each, submit by first demoing a style-correct version for me, and then submitting EMClusters.py to the relevant Canvas assignment.</p>
+<h2 dir="auto" id="phase-2----basic-functionality">Phase 2 -- Basic Functionality</h2>
+<p dir="auto">Set up initial values for means, sigmas and probabilities, and compute the weight matrix from them.  Write the EM loop, but execute it just three times so you can display the results and check your work.  Don't bother with coloring the points in your verbose display; just show the means and ellipses.  Feel free to use more loops than allowed in this phase.</p>
+<h2 dir="auto" id="phase-3----full-numpy-use">Phase 3 -- Full Numpy Use</h2>
+<p dir="auto">Add point coloring, and termination of the main loop when error is small instead of running a fixed number of iterations.  Reduce the number of loops to the required limit.</p>
+<h2 dir="auto" id="phase-4----output-diagonal-option-trim-clusters">Phase 4 -- Output, Diagonal Option, Trim Clusters</h2>
+<p dir="auto">Finish all features, including writing the JSON output file, implementing the diagonal feature and automated dropping of unpopular clusters.</p>
+
+</body>
+</html>

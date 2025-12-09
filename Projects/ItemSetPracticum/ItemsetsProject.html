@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markdown-it-texmath/css/texmath.min.css">
+<link rel="stylesheet" href="file:///c:\Users\clint\.vscode\extensions\goessner.mdmath-2.7.4\themes\default\style.css">
+
+</head>
+<body class="markdown-body">
+<h1 dir="auto" id="itemsets-practicum">ItemSets Practicum</h1>
+<p dir="auto">This project will produce high-confidence inferences from the per-user itemsets provided
+by the electronics store orders files provided along with this description.<br>
+These files provide data on customers and purchased products.  You'll analyze
+the data to find product purchase patterns.  It has several phases,
+roughly reflecting the typical phases of a professional data analysis project.</p>
+<h2 dir="auto" id="phase-1-review-the-data-and-make-a-plan">Phase 1 Review the data and make a plan</h2>
+<p dir="auto">The provided files do not provide a direct mapping from purchases (transactions)
+to sets of purchased product ids (items).  And not all rows are even useful to
+an itemset analysis seeking association rules.  You must glean from this data
+a clean set of useful transactions.</p>
+<p dir="auto">A good data science process includes a careful review of the data, and a plan to
+&quot;clean&quot; it in appropriate ways.  Review the provided csv files -- you may find
+the Orders100.csv an easier starting point.  Determine which rows are
+actually useful.</p>
+<p dir="auto">Then, determine what final dataframe structure will best
+support a Eclat/dEclat algorithm.</p>
+<p dir="auto">Create a short file Analysis.md in that subdirectory summarizing your results.<br>
+Submit this md file and the corresponding HTML file to the relevant Canvas
+assignment for my approval before proceeding.  Write no code in this phase!</p>
+<p dir="auto">(Learn MD if you haven't already.  It's an excellent format for Git repository
+documentation since it merges well.  Edit your Markdown in VSCode, using the
+Markdown+Math plugin.)</p>
+<h3 dir="auto" id="phase-2-write-code-to-implement-your-plan">Phase 2 Write code to implement your plan</h3>
+<p dir="auto">Write a program Analyze.py that uses Pandas to input a given Orders CSV file (first
+commandline argument) and prints basic stats on the products, orders and customers.<br>
+It then performs the cleaning and reorganization you planned in the prior step,
+producing a Pandas Dataframe as its final product.  It writes the DataFrame to
+the a specified Pickle output file (second commandline argument), and then reads
+it back in and prints it, to confirm successful file save.</p>
+<p dir="auto">A few important points:</p>
+<ul dir="auto">
+<li dir="auto">Do not write any loops or if-statements in this code.  Use Pandas Dataframes,
+groupBy, etc to do the work.  My implementation is <strong>10 lines long</strong>.  Yours
+should be comparably brief.</li>
+<li dir="auto">You may choose any file format you like, but be sure it loads and saves
+quickly with the full dataset.</li>
+<li dir="auto">Your cleaning may include dropping some users as irrelevant to the
+creation of association rules.  Make such dropping optional, by allowing
+a final &quot;all&quot; flag that generates all transactions, even those with just one item.</li>
+</ul>
+<p dir="auto">Sample run.  Yours may look different.</p>
+<pre><code dir="auto">clint@rifle:~/DataScience/Projects/Sandbox$python3 Analyze.py Orders10000.csv Orders10000.pck
+Reading Orders10000.csv
+Number of products: 3186
+Number of orders: 8260
+Number of customers: 6763
+Read/write check 
+product_id
+1515966223509088493                              [1.515915625512659e+18]
+1515966223509088497                             [1.5159156254510305e+18]
+1515966223509088498    [1.5159156254556063e+18, 1.5159156254506296e+1...
+1515966223509088499    [1.515915625453577e+18, 1.515915625456618e+18,...
+1515966223509088502                             [1.5159156254429404e+18]
+                                             ...                        
+2273948319141068839      [1.515915625455605e+18, 1.5159156254514947e+18]
+2298437344820200326                             [1.5159156254541414e+18]
+2298437346070102964                             [1.5159156254449859e+18]
+2298437347152233469                             [1.5159156254748726e+18]
+2298437347429056895                             [1.5159156254580431e+18]
+Name: user_id, Length: 2185, dtype: object
+</code></pre>
+<h2 dir="auto" id="phase-3-generate-itemsets-via-declat">Phase 3 Generate itemsets via dEclat</h2>
+<p dir="auto">Write a program GenItemsets that accepts as commandline arguments the name of
+the file generated by Analyze.py, and a min support.  The program uses dEclat,
+with the optimization of first-level Eclat values for supporting transactions.<br>
+Several details:</p>
+<h3 dir="auto" id="namedtuple">namedtuple</h3>
+<p dir="auto">You will find several small &quot;classes&quot; needed, e.g. to represent a list of
+IT-pairs.  Native Python is bad at this sort of thing since tuples are
+only numerically indexed and dicts require cumbersome syntax.  Use
+namedtuples for these small structs.</p>
+<h3 dir="auto" id="implement-incrementally">Implement incrementally</h3>
+<p dir="auto">I found it easiest to implement this a step at a time, first setting up the
+parameters for the initial call to dEclat, then implementing the full
+recursion, but just with standard dEclat, then revising to use first-level Eclat.</p>
+<h3 dir="auto" id="final-output">Final output</h3>
+<p dir="auto">Output a list of namedtuples, each having a set of items and a support for that
+set.  Do this in Pickle format, and as before reread the Pickle file and
+print the result for verification.</p>
+<h2 dir="auto" id="phase-4-revise-to-use-charm">Phase 4 Revise to use Charm</h2>
+<p dir="auto">Revise your dEclat implementation to use Charm instead, and to output only
+namedtuples representing closed itemsets.</p>
+<ul dir="auto">
+<li dir="auto">Return to an Eclat implementation (dEclat is hard to do with Charm)</li>
+<li dir="auto">Maintain itemsets as hierarchical lists, as discussed in class.  Any
+itemset remains its own list, even if added to other itemsets as a sublist
+of theirs.  This lets you augment an itemset by merging other items, per
+Charm, and automatically update that itemset within any other itemset
+to which it belongs.</li>
+<li dir="auto">You should need at most a handful of new lines of code added to PHase 3</li>
+</ul>
+<h2 dir="auto" id="phase-5-generate-association-rules">Phase 5 Generate association rules</h2>
+<p dir="auto">Use the closure sets generated in the prior step to generate meaningful
+association rules: rules that meet a given confidence, lift and leverage.
+Also identify productive itemsets.</p>
+<p dir="auto">Cmmandline arguments will be <em>pickleFile minConf minLift minLvg</em></p>
+<ul dir="auto">
+<li dir="auto">
+<p dir="auto">For each itemset, generate all possible association rules, keeping only
+<em>nonredundant</em> rules meeting the criteria.  Save a list of these rules,
+using an appropriate namedtuple type.  Output this information under
+each itemset in the confirmatory print.</p>
+</li>
+<li dir="auto">
+<p dir="auto">If an itemset is productive (as an entire itemset), label it so in the
+data and the output print</p>
+</li>
+</ul>
+
+</body>
+</html>
